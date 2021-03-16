@@ -1,4 +1,4 @@
-# trailzen-backend
+# trailzen-webapp
 
 Repo with the backend part of the Trailzen project.
 
