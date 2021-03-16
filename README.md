@@ -1,6 +1,6 @@
 # trailzen-webapp
 
-Repo with the backend part of the Trailzen project.
+Repo for the Trailzen webapp project.
 
 
 ###Branching Protocol
