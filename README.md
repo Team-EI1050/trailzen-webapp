@@ -3,7 +3,7 @@
 Repo for the Trailzen webapp project.
 
 
-###Branching Protocol
+##Branching Protocol
 
 - *MASTER* Branch. Published code.
 - *DEV* Branch. Testing and work done by the developer team. Here we will publish all work 
