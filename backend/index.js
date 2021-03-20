@@ -5,6 +5,8 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   mongoDb = require('./database/db');
 
+  const createError = require('http-errors');
+
 
 // Conexión a la base de datos
 mongoose.Promise = global.Promise;
