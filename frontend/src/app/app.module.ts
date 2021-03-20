@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SenderistaComponent } from './senderista/senderista.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SenderistaComponent
   ],
   imports: [
     BrowserModule,
