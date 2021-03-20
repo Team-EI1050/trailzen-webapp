@@ -1,22 +1,29 @@
+//vanilla
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+//terceros
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//propios
 import { SenderistaComponent } from './senderista/senderista.component';
-import { ModificarSenderistaComponent } from './modificar-senderista/modificar-senderista.component';
+import { ModalmodificarSenderistaComponent } from './modalmodificar-senderista/modalmodificar-senderista.component'
+
 
 @NgModule({
-  declarations: [
+  declarations: [ //componentes
     AppComponent,
     SenderistaComponent,
-    ModificarSenderistaComponent
+    ModalmodificarSenderistaComponent
   ],
-  imports: [
+  imports: [ //modulos
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [], //servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }

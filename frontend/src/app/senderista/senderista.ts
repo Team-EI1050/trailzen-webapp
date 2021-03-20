@@ -4,7 +4,7 @@ export interface Senderista{
     apellido?: string;
     correo?: string;
     nickname?: string;
-    fechaCreacion?: Date;
+    fechaCreacion?: string;
     descripcion?: string;
     fotoPerfil?: string;
 }

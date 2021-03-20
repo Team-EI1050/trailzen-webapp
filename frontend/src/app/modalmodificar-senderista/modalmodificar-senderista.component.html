@@ -1,0 +1,43 @@
+  <!-- El modal en si -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Modificar datos de perfil</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <ul>
+                <li>
+                    <label for="nombreUsuario">Nombre de usuario :</label>
+                    <input type="text" id="nombreUsuario">
+                </li>
+                <li>
+                    <label for="apellido">Apellido :</label>
+                    <input type="text" id="apellido">
+                </li>
+                <li>
+                    <label for="nickname">Nickname :</label>
+                    <input type="text" id="nickname">
+                </li>
+                <li>
+                    <label for="descripcion">Descripción :</label>
+                    <input type="text" id="descripcion">
+                </li>
+            </ul>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+    </div>
+  </ng-template>
+  
+  <!-- Previa a abrirse el modal -->
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modificar datos de perfil</button>
+  
+  <hr>
+  
+  <pre>{{ closeResult }}</pre>

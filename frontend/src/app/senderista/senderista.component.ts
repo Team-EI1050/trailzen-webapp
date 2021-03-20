@@ -13,7 +13,7 @@ export class SenderistaComponent implements Senderista {
   apellido: string;
   correo: string;
   nickname: string;
-  fechaCreacion: Date;
+  fechaCreacion: string;
   descripcion: string;
   fotoPerfil: string;
 
@@ -22,8 +22,7 @@ export class SenderistaComponent implements Senderista {
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    //this.fechaCreacion = dd + '/' + mm + '/' + yyyy;
-    this.fechaCreacion = today
+    this.fechaCreacion = dd + '/' + mm + '/' + yyyy;
     this.nombre="Francis";
     this.apellido="Gutierrez"
   }
