@@ -1,0 +1,31 @@
+{
+  "name": "backend-trailzen",
+  "version": "0.0.1",
+  "description": "Backend utilizado para la aplicación Trailzen, en el que se va a ofrecer un servicio de almacenamiento de datos tanto para unuarios como para sendas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src",
+    "dev": "nodemon src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-EI1050/trailzen-webapp.git"
+  },
+  "author": "Team-EI1050",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Team-EI1050/trailzen-webapp/issues"
+  },
+  "homepage": "https://github.com/Team-EI1050/trailzen-webapp#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
