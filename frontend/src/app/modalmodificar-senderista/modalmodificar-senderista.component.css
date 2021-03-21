@@ -1,0 +1,15 @@
+div.izqui{
+    width: 145px; float:left;
+}
+
+div.dere{
+    width: 50px; float:left;
+}
+
+div.gordo{
+    width: 100%; padding-bottom: 40px;
+}
+
+li.sinPuntitos{
+    list-style:none;
+}
