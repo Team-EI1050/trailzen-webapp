@@ -18,4 +18,4 @@ to the *DEV* branch, and will be checked by all the team members to prove it is 
 - MongoDB has to be installed and running in your system
 - You have to be in the trailzen-webapp/backend/
 - Run "npm install -D" if is your first time
-- Run "npm run dev" (continuous) or "node src" (without nodemon)
+- Run "npm run dev" (continuous) or "npm run start" (without nodemon)
