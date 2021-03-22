@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,10 +10,18 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ModalmodificarSenderistaComponent {
   closeResult = '';
 
-  constructor(private modalService: NgbModal) {}
+  id: number;
+  @Input() nombre;
+  @Input() apellido;
+  @Input() nickname;
+  @Input() descripcion;
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  constructor(private modalService: NgbModal) {}
+  
+  
+  //modal
+  async open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -28,5 +36,13 @@ export class ModalmodificarSenderistaComponent {
     } else {
       return `with: ${reason}`;
     }
+  }
+  //---------------
+  getDatosActuales(id, nombre, apellido, nickname, descripcion){
+    this.id=id;
+    this.nombre=nombre;
+    this.apellido=apellido;
+    this.nickname=nickname;
+    this.descripcion=descripcion;
   }
 }

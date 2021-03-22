@@ -24,6 +24,8 @@ export class SenderistaComponent implements Senderista {
     var yyyy = today.getFullYear();
     this.fechaCreacion = dd + '/' + mm + '/' + yyyy;
     this.nombre="Francis";
+    this.nickname="Fry249"
     this.apellido="Gutierrez"
+    this.descripcion="Me encanta cazar mariposas en juernes"
   }
 }

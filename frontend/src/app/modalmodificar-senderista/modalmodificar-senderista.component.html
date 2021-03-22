@@ -1,4 +1,4 @@
-  <!-- El modal en si -->
+<!-- El modal en si -->
 <ng-template #content let-modal>
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Modificar datos de perfil</h4>
@@ -13,25 +13,25 @@
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="nombreUsuario">Nombre</label></div>
-                    <div class="dere"><input type="text" id="nombreUsuario"></div>
+                    <div class="dere"><input type="text" id="nombreUsuario" value="{{nombre}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="apellido">Apellido</label></div>
-                    <div class="dere"><input type="text" id="apellido"></div>
+                    <div class="dere"><input type="text" id="apellido" value="{{apellido}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="nickname">Nickname</label></div>
-                    <div class="dere"><input type="text" id="nickname"></div>
+                    <div class="dere"><input type="text" id="nickname" value="{{nickname}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="descripcion">Descripción</label></div>
-                    <div class="dere"><input type="text" id="descripcion"></div>
+                    <div class="dere"><input type="text" id="descripcion" size="50" value="{{descripcion}}"></div>
                   </div>
                 </li>
             </ul>
