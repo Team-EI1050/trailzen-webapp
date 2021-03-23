@@ -17,6 +17,7 @@ export class PerfilComponent implements OnInit {
       private activatedRoute: ActivatedRoute, 
       private senderistaService: SenderistaService) {
       this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+      console.log(this.getId);
       // this.getId = '6058e454464fcf60641bcbc1';
       this.senderistaService.getSenderista(this.getId).subscribe(res => 
         this.senderista = res

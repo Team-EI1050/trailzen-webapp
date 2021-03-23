@@ -8,9 +8,9 @@ const routes: Routes = [
   {path: '', component: PantallaInicioComponent},
   {path: 'api/senderista/get-senderista/:id', component: PerfilComponent},
   {path: 'api/ruta', component: RutasComponent},
-  {path: '',redirectTo: '/', pathMatch: 'full'},
-  {path: '',redirectTo: '/api/ruta', pathMatch: 'full'},
-  {path: '',redirectTo: '/api/get-senderista/:id', pathMatch: 'full'}
+  // {path: '',redirectTo: '/', pathMatch: 'full'},
+  // {path: '',redirectTo: '/api/ruta', pathMatch: 'full'},
+  // {path: '',redirectTo: '/api/get-senderista/:id', pathMatch: 'full'}
 ];
 
 @NgModule({
