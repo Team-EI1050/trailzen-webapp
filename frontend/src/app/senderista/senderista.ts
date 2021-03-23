@@ -1,5 +1,5 @@
 export interface Senderista {
-  id: String;
+  _id: String;
   correo: String,
   nickname: String,
   contrasenya: String,
