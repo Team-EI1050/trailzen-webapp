@@ -6,6 +6,7 @@ let express = require('express'),
   mongoDb = require('./database/db');
 
   const createError = require('http-errors');
+let mockSenderista = require('./mocks/mock.senderista');
 
 
 // Conexión a la base de datos
@@ -16,7 +17,11 @@ mongoose.connect(mongoDb.db, {
   useFindAndModify: false,
   useUnifiedTopology: true
 }).then(() => {
-    console.log('Base de datos online');
+  console.log('Base de datos online');
+  console.log('Borrado contenido de la base de datos');
+  mongoose.connection.db.dropDatabase();
+  mockSenderista.addMock()
+    
   },
   error => {
     console.log('Error en la base de datos: ' + error)
@@ -26,6 +31,8 @@ mongoose.connect(mongoDb.db, {
 // Preparando senderista
 
 const senderistaRoute = require('./routes/senderista.routes');
+const gestorRoute = require('./routes/gestor.routes');
+const rutaRoute = require('./routes/ruta.routes');
 
 const app = express();
 app.use(bodyParser.json());
@@ -40,7 +47,9 @@ app.use(express.static(path.join(__dirname, 'dist/backend')));
 
 
 // API root
-app.use('/api', senderistaRoute)
+app.use('/api/senderista', senderistaRoute)
+app.use('/api/gestor', gestorRoute)
+app.use('/api/ruta', rutaRoute)
 
 // PORT
 const port = process.env.PORT || 8000;
