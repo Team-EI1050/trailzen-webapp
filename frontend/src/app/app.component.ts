@@ -8,5 +8,4 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'TrailZen';
-  id = '6058e454464fcf60641bcbc1';
 }

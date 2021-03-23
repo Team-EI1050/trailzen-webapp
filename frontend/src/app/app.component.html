@@ -1,6 +1,27 @@
-
 <h1>{{title}}</h1>
-<nav>
-  <button><a routerLink="api/get-senderista/{:id}">Perfil</a></button>
-</nav>
-<router-outlet></router-outlet>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/">Home</a>
+      <ng-template ngbNavContent>
+        <!-- <router-outlet></router-outlet> -->
+        <app-pantalla-inicio></app-pantalla-inicio>
+      </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/api/senderista/get-senderista/{:id}">Perfil</a>
+      <ng-template ngbNavContent>
+        <!-- <app-perfil></app-perfil> -->
+        <router-outlet></router-outlet>
+      </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/api/ruta">Rutas</a>
+      <ng-template ngbNavContent>
+        <app-rutas></app-rutas>
+        <!-- <router-outlet></router-outlet> -->
+      </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
+
