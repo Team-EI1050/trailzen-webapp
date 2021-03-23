@@ -8,7 +8,7 @@ let Ruta = new Schema ({
     puntoFin: { type: String },
     circular: { type: Boolean },
     aprobada: { type: Boolean },
-    fotos: [{ type: String }],
+    fotos: [ { nombre: { type: String }, url:{ type: String }}],
     viable: { type: Boolean }
 },{collection: 'rutas'
 })

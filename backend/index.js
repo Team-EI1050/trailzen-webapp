@@ -5,8 +5,10 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   mongoDb = require('./database/db');
 
-  const createError = require('http-errors');
+const createError = require('http-errors');
 let mockSenderista = require('./mocks/mock.senderista');
+let mockGestor = require('./mocks/mock.gestor');
+let mockRuta = require('./mocks/mock.ruta');
 
 
 // Conexión a la base de datos
@@ -21,6 +23,8 @@ mongoose.connect(mongoDb.db, {
   console.log('Borrado contenido de la base de datos');
   mongoose.connection.db.dropDatabase();
   mockSenderista.addMock()
+  mockGestor.addMock()
+  mockRuta.addMock()
     
   },
   error => {
