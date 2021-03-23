@@ -10,7 +10,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class ModalmodificarSenderistaComponent {
   closeResult = '';
 
-  id: number;
+  @Input() id: number;
   @Input() nombre;
   @Input() apellido;
   @Input() nickname;
@@ -38,11 +38,5 @@ export class ModalmodificarSenderistaComponent {
     }
   }
   //---------------
-  getDatosActuales(id, nombre, apellido, nickname, descripcion){
-    this.id=id;
-    this.nombre=nombre;
-    this.apellido=apellido;
-    this.nickname=nickname;
-    this.descripcion=descripcion;
-  }
+  
 }

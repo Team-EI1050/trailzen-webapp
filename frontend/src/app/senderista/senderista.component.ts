@@ -18,6 +18,7 @@ export class SenderistaComponent implements Senderista {
   fotoPerfil: string;
 
   constructor() {
+    this.id = 459;
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -25,7 +26,7 @@ export class SenderistaComponent implements Senderista {
     this.fechaCreacion = dd + '/' + mm + '/' + yyyy;
     this.nombre="Francis";
     this.nickname="Fry249"
-    this.apellido="Gutierrez"
+    this.apellido="Gutierrez Fernandez"
     this.descripcion="Me encanta cazar mariposas en juernes"
   }
 }
