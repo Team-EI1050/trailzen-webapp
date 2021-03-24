@@ -51,9 +51,9 @@ app.use(express.static(path.join(__dirname, 'dist/backend')));
 
 
 // API root
-app.use('/api/senderista', senderistaRoute)
-app.use('/api/gestor', gestorRoute)
-app.use('/api/ruta', rutaRoute)
+app.use('/senderista', senderistaRoute)
+app.use('/gestor', gestorRoute)
+app.use('/ruta', rutaRoute)
 
 // PORT
 const port = process.env.PORT || 8000;
