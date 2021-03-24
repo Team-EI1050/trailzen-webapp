@@ -5,12 +5,13 @@ const senderistaRoute = express.Router();
 let Senderista = require('../model/Senderista');
 
 // Añadir senderista
-senderistaRoute.route('/add-senderista').post((req, res, next) => {
+senderistaRoute.route('/').post((req, res, next) => {
     Senderista.create(req.body, (error, data) => {
     if (error) {
       return next(error)
     } else {
       res.json(data)
+      console.log('Senderista añadido satisfactoriamente');
     }
   })
 });
@@ -22,23 +23,25 @@ senderistaRoute.route('/').get((req, res) => {
       return next(error)
     } else {
       res.json(data)
+      console.log('Senderistas listados satisfactoriamente');
     }
   })
 });
 
 // Obtener Senderista
-senderistaRoute.route('/get-senderista/:id').get((req, res) => {
+senderistaRoute.route('/:id').get((req, res) => {
     Senderista.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
     } else {
       res.json(data)
+      console.log('Senderista seleccionado satisfactoriamente');
     }
   })
 });
 
 // Actualizar Senderista
-senderistaRoute.route('/update-senderista/:id').put((req, res, next) => {
+senderistaRoute.route('/:id').put((req, res, next) => {
     Senderista.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {
@@ -53,7 +56,7 @@ senderistaRoute.route('/update-senderista/:id').put((req, res, next) => {
 });
 
 // Eliminar senderista
-senderistaRoute.route('/delete-senderista/:id').delete((req, res, next) => {
+senderistaRoute.route('/:id').delete((req, res, next) => {
     Senderista.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
@@ -61,6 +64,7 @@ senderistaRoute.route('/delete-senderista/:id').delete((req, res, next) => {
       res.status(200).json({
         msg: data
       })
+      console.log('Senderista eliminado satisfactoriamente');
     }
   })
 });
