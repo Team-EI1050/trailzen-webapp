@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SenderistaService } from '../senderista.service';
 import {  ActivatedRoute } from '@angular/router';
-import { Senderista } from '../senderista';
+import { Senderista } from '../../modelos/senderista';
 
 @Component({
   selector: 'app-perfil',

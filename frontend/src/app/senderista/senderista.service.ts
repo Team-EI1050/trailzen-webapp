@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Senderista } from './senderista';
+import { Senderista } from '../modelos/senderista';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
