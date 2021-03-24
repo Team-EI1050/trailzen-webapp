@@ -1,6 +1,6 @@
 <h2>PERFIL</h2>
 
-<div >
+<div *ngIf="senderista != undefined">
   <!-- <tr *ngFor="let senderista of senderistas"> -->
     <div><span>Nombre: </span>{{senderista.nombre}}</div>
     <div><span>Apellidos: </span>{{senderista.apellido}}</div>
