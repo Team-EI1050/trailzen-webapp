@@ -9,14 +9,14 @@
       </ng-template>
   </li>
   <li ngbNavItem>
-    <a ngbNavLink routerLink="/api/senderista/get-senderista/{{id}}">Perfil</a>
+    <a ngbNavLink routerLink="/senderista/{{id}}">Perfil</a>
       <ng-template ngbNavContent>
         <!-- <app-perfil></app-perfil> -->
         <router-outlet></router-outlet>
       </ng-template>
   </li>
   <li ngbNavItem>
-    <a ngbNavLink routerLink="/api/ruta">Rutas</a>
+    <a ngbNavLink routerLink="/ruta">Rutas</a>
       <ng-template ngbNavContent>
         <app-rutas></app-rutas>
         <!-- <router-outlet></router-outlet> -->
