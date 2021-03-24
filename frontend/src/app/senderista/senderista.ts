@@ -1,5 +1,5 @@
 export interface Senderista{
-    id?: number;
+    _id?: number;
     nombre?: string;
     apellido?: string;
     correo?: string;

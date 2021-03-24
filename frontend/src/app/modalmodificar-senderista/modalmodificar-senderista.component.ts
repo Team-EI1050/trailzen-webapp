@@ -17,8 +17,7 @@ export class ModalmodificarSenderistaComponent {
   @Input() descripcion;
 
   constructor(private modalService: NgbModal) {}
-  
-  
+
   //modal
   async open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
@@ -34,9 +33,15 @@ export class ModalmodificarSenderistaComponent {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return `with: ${reason}`;
+      return `with:`;
     }
   }
   //---------------
-  
+
+  getDatosActualizados(){
+    this.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+    this.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+    this.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
+    this.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+  }
 }

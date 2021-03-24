@@ -12,25 +12,25 @@
             <ul>
                 <li class="sinPuntitos">
                   <div class= "gordo">
-                    <div class="izqui"><label for="nombreUsuario">Nombre</label></div>
-                    <div class="dere"><input type="text" id="nombreUsuario" value="{{nombre}}"></div>
+                    <div class="izqui"><label for="">Nombre</label></div>
+                    <div class="dere"><input type="text" id="nombre" value="{{nombre}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
-                    <div class="izqui"><label for="apellido">Apellido</label></div>
+                    <div class="izqui"><label for="">Apellido</label></div>
                     <div class="dere"><input type="text" id="apellido" value="{{apellido}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
-                    <div class="izqui"><label for="nickname">Nickname</label></div>
+                    <div class="izqui"><label for="">Nickname</label></div>
                     <div class="dere"><input type="text" id="nickname" value="{{nickname}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
-                    <div class="izqui"><label for="descripcion">Descripción</label></div>
+                    <div class="izqui"><label for="">Descripción</label></div>
                     <div class="dere"><input type="text" id="descripcion" size="50" value="{{descripcion}}"></div>
                   </div>
                 </li>
@@ -39,11 +39,11 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close(); getDatosActualizados()">Guardar</button>
     </div>
   </ng-template>
-  
   <!-- Previa a abrirse el modal -->
   <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modificar datos de perfil</button>
-  
-  <p>{{ closeResult }}</p>
+
+  <p>{{nombre}}  {{apellido}}  {{nickname}}</p>
+  <p>{{descripcion}}</p>
