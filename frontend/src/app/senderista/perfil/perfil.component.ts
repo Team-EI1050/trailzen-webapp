@@ -12,21 +12,28 @@ export class PerfilComponent implements OnInit {
 
   getId: any;
   senderista: Senderista;
+  // senderistas: Senderista[];
 
   constructor(
       private activatedRoute: ActivatedRoute, 
       private senderistaService: SenderistaService) {
-      this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-      console.log(this.getId);
-      // this.getId = '6058e454464fcf60641bcbc1';
-      this.senderistaService.getSenderista(this.getId).subscribe(res => 
-        this.senderista = res
-      )
+      
     }
 
   
 
   ngOnInit(): void {
+    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+      console.log("Id:" + this.getId);
+      this.senderistaService.getSenderista(this.getId).subscribe(res => {
+        console.log("Res:" + res);
+        this.senderista = res;
+        console.log("senderista:" + this.senderista);
+      })
+    // this.senderistaService.getSenderistas().subscribe(res => {
+    //   console.log(res);
+    //   this.senderistas = res;
+    // })
   }
 
   

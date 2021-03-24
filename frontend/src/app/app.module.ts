@@ -8,6 +8,7 @@ import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RutasComponent } from './rutas/rutas.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [	
@@ -19,6 +20,7 @@ import { RutasComponent } from './rutas/rutas.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule
   ],
