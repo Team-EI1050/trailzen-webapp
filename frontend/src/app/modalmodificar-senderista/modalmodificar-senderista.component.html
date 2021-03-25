@@ -13,25 +13,25 @@
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Nombre</label></div>
-                    <div class="dere"><input type="text" id="nombre" value="{{nombre}}"></div>
+                    <div class="dere"><input type="text" maxlength="20" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{nombre}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Apellido</label></div>
-                    <div class="dere"><input type="text" id="apellido" value="{{apellido}}"></div>
+                    <div class="dere"><input type="text" maxlength="50" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="apellido" value="{{apellido}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Nickname</label></div>
-                    <div class="dere"><input type="text" id="nickname" value="{{nickname}}"></div>
+                    <div class="dere"><input type="text" maxlength="30" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nickname" value="{{nickname}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Descripción</label></div>
-                    <div class="dere"><input type="text" id="descripcion" size="50" value="{{descripcion}}"></div>
+                    <div class="dere"><textarea maxlength="250" rows="3" cols="60" id="descripcion" size="50" placeholder="{{descripcion}}"></textarea></div>
                   </div>
                 </li>
             </ul>
