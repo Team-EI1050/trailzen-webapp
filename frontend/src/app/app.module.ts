@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { HttpClientModule } from '@angular/common/http';
 //terceros
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,7 +23,8 @@ import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-s
   imports: [ //modulos
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

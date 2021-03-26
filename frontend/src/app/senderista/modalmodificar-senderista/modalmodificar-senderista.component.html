@@ -31,7 +31,7 @@
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Descripción</label></div>
-                    <div class="dere"><textarea maxlength="250" rows="3" cols="60" id="descripcion" size="50" placeholder="{{senderista.descripcion}}"></textarea></div>
+                    <div class="dere"><textarea maxlength="250" rows="3" cols="60" id="descripcion" size="50" value="{{senderista.descripcion}}"></textarea></div>
                   </div>
                 </li>
             </ul>
@@ -45,5 +45,5 @@
   <!-- Previa a abrirse el modal -->
   <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Modificar datos de perfil</button>
 
-  <p>{{nombre}}  {{apellido}}  {{nickname}}</p>
-  <p>{{descripcion}}</p>
+  <!--<p>{{senderista.nombre}}  {{senderista.apellido}}  {{senderista.nickname}}</p>
+  <p>{{senderista.descripcion}}</p> -->

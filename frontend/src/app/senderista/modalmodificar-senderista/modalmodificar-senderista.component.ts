@@ -37,16 +37,17 @@ export class ModalmodificarSenderistaComponent {
   }
   //---------------
 
-  getDatosActualizados(){
+  getDatosActualizados(){  //toma los datos del modal y actualiza el senderista.
     this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
     this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
     this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
     this.senderistaService.updateSenderista(this.senderista).subscribe((data) => {
+      console.log("Respuesta a la modificación "+data.value);
       if(data.value == 200 || data.value == 202){
         console.log("Respuesta a la modificación "+data.value);
-        window.location.reload();
+        //window.location.reload();
       }
     });
   }

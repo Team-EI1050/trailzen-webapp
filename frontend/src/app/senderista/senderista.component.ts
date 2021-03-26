@@ -6,27 +6,23 @@ import { Senderista } from '../../modelos/senderista';
   templateUrl: './senderista.component.html',
   styleUrls: ['./senderista.component.css']
 })
-export class SenderistaComponent implements Senderista {
+export class SenderistaComponent {
 
-  _id: number;
-  nombre: string;
-  apellido: string;
-  correo: string;
-  nickname: string;
-  fechaCreacion: string;
-  descripcion: string;
-  fotoPerfil: string;
+  senderista: Senderista;
 
   constructor() {
-    this._id = 459;
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
-    this.fechaCreacion = dd + '/' + mm + '/' + yyyy;
-    this.nombre="Francis";
-    this.nickname="Fry249"
-    this.apellido="Gutierrez Fernandez"
-    this.descripcion="Me encanta cazar mariposas en juernes"
+
+    this.senderista = {
+      _id: 459,
+      fechaCreacion: dd + '/' + mm + '/' + yyyy,
+      nombre: "Francis",
+      nickname: "Fry249",
+      apellido: "Gutierrez Fernandez",
+      descripcion: "Me encanta cazar mariposas en juernes"
+    };
   }
 }

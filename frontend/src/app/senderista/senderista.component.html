@@ -1,9 +1,9 @@
 <br>
 <br>
 <h1>Componente senderista</h1>
-<h2>Soy el senderista: {{nombre}} {{apellido}}!!</h2>
-<h2>También concocido como {{nickname}}</h2>
-<p>Me registré el {{fechaCreacion}}</p>
-<p>Descripción: {{descripcion}}</p>
+<h2>Soy el senderista: {{senderista.nombre}} {{senderista.apellido}}!!</h2>
+<h2>También concocido como {{senderista.nickname}}</h2>
+<p>Me registré el {{senderista.fechaCreacion}}</p>
+<p>Descripción: {{senderista.descripcion}}</p>
 
-<app-modalmodificar-senderista [id]="id" [nombre]="nombre" [apellido]="apellido" [nickname]="nickname" [descripcion]="descripcion"></app-modalmodificar-senderista>
+<app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
