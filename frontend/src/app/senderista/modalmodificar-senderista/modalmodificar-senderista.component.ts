@@ -2,6 +2,9 @@ import {Component, Input} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
+import { Senderista } from '../../../modelos/senderista'
+import { SenderistaService } from '../senderista.service'
+
 @Component({
   selector: 'app-modalmodificar-senderista',
   templateUrl: './modalmodificar-senderista.component.html',
@@ -16,7 +19,7 @@ export class ModalmodificarSenderistaComponent {
   @Input() nickname;
   @Input() descripcion;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private senderistaService: SenderistaService) {}
 
   //modal
   async open(content) {
@@ -43,5 +46,13 @@ export class ModalmodificarSenderistaComponent {
     this.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
     this.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
     this.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+
+    let sendeModif: Senderista = {
+      _id;
+      nombre = this.nombre
+      apellido = this.apellido
+
+    };
+    this.senderistaService.updateSenderista(sendeModif);
   }
 }
