@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Senderista } from './senderista';
+import { Senderista } from '../../modelos/senderista';
 
 @Component({
   selector: 'app-senderista',

@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //propios
 import { SenderistaComponent } from './senderista/senderista.component';
-import { ModalmodificarSenderistaComponent } from './modalmodificar-senderista/modalmodificar-senderista.component'
+import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-senderista/modalmodificar-senderista.component'
 
 
 @NgModule({
