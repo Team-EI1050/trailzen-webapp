@@ -8,7 +8,7 @@ import { Senderista } from '../../modelos/senderista';
 })
 export class SenderistaComponent implements Senderista {
 
-  id: number;
+  _id: number;
   nombre: string;
   apellido: string;
   correo: string;
@@ -18,7 +18,7 @@ export class SenderistaComponent implements Senderista {
   fotoPerfil: string;
 
   constructor() {
-    this.id = 459;
+    this._id = 459;
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

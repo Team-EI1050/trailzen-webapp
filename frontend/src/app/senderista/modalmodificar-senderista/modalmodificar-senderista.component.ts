@@ -13,11 +13,7 @@ import { SenderistaService } from '../senderista.service'
 export class ModalmodificarSenderistaComponent {
   closeResult = '';
 
-  @Input() id: number;
-  @Input() nombre;
-  @Input() apellido;
-  @Input() nickname;
-  @Input() descripcion;
+  @Input() senderista: Senderista;
 
   constructor(private modalService: NgbModal, private senderistaService: SenderistaService) {}
 
@@ -42,17 +38,16 @@ export class ModalmodificarSenderistaComponent {
   //---------------
 
   getDatosActualizados(){
-    this.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    this.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    this.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    this.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+    this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+    this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
+    this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
-    let sendeModif: Senderista = {
-      _id;
-      nombre = this.nombre
-      apellido = this.apellido
-
-    };
-    this.senderistaService.updateSenderista(sendeModif);
+    this.senderistaService.updateSenderista(this.senderista).subscribe((data) => {
+      if(data.value == 200 || data.value == 202){
+        console.log("Respuesta a la modificación "+data.value);
+        window.location.reload();
+      }
+    });
   }
 }
