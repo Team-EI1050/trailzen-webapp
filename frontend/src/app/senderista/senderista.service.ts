@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Senderista } from '../../modelos/senderista';
+import { Senderista } from '../modelos/senderista';
 import { catchError, map } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -12,8 +12,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class SenderistaService {
 
-  REST_API_SENDERISTA: string = 'http://localhost:8000/api';
-  // REST_API_SENDERISTA: string = 'http://localhost:8000/api/senderista';
+  // REST_API_SENDERISTA: string = 'http://localhost:8000/api';
+  REST_API_SENDERISTA: string = 'http://localhost:8000/senderista';
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -32,10 +32,13 @@ export class SenderistaService {
   //       catchError(this.handleError)
   //     )
   // }
+  getSenderistas(): Observable<Senderista[]>{
+    return this.httpClient.get<Senderista[]>(`${this.REST_API_SENDERISTA}`);
+  }
 
   getSenderista(id:string): Observable<Senderista> {
-    let API_URL = `${this.REST_API_SENDERISTA}/get-senderista/${id}`;
-    // let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
+    // let API_URL = `${this.REST_API_SENDERISTA}/get-senderista/${id}`;
+    let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
     return this.httpClient.get<Senderista>(API_URL)
       .pipe(
         catchError(this.handleError)
@@ -46,8 +49,8 @@ export class SenderistaService {
   // Update senderista
 
   updateSenderista(data:Senderista): Observable<any> {
-    let API_URL = `${this.REST_API_SENDERISTA}/update-senderista/${data._id}`;
-    // let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
+    // let API_URL = `${this.REST_API_SENDERISTA}/update-senderista/${data._id}`;
+    let API_URL = `${this.REST_API_SENDERISTA}/${data._id}`;
     return this.httpClient.put(API_URL, data)
       .pipe(
         catchError(this.handleError)
@@ -57,8 +60,8 @@ export class SenderistaService {
   // Add senderista
 
   addSenderista(senderista: Senderista): Observable<Senderista> {
-    let API_URL = `${this.REST_API_SENDERISTA}/add-senderista`;
-    // let API_URL = `${this.REST_API_SENDERISTA}`;
+    // let API_URL = `${this.REST_API_SENDERISTA}/add-senderista`;
+    let API_URL = `${this.REST_API_SENDERISTA}`;
     return this.httpClient.post<Senderista>(API_URL, senderista)
       .pipe(
         catchError(this.handleError)
@@ -68,8 +71,8 @@ export class SenderistaService {
   // Delete senderista
 
   deleteSenderista(id:string): Observable<Senderista> {
-    let API_URL = `${this.REST_API_SENDERISTA}/delete-senderista/${id}`;
-    // let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
+    // let API_URL = `${this.REST_API_SENDERISTA}/delete-senderista/${id}`;
+    let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
     return this.httpClient.delete<Senderista>(API_URL)
       .pipe(
         catchError(this.handleError)

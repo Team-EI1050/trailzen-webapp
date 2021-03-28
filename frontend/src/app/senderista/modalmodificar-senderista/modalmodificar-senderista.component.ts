@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
-import { Senderista } from '../../../modelos/senderista'
+import { Senderista } from '../../modelos/senderista'
 import { SenderistaService } from '../senderista.service'
 
 @Component({
@@ -32,23 +32,17 @@ export class ModalmodificarSenderistaComponent {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return `with:`;
+      return `with: Save`;
     }
   }
   //---------------
 
-  getDatosActualizados(){  //toma los datos del modal y actualiza el senderista.
+  getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
     this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
     this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
     this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
-    this.senderistaService.updateSenderista(this.senderista).subscribe((data) => {
-      console.log("Respuesta a la modificación "+data.value);
-      if(data.value == 200 || data.value == 202){
-        console.log("Respuesta a la modificación "+data.value);
-        //window.location.reload();
-      }
-    });
+    this.senderistaService.updateSenderista(this.senderista);
   }
 }

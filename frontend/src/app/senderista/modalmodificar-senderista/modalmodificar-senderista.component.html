@@ -13,19 +13,19 @@
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Nombre</label></div>
-                    <div class="dere"><input type="text" maxlength="20" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{senderista.nombre}}"></div>
+                    <div class="dere"><input required type="text" minlength="3" maxlength="20" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{senderista.nombre}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Apellido</label></div>
-                    <div class="dere"><input type="text" maxlength="50" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="apellido" value="{{senderista.apellido}}"></div>
+                    <div class="dere"><input required type="text" minlength="3" maxlength="50" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="apellido" value="{{senderista.apellido}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Nickname</label></div>
-                    <div class="dere"><input type="text" maxlength="30" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nickname" value="{{senderista.nickname}}"></div>
+                    <div class="dere"><input required type="text" minlength="5" maxlength="30" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nickname" value="{{senderista.nickname}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
@@ -39,7 +39,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close(); getDatosActualizados()">Guardar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close(); getDatosYActualiza()">Guardar</button>
     </div>
   </ng-template>
   <!-- Previa a abrirse el modal -->

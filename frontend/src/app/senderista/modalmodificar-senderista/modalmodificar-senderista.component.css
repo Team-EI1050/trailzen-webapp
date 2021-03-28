@@ -13,3 +13,7 @@ div.gordo{
 li.sinPuntitos{
     list-style:none;
 }
+
+input:invalid {
+    border: 2px dashed rgb(255, 136, 0);
+}
