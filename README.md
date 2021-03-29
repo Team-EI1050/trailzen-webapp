@@ -12,3 +12,10 @@ will be push the code to the *MASTER* branch.
 - ***<team_member>-\<activity>*** Branch. This kind of naming will be usefull to the team members 
 that are currently woring on a new feature. When the work is done will generate a pull request 
 to the *DEV* branch, and will be checked by all the team members to prove it is working fine.
+
+# How to execute the server locally
+
+- MongoDB has to be installed and running in your system
+- You have to be in the trailzen-webapp/backend/
+- Run "npm install -D" if is your first time
+- Run "npm run dev" (continuous) or "npm run start" (without nodemon)

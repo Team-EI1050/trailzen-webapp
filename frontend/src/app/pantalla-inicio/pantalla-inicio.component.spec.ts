@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SenderistaComponent } from './senderista.component';
+import { PantallaInicioComponent } from './pantalla-inicio.component';
 
-describe('SenderistaComponent', () => {
-  let component: SenderistaComponent;
-  let fixture: ComponentFixture<SenderistaComponent>;
+describe('PantallaInicioComponent', () => {
+  let component: PantallaInicioComponent;
+  let fixture: ComponentFixture<PantallaInicioComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SenderistaComponent ]
+      declarations: [ PantallaInicioComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SenderistaComponent);
+    fixture = TestBed.createComponent(PantallaInicioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

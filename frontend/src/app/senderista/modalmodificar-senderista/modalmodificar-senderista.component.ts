@@ -43,6 +43,6 @@ export class ModalmodificarSenderistaComponent {
     this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
     this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
-    this.senderistaService.updateSenderista(this.senderista);
+    this.senderistaService.updateSenderista(this.senderista).subscribe();
   }
 }
