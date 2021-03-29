@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component'
-import { RutasComponent } from './rutas/rutas.component'
+import { RutasComponent } from './rutas/listadoRutas/rutas.component'
 
 const routes: Routes = [
   {path: '', component: PantallaInicioComponent},

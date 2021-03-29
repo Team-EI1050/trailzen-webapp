@@ -14,8 +14,7 @@ import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-s
 import { AppComponent } from './app.component';
 import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
-import { RutasComponent } from './rutas/rutas.component';
-
+import { RutasComponent } from './rutas/listadoRutas/rutas.component';
 
 @NgModule({
   declarations: [	
