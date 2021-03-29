@@ -53,7 +53,7 @@ export class RutaService {
   addRuta(ruta: Ruta): Observable<Ruta> {
     
     let API_URL = `${this.REST_API_RUTA}`;
-    return this.httpClient.post<Senderista>(API_URL, ruta)
+    return this.httpClient.post<Ruta>(API_URL, ruta)
       .pipe(
         catchError(this.handleError)
       )
@@ -86,7 +86,7 @@ export class RutaService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-    
+
   }
 
 }

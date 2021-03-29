@@ -21,6 +21,7 @@ export class SenderistaService {
   // Get sendersita
 
   getSenderistas(): Observable<Senderista[]>{
+
     return this.httpClient.get<Senderista[]>(`${this.REST_API_SENDERISTA}`);
 
   }
@@ -74,7 +75,7 @@ export class SenderistaService {
   // Error
 
   handleError(error: HttpErrorResponse) {
-
+    
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Handle client error

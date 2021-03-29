@@ -1,21 +1,28 @@
+//vanilla
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+//terceros
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//propios
+import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-senderista/modalmodificar-senderista.component';
 import { AppComponent } from './app.component';
 import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [	
     AppComponent,
     PerfilComponent,
     PantallaInicioComponent,
-    RutasComponent
+    RutasComponent,
+    ModalmodificarSenderistaComponent
    ],
   imports: [
     BrowserModule,
@@ -24,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [], //servicios
   bootstrap: [AppComponent]
 })
 export class AppModule { }
