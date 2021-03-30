@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
+import { ModalEliminarSenderistaComponent } from './senderista/modal-eliminar-senderista/modal-eliminar-senderista.component';
 
 @NgModule({
   declarations: [	
@@ -22,7 +23,8 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
     PerfilComponent,
     PantallaInicioComponent,
     RutasComponent,
-    ModalmodificarSenderistaComponent
+    ModalmodificarSenderistaComponent,
+    ModalEliminarSenderistaComponent
    ],
   imports: [
     BrowserModule,

@@ -1,0 +1,122 @@
+<!-- El modal en si -->
+<ng-template #content let-modal>
+   
+          
+        
+
+    <!-- <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" (click)="modal.close(); getDatosYElimina()">Eliminar</button>
+                  </div>
+                
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Vertically centered modal -->
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Woohoo, you're reading this text in a modal!</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar perfil</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <p>Modal body text goes here.</p>
+        <!-- <form>
+            <div class="form-group">
+                <ul>
+                    <li class="sinPuntitos">
+                        <div class= "gordo">
+                        <div class="izqui"><label for="">Nombre</label></div>
+                        <div class="dere">
+                            <input required type="text" minlength="3" maxlength="20" 
+                            onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" 
+                            id="nombre" value="{{senderista.nombre}}">
+                        </div>
+                        </div>
+                    </li>
+
+                    <li class="sinPuntitos">
+                        <div class= "gordo">
+                        <div class="izqui"><label for="">Apellido</label></div>
+                        <div class="dere">
+                            <input required type="text" minlength="3" maxlength="50" 
+                            onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" 
+                            id="apellido" value="{{senderista.apellido}}">
+                        </div>
+                        </div>
+                    </li>
+
+                    <li class="sinPuntitos">
+                        <div class= "gordo">
+                        <div class="izqui"><label for="">Nickname</label></div>
+                        <div class="dere">
+                            <input required type="text" minlength="5" maxlength="30" size="(this.value.length + 3)+'px';" 
+                            onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" 
+                            id="nickname" value="{{senderista.nickname}}">
+                        </div>
+                        </div>
+                    </li>
+
+                    <li class="sinPuntitos">
+                        <div class= "gordo">
+                        <div class="izqui"><label for="">Descripción</label></div>
+                        <div class="dere">
+                            <textarea maxlength="250" rows="3" cols="60" id="descripcion" size="50" 
+                            value="{{senderista.descripcion}}"></textarea>
+                        </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </form> -->
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="modal.close(); getDatosYElimina()">Eliminar</button>
+    </div>
+
+
+
+</ng-template>
+
+<!-- Previa a abrirse el modal -->
+<button class="btn btn-lg btn-outline-danger" (click)="open(content)">Eliminar perfil</button>
+
+<!--<p>{{senderista.nombre}}  {{senderista.apellido}}  {{senderista.nickname}}</p>
+<p>{{senderista.descripcion}}</p> -->
