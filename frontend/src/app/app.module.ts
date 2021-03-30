@@ -15,6 +15,9 @@ import { AppComponent } from './app.component';
 import { PerfilComponent } from './senderista/perfil/perfil.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
+import { UserStatusComponent } from './login/user-status/user-status.component';
+import { UserLoginComponent } from './login/user-login/user-login.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
 
 @NgModule({
   declarations: [	
@@ -22,7 +25,10 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
     PerfilComponent,
     PantallaInicioComponent,
     RutasComponent,
-    ModalmodificarSenderistaComponent
+    ModalmodificarSenderistaComponent,
+    UserStatusComponent,
+    UserLoginComponent,
+    NavbarComponent
    ],
   imports: [
     BrowserModule,
