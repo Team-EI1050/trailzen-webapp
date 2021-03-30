@@ -38,11 +38,34 @@ export class ModalmodificarSenderistaComponent {
   //---------------
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
-    this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
-    this.senderistaService.updateSenderista(this.senderista).subscribe();
+    let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+    let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+    let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
+    let nDescripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let ok: boolean = true;
+
+    if(nNombre==""){
+      alert("El nombre no puede quedarse vacío");
+      ok=false;
+    }
+    if(nApellido==""){
+      alert("Debe introducir al menos un apellido");
+      ok=false;
+    }
+    if(nNickname==""){
+      alert("No puede eliminar su nombre de usuario");
+      ok=false;
+    }
+    if(ok){
+      this.senderista.nombre = nNombre;
+      this.senderista.apellido = nApellido;
+      this.senderista.nickname = nNickname;
+      this.senderista.descripcion = nDescripcion;
+
+      this.senderistaService.updateSenderista(this.senderista).subscribe();
+      return true;
+    }
+    return false;
   }
 }
