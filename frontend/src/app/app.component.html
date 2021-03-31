@@ -1,7 +1,28 @@
-<app-navbar [id]="id"></app-navbar>
-<router-outlet></router-outlet>
+<h1>{{title}}</h1>
 
-
-
-
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/">Home</a>
+      <ng-template ngbNavContent>
+        <!-- <router-outlet></router-outlet> -->
+        <app-pantalla-inicio></app-pantalla-inicio>
+      </ng-template>
+  </li>
+  <li ngbNavItem>
+    <!-- <a ngbNavLink routerLink="/senderista/{{id}}">Perfil</a> -->
+    <a ngbNavLink routerLink="/senderista/{{id}}">Perfil</a>
+      <ng-template ngbNavContent>
+        <!-- <app-perfilSenderisa></app-perfilSenderista> -->
+        <router-outlet></router-outlet>
+      </ng-template>
+  </li>
+  <li ngbNavItem>
+    <a ngbNavLink routerLink="/ruta">Rutas</a>
+      <ng-template ngbNavContent>
+        <app-rutas></app-rutas>
+        <!-- <router-outlet></router-outlet> -->
+      </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav"></div>
 

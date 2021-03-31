@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Senderista = new Schema ({
+    _id: { type: String },
     correo: { type: String },
     nickname: { type: String },
     contrasenya: { type: String },

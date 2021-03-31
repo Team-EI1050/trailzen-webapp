@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PerfilComponent } from './senderista/perfil/perfil.component';
+import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
+import { PerfilGestorComponent } from './gestor/perfilGestor/perfilGestor.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component'
 import { RutasComponent } from './rutas/listadoRutas/rutas.component'
-import { UserLoginComponent } from '../app/login/user-login/user-login.component'
 
 
 const routes: Routes = [
   {path: '', component: PantallaInicioComponent},
-  {path: 'senderista/:id', component: PerfilComponent},
-  {path: 'ruta', component: RutasComponent},
-  {path: 'login', component: UserLoginComponent}
+  {path: 'senderista/:id', component: PerfilSenderistaComponent},
+  {path: 'gestor/:id', component: PerfilGestorComponent},
+  {path: 'ruta', component: RutasComponent}
 ];
 
 @NgModule({

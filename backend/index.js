@@ -19,15 +19,16 @@ mongoose.connect(mongoDb.db, {
   useFindAndModify: false,
   useUnifiedTopology: true
 }).then(() => {
+
   console.log('Base de datos online');
-  console.log('Borrado contenido de la base de datos');
-  mongoose.connection.db.dropDatabase();
+  
   mockSenderista.addMock()
   mockGestor.addMock()
   mockRuta.addMock()
-    
-  },
-  error => {
+
+  // mongoose.connection.db.dropDatabase();
+   
+}, error => {
     console.log('Error en la base de datos: ' + error)
   }
 )
@@ -39,8 +40,8 @@ const gestorRoute = require('./routes/gestor.routes');
 const rutaRoute = require('./routes/ruta.routes');
 
 const app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: false
 }));
 

@@ -8,34 +8,32 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 //terceros
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 //propios
 import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-senderista/modalmodificar-senderista.component';
+import { ModalmodificarGestorComponent } from './gestor/modalmodificar-gestor/modalmodificar-gestor.component';
 import { AppComponent } from './app.component';
-import { PerfilComponent } from './senderista/perfil/perfil.component';
+import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
-import { UserStatusComponent } from './login/user-status/user-status.component';
-import { UserLoginComponent } from './login/user-login/user-login.component';
-import { NavbarComponent } from './common/navbar/navbar.component';
 
 @NgModule({
   declarations: [	
     AppComponent,
-    PerfilComponent,
+    PerfilSenderistaComponent,
     PantallaInicioComponent,
     RutasComponent,
     ModalmodificarSenderistaComponent,
-    UserStatusComponent,
-    UserLoginComponent,
-    NavbarComponent
+    ModalmodificarGestorComponent,
    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

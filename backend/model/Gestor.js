@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Gestor = new Schema ({
+    _id: { type: String },
     correo: { type: String },
     nickname: { type: String },
     nombre: { type: String },

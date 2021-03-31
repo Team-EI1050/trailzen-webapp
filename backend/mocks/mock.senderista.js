@@ -2,7 +2,9 @@
 let Senderista = require('../model/Senderista');
 
 const SENDERISTAS = [
-    { correo: "al341966@uji.es",
+    { 
+      _id: "alberto",
+      correo: "al341966@uji.es",
     nickname: "alberto",
     contrasenya: "qwerty",
     fechaCreacion: "23/03/2021",
@@ -11,7 +13,8 @@ const SENDERISTAS = [
     apellido: "Pacheco Catalán",
     fotoPerfil: "None"
   }, 
-  { correo: "al356376@uji.es",
+  { _id: "miriam",
+    correo: "al356376@uji.es",
       nickname: "miriam",
       contrasenya: "qwerty",
       fechaCreacion: "23/03/2021",
@@ -20,7 +23,9 @@ const SENDERISTAS = [
       apellido: "Martinez Pérez",
       fotoPerfil: "None"
     }, 
-    { correo: "al121166@uji.es",
+    { 
+      _id: "jetix",
+      correo: "al121166@uji.es",
       nickname: "jetix",
       contrasenya: "qwerty",
       fechaCreacion: "23/03/2021",
@@ -29,7 +34,9 @@ const SENDERISTAS = [
       apellido: "De la Rosa Suarez",
       fotoPerfil: "None"
     },
-    { correo: "al156786@uji.es",
+    { 
+      _id: "ubuxu",
+      correo: "al156786@uji.es",
     nickname: "ubuxu",
     contrasenya: "qwerty",
     fechaCreacion: "23/03/2021",
@@ -42,10 +49,18 @@ const SENDERISTAS = [
 
 function addMock(){
 
-    SENDERISTAS.forEach(obj => {
-        senderista = new Senderista(obj)
-        senderista.save().then(() => console.log("- Mock senderista " + obj.nickname + " añadido/a."));
-    })
+  Senderista.countDocuments( function (err, count) {
+    if (err){
+        console.log("Error a la hora de contar documetnos en Senderista: " + err)
+    }else{
+        if(count == 0){
+            SENDERISTAS.forEach(obj => {
+            senderista = new Senderista(obj)
+            senderista.save().then(() => console.log("- Mock senderista " + obj.nickname + " añadido/a."));
+        })
+        }
+    }
+  });
 }
 
 exports.addMock = addMock;
