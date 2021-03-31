@@ -1,6 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input } from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
 
 import { Gestor } from '../../modelos/gestor'
 import { GestorService } from '../gestor.service'
@@ -10,12 +11,12 @@ import { GestorService } from '../gestor.service'
   templateUrl: './modalmodificar-gestor.component.html',
   styleUrls: ['./modalmodificar-gestor.component.css']
 })
-export class ModalmodificargestorComponent {
+export class ModalmodificarGestorComponent {
   closeResult = '';
 
   @Input() gestor: Gestor;
 
-  constructor(private modalService: NgbModal, private gestorService: GestorService) {}
+  constructor(private modalService: NgbModal, private gestorService: GestorService) { }
 
   //modal
   async open(content) {
@@ -38,11 +39,56 @@ export class ModalmodificargestorComponent {
   //---------------
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el gestor.
-    this.gestor.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    this.gestor.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    this.gestor.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    this.gestor.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+    let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+    let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
+    let nDescripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let ok: boolean = true;
 
-    this.gestorService.updateGestor(this.gestor).subscribe();
+    if(nNombre==""){
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "El nombre no puede quedarse vacío"
+      });
+      ok=false;
+    }
+    if(nApellido==""){
+      Swal.fire( {
+          icon: 'error',
+          title: 'Oops...',
+          confirmButtonColor: "#F99721",
+          text: "Debe introducir al menos un apellido"
+      });
+      ok=false;
+    }
+    if(nNickname==""){
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "No puede eliminar su nombre de usuario"
+      });
+      ok=false;
+    }
+    if(ok){
+      this.gestor.nombre = nNombre;
+      this.gestor.apellido = nApellido;
+      this.gestor.nickname = nNickname;
+      this.gestor.descripcion = nDescripcion;
+
+      this.gestorService.updateGestor(this.gestor).subscribe(res => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Yaih!',
+          text: "Perfil actualizado correctamente!",
+          showConfirmButton: false,
+          toast: true,
+          timer: 1500,
+          timerProgressBar: true
+        });
+      });
+    }
   }
 }

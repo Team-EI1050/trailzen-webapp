@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@sweetalert2/ngx-sweetalert2": "^9.0.0",
+    "sweetalert2": "^10.15.7"
+  }
+}

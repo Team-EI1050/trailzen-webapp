@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-
+import Swal from 'sweetalert2'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { Senderista } from '../../modelos/senderista'
@@ -46,15 +46,30 @@ export class ModalmodificarSenderistaComponent {
     let ok: boolean = true;
 
     if(nNombre==""){
-      alert("El nombre no puede quedarse vacío");
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "El nombre no puede quedarse vacío"
+      });
       ok=false;
     }
     if(nApellido==""){
-      alert("Debe introducir al menos un apellido");
+      Swal.fire( {
+          icon: 'error',
+          title: 'Oops...',
+          confirmButtonColor: "#F99721",
+          text: "Debe introducir al menos un apellido"
+      });
       ok=false;
     }
     if(nNickname==""){
-      alert("No puede eliminar su nombre de usuario");
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "No puede eliminar su nombre de usuario"
+      });
       ok=false;
     }
     if(ok){
@@ -63,9 +78,17 @@ export class ModalmodificarSenderistaComponent {
       this.senderista.nickname = nNickname;
       this.senderista.descripcion = nDescripcion;
 
-      this.senderistaService.updateSenderista(this.senderista).subscribe();
-      return true;
+      this.senderistaService.updateSenderista(this.senderista).subscribe(res => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Yaih!',
+          text: "Perfil actualizado correctamente!",
+          showConfirmButton: false,
+          toast: true,
+          timer: 1500,
+          timerProgressBar: true
+        });
+      });
     }
-    return false;
   }
 }
