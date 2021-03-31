@@ -1,21 +1,22 @@
-import {Component, Input} from '@angular/core';
-import Swal from 'sweetalert2'
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input } from '@angular/core';
 
-import { Senderista } from '../../modelos/senderista'
-import { SenderistaService } from '../senderista.service'
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
+
+import { Gestor } from '../../modelos/gestor'
+import { GestorService } from '../gestor.service'
 
 @Component({
-  selector: 'app-modalmodificar-senderista',
-  templateUrl: './modalmodificar-senderista.component.html',
-  styleUrls: ['./modalmodificar-senderista.component.css']
+  selector: 'app-modalmodificar-gestor',
+  templateUrl: './modalmodificar-gestor.component.html',
+  styleUrls: ['./modalmodificar-gestor.component.css']
 })
-export class ModalmodificarSenderistaComponent {
+export class ModalmodificarGestorComponent {
   closeResult = '';
 
-  @Input() senderista: Senderista;
+  @Input() gestor: Gestor;
 
-  constructor(private modalService: NgbModal, private senderistaService: SenderistaService) {}
+  constructor(private modalService: NgbModal, private gestorService: GestorService) { }
 
   //modal
   async open(content) {
@@ -37,8 +38,7 @@ export class ModalmodificarSenderistaComponent {
   }
   //---------------
 
-  getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
-
+  getDatosYActualiza(){  //toma los datos del modal y actualiza el gestor.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
     let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
@@ -73,12 +73,12 @@ export class ModalmodificarSenderistaComponent {
       ok=false;
     }
     if(ok){
-      this.senderista.nombre = nNombre;
-      this.senderista.apellido = nApellido;
-      this.senderista.nickname = nNickname;
-      this.senderista.descripcion = nDescripcion;
+      this.gestor.nombre = nNombre;
+      this.gestor.apellido = nApellido;
+      this.gestor.nickname = nNickname;
+      this.gestor.descripcion = nDescripcion;
 
-      this.senderistaService.updateSenderista(this.senderista).subscribe(res => {
+      this.gestorService.updateGestor(this.gestor).subscribe(res => {
         Swal.fire({
           icon: 'success',
           title: 'Yaih!',
