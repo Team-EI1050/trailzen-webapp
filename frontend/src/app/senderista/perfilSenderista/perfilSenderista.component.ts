@@ -13,10 +13,7 @@ export class PerfilSenderistaComponent implements OnInit {
   getId: any;
   senderista: Senderista;
 
-  constructor(
-      private activatedRoute: ActivatedRoute, private senderistaService: SenderistaService) { }
-
-  
+  constructor(private activatedRoute: ActivatedRoute, private senderistaService: SenderistaService) { }
 
   ngOnInit(): void {
 
@@ -29,7 +26,5 @@ export class PerfilSenderistaComponent implements OnInit {
       })
 
   }
-
-  
 
 }
