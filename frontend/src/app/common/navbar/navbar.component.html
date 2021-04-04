@@ -1,20 +1,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/">Trailzen</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="/">Trailzen</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    </button> -->
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <div *ngIf="user.tipo=='USUARIO'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="login">Log in</a>
+          <a class="nav-link" routerLink="/login">Log in</a>
         </li>
+      </div>
+      <div *ngIf="user.tipo!='USUARIO'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="senderista/{{id}}">User Details</a>
+          <a class="nav-link" routerLink="/details">User Details</a>
         </li>
-        <li class="nav-item">
+      </div>
+      <!-- <li class="nav-item">
           <a class="nav-link disabled" href="#"></a>
-        </li>
-      </ul>
-    </div>
-    <app-user-status></app-user-status>
-  </nav>
+        </li> -->
+    </ul>
+  </div>
+  <app-session [user]="user"></app-session>
+</nav>

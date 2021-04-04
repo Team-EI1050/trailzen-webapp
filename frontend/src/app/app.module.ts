@@ -17,6 +17,10 @@ import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { SessionComponent } from './common/session/session.component';
+import { UserLoginComponent } from './login/user-login/user-login.component';
+import { StorageServiceModule } from 'angular-webstorage-service';
 
 @NgModule({
   declarations: [	
@@ -26,6 +30,9 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
     RutasComponent,
     ModalmodificarSenderistaComponent,
     ModalmodificarGestorComponent,
+    NavbarComponent,
+    SessionComponent,
+    UserLoginComponent,
    ],
   imports: [
     BrowserModule,
@@ -33,7 +40,8 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    StorageServiceModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]
