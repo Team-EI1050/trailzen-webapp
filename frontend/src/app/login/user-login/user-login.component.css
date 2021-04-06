@@ -1,4 +1,5 @@
-/* Bordered form */
+
+Bordered form
 form {
     border: 3px solid #f1f1f1;
   }
@@ -66,4 +67,17 @@ form {
     .cancelbtn {
       width: 100%;
     }
+  }
+
+  .bg-1 {
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
   }

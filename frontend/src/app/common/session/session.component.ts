@@ -1,6 +1,5 @@
-import { Inject, Input } from '@angular/core';
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
 import { Iuser } from 'src/app/modelos/Iuser';
 
 @Component({
@@ -16,5 +15,8 @@ export class SessionComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("USER"));
+    console.log(JSON.stringify(this.user));
   }
+
+  
 }

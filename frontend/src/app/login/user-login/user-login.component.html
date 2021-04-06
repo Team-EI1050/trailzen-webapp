@@ -1,15 +1,25 @@
+<div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
+  <div class="container" [formGroup]="miFormulario">
+    <from>
+      Nombre de usuario <input
+        [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
+        class="form-control" placeholder="Enter Username" formControlName="nickname">
 
 
+      Contraseña <input
+        [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
+        type="password" class="form-control" placeholder="Enter Password" formControlName="password">
 
-<div>
-      <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
-    
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
-    
-        <button type="submit" (click)="getUser('alberto', 'senderista')" routerLink="/">Login</button>
-        <button type="button" class="cancelbtn"  routerLink="/">Cancel</button>
-      </div>
+      <button type="submit" (click)="getUser()">Iniciar sesión</button>
+      <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
+      <div class="invalid-feedback">{{data}}</div>
+    </from>
   </div>
+</div>
+
+<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+  <div class="container-fluid bg-3 text-center">
+    <h3>Has iniciado sesión como</h3>
+    <p>{{user.nickname}}</p>
+  </div>
+</div>

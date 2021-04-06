@@ -20,7 +20,7 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { SessionComponent } from './common/session/session.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
-import { StorageServiceModule } from 'angular-webstorage-service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [	
@@ -41,7 +41,7 @@ import { StorageServiceModule } from 'angular-webstorage-service';
     HttpClientModule,
     NgbModule,
     SweetAlert2Module.forRoot(),
-    StorageServiceModule
+    FormsModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

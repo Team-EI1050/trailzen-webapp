@@ -1,7 +1,6 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Iuser } from './modelos/Iuser';
 import { user } from './modelos/user';
-import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-root',
@@ -10,18 +9,21 @@ import {SESSION_STORAGE, WebStorageService} from 'angular-webstorage-service';
 })
 export class AppComponent {
   
-  nuser: Iuser = new user("nice nerson", "nice nerson", "USUARIO");
+  
   public data:any=[]
+  user: Iuser = new user("Alberto", "Alberto", "USUARIO")
 
   constructor(){
   }
 
   ngOnInit(): void {
-    this.saveInSession("USER", this.nuser)
+
+    this.saveInSession("USER", this.user)
   }
 
   saveInSession(key, user: Iuser): void {
     localStorage.setItem(key, JSON.stringify(user));
+
    }
 
 }
