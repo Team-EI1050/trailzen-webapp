@@ -18,7 +18,6 @@ import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilS
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
-import { SessionComponent } from './common/session/session.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 
@@ -31,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     ModalmodificarSenderistaComponent,
     ModalmodificarGestorComponent,
     NavbarComponent,
-    SessionComponent,
     UserLoginComponent,
    ],
   imports: [

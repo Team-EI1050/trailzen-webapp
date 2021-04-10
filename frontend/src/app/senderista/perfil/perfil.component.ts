@@ -17,19 +17,20 @@ export class PerfilComponent implements OnInit {
   constructor(
       private activatedRoute: ActivatedRoute, 
       private senderistaService: SenderistaService) {
-      
+        this.senderista = JSON.parse(localStorage.getItem("USER"));
     }
 
   
 
   ngOnInit(): void {
-    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-      console.log("Id:" + this.getId);
-      this.senderistaService.getSenderista(this.getId).subscribe(res => {
-        console.log("Res:" + res);
-        this.senderista = res;
-        console.log("senderista:" + this.senderista);
-      })
+    // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+    //   console.log("Id:" + this.getId);
+    //   this.senderistaService.getSenderista(this.getId).subscribe(res => {
+    //     console.log("Res:" + res);
+        // this.senderista = res;
+        
+      //   console.log("senderista:" + this.senderista);
+      // })
     // this.senderistaService.getSenderistas().subscribe(res => {
     //   console.log(res);
     //   this.senderistas = res;

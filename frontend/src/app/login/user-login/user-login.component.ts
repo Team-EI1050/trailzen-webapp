@@ -17,7 +17,8 @@ export class UserLoginComponent implements OnInit {
 
   miFormulario = new FormGroup({
     nickname: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required)
+    password: new FormControl('', Validators.required),
+    soyGestor:new FormControl('')
   });
 
 
@@ -41,6 +42,8 @@ export class UserLoginComponent implements OnInit {
       this.userService.obtenerUsuario(nickname, password).subscribe(res => {
         if (res != null) {
           console.log("se trata de un dato válido");
+          console.log(this.miFormulario.controls['soyGestor'].value);
+          
           if (res.contrasenya == password) {
             console.log("contraseña válida");
             console.log("Usuario reconocido");

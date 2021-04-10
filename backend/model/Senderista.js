@@ -10,7 +10,8 @@ let Senderista = new Schema ({
     descripcion: { type: String },
     nombre: { type: String },
     apellido: { type: String },
-    fotoPerfil: { type: String }
+    fotoPerfil: { type: String },
+    tipo: { type: String}
 },{collection: 'senderistas'
 })
 

@@ -10,7 +10,8 @@ let Gestor = new Schema ({
     contrasenya: { type: String },
     fechaCreacion: { type: String },
     descripcion: { type: String },
-    dni: { type: String }
+    dni: { type: String },
+    tipo: { type: String}
 },{collection: 'gestores'
 })
 

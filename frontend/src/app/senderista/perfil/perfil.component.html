@@ -1,16 +1,21 @@
-<h2>PERFIL</h2>
+<div>
 
-<div *ngIf="senderista != undefined">
+    <h2>PERFIL</h2>
 
-    <div><span>Nombre: </span>{{senderista.nombre}}</div>
-    <div><span>Apellidos: </span>{{senderista.apellido}}</div>
-    <div><span>Correo: </span>{{senderista.correo}}</div>
-    <div><span>Usuario: </span>{{senderista.nickname}}</div>
-    <div><span>Contraseña: </span>{{senderista.contrasenya}}</div>
-    <div><span>Descripción: </span>{{senderista.descripcion}}</div>
-    <div><span>Foto Perfil: </span>{{senderista.fotoPerfil}}</div>
-    <div><span>Fecha Creación: </span>{{senderista.fechaCreacion}}</div>
+    <!-- <div *ngIf="senderista != undefined"> -->
+    <div>
+
+        <div><span>Nombre: </span>{{senderista.nombre}}</div>
+        <div><span>Apellidos: </span>{{senderista.apellido}}</div>
+        <div><span>Correo: </span>{{senderista.correo}}</div>
+        <div><span>Usuario: </span>{{senderista.nickname}}</div>
+        <div><span>Contraseña: </span>{{senderista.contrasenya}}</div>
+        <div><span>Descripción: </span>{{senderista.descripcion}}</div>
+        <div><span>Foto Perfil: </span>{{senderista.fotoPerfil}}</div>
+        <div><span>Fecha Creación: </span>{{senderista.fechaCreacion}}</div>
+
+    </div>
+
+    <app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
 
 </div>
-
-<app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>

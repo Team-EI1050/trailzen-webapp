@@ -10,6 +10,8 @@
         [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
         type="password" class="form-control" placeholder="Enter Password" formControlName="password">
 
+        <label class="checkbox-inline"><input type="checkbox" value="" formControlName="soyGestor"> Soy Gestor</label>
+
       <button type="submit" (click)="getUser()">Iniciar sesión</button>
       <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
       <div class="invalid-feedback">{{data}}</div>

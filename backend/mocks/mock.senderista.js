@@ -11,7 +11,8 @@ const SENDERISTAS = [
     descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
     nombre: "Alberto",
     apellido: "Pacheco Catalán",
-    fotoPerfil: "None"
+    fotoPerfil: "None",
+    tipo: "SENDERISTA"
   }, 
   { _id: "miriam",
     correo: "al356376@uji.es",
@@ -21,7 +22,9 @@ const SENDERISTAS = [
       descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
       nombre: "Miriam",
       apellido: "Martinez Pérez",
-      fotoPerfil: "None"
+      fotoPerfil: "None",
+      tipo: "SENDERISTA"
+      
     }, 
     { 
       _id: "jetix",
@@ -32,7 +35,8 @@ const SENDERISTAS = [
       descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
       nombre: "Julián",
       apellido: "De la Rosa Suarez",
-      fotoPerfil: "None"
+      fotoPerfil: "None",
+      tipo: "SENDERISTA"
     },
     { 
       _id: "ubuxu",
@@ -43,7 +47,8 @@ const SENDERISTAS = [
     descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
     nombre: "Carlos",
     apellido: "Merenge Tur",
-    fotoPerfil: "None"
+    fotoPerfil: "None",
+    tipo: "SENDERISTA"
   }  
 ]
 

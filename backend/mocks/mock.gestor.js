@@ -9,7 +9,8 @@ const GESTOR = [
     contrasenya: "Extrauren",
     fechaCreacion: "23/03/2021",
     descripcion: "Gestor de la plataforma trailzen", 
-    dni: "56456734F"
+    dni: "56456734F",
+    tipo: "GESTOR"
   }, 
   { 
     _id: "admin2",
@@ -20,7 +21,8 @@ const GESTOR = [
     contrasenya: "dudud",
     fechaCreacion: "23/03/2021",
     descripcion: "Gestor de la plataforma trailzen", 
-    dni: "56456566W"
+    dni: "56456566W",
+    tipo: "GESTOR"
   },
 ]
 

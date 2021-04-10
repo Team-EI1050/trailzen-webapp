@@ -1,6 +1,5 @@
-import { Input } from '@angular/core';
+
 import { Component, OnInit } from '@angular/core';
-import { Iuser } from 'src/app/modelos/Iuser';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +7,6 @@ import { Iuser } from 'src/app/modelos/Iuser';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  @Input() user: Iuser;
 
   constructor() { }
 
