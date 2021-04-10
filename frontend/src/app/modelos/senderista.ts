@@ -1,4 +1,6 @@
-export class Senderista {
+import { Iuser } from "./Iuser";
+
+export class Senderista implements Iuser{
   _id: String;
   correo: String;
   nickname: String;
@@ -8,4 +10,5 @@ export class Senderista {
   nombre: String;
   apellido: String;
   fotoPerfil: String;
+  tipo: String = "SENDERISTA";
 }
