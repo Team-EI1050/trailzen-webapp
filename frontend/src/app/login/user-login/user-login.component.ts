@@ -11,58 +11,59 @@ import { UserService } from '../user.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  user: Iuser // Usuario activo
-  validos: Boolean = true;
-  data: String = "Introduce valid data";
-
-  miFormulario = new FormGroup({
-    nickname: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-    soyGestor:new FormControl('')
-  });
+  user:         Iuser;
+  validos:      Boolean;
+  data:         String;
+  miFormulario: FormGroup;
 
 
-  constructor(private userService: UserService) { }
+  constructor( private userService: UserService ) { 
+    this.validos = true; 
+    this.data = "Usuario o contraseña incorrecta";
+    this.miFormulario = new FormGroup({
+      nickname:  new FormControl('', Validators.required),
+      password:  new FormControl('', Validators.required),
+      soyGestor: new FormControl('')
+    });
+  }
 
-  // Cuando se inicia establece el usuario guardado en la sesión como el actual.
+  // Cuando se accede a sesión se establece el usuario guardado en la sesión como user.
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("USER"));
   }
 
   // Acción que se ejecuta cuando se pulsa el boton de aceptar.
   getUser(): void {
-    let nickname = this.miFormulario.controls['nickname'].value;
-    let password = this.miFormulario.controls['password'].value;
 
+    let nickname  = this.miFormulario.controls['nickname'].value;
+    let password  = this.miFormulario.controls['password'].value;
+    let soyGestor = this.miFormulario.controls['soyGestor'].value;
 
-    this.validos = this.userService.validarDatos(nickname, password);
+    // Comprueba que los datos de entrada sean válidos.
+    if (this.userService.validarDatos(nickname, password)) {
 
-    if (this.validos) {
+      // Trata de obtener el usuario introducido. 
+      this.userService.obtenerUsuario(nickname, password, soyGestor).subscribe(res => {
 
-      this.userService.obtenerUsuario(nickname, password).subscribe(res => {
+        // Se trata de una respuesta correcta.
         if (res != null) {
-          console.log("se trata de un dato válido");
-          console.log(this.miFormulario.controls['soyGestor'].value);
           
+          // La contraseña es válida.
           if (res.contrasenya == password) {
-            console.log("contraseña válida");
-            console.log("Usuario reconocido");
             this.user = res;
             localStorage.setItem("USER", JSON.stringify(this.user));
-          } else {
-            this.miFormulario.controls['password'].setValue("");
-            this.validos = false;
-          }
-
-        }
-        else { // No se han encontrado datos válidos.
+          
+          // No se han encontrado datos válidos.
+          } else { 
           this.validos = false;
           this.miFormulario.controls['nickname'].setValue("");
           this.miFormulario.controls['password'].setValue("");
+          }
         }
-
       });
-    } else { // El nickname o la contraseña no se han rellenado.
+
+    // El nickname o la contraseña no se han rellenado.
+    } else {
       this.validos = false;
       this.miFormulario.controls['nickname'].setValue("");
       this.miFormulario.controls['password'].setValue("");
