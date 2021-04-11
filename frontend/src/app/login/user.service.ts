@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError, Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 import { Iuser } from '../modelos/Iuser';
 
 @Injectable({
@@ -10,42 +9,33 @@ import { Iuser } from '../modelos/Iuser';
 
 export class UserService {
 
-  REST_API: string = 'http://localhost:8000';
+  REST_API:  string = 'http://localhost:8000';
   SENDERISA: string = 'senderista';
-  GESTOR: string = 'gestor';
-  httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
-  user: Iuser;
+  GESTOR:    string = 'gestor';
 
-  constructor(private httpClient: HttpClient) { }
+  httpHeaders: HttpHeaders;
+  user:        Iuser;
 
-  // Se encarga de validar que los datos que se han pasado son válidos (aptos para petición)
+  constructor(private httpClient: HttpClient) {
+        this.httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+     }
+
+  // Se encarga de validar que los datos introducidos en el login.
+  // TODO: Actualizar para que valide que no se introduzcan datos inválidos.
   validarDatos(nickname: String, password: String): Boolean {
     return nickname != "" && password != "";
   }
 
-  obtenerUsuario(nickname: String, pasword: string) {
-    let API_URL = `${this.REST_API}/${this.SENDERISA.toLowerCase()}/${nickname}`;
+  // Hace una petición al server para obtener el senderista o el gestor y lo devuelve.
+  obtenerUsuario(nickname: String, pasword: string, soyGestor: Boolean) {
+    let API_URL;
+    // Operador ternario
+    API_URL = (soyGestor) ? `${this.REST_API}/${this.GESTOR.toLowerCase()}/${nickname}` : `${this.REST_API}/${this.SENDERISA.toLowerCase()}/${nickname}`;
     return this.httpClient.get<Iuser>(API_URL);
-  }
-
-
-  // this.getUser().subscribe(res => {});
-  // Get user
-  getUser(id: String, user_type: String): Observable<Iuser> {
-
-    let API_URL = `${this.REST_API}/${user_type.toLowerCase()}/${id}`;
-    return this.httpClient.get<Iuser>(API_URL)
-      .pipe(catchError(this.handleError));
-
-  }
-
-  obtenerDato(): Iuser {
-    return null;
   }
 
   // Handle error
   handleError(error: HttpErrorResponse) {
-
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Handle client error
