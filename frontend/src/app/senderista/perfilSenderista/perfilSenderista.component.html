@@ -1,28 +1,82 @@
-<h2>PERFIL</h2>
-
-<ng-template [ngIf]="senderista" [ngIfElse]="noSenderista">
 <div>
-
-    <div><span>Nombre: </span>{{senderista.nombre}}</div>
-    <div><span>Apellidos: </span>{{senderista.apellido}}</div>
-    <div><span>Correo: </span>{{senderista.correo}}</div>
-    <div><span>Usuario: </span>{{senderista.nickname}}</div>
-    <div><span>Contraseña: </span>{{senderista.contrasenya}}</div>
-    <div><span>Descripción: </span>{{senderista.descripcion}}</div>
-    <div><span>Foto Perfil: </span>Aqui iba la foto vieja</div>
-    <div><span>Fecha Creación: </span>{{senderista.fechaCreacion}}</div>
-    <div>
-        <app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
-    </div>
-</div>
-
-<div style="width:0 auto">
-    <div>
-        <div>
-            <img style="width: 300px; height: 250px;" src="{{senderista.fotoPerfil}}">
-        </div>
-        <div>
-            mandanga
+<ng-template [ngIf]="senderista" [ngIfElse]="noSenderista">
+<div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
+    <div id="contenedor">
+        <input (click)="habilitarBotonModificar()" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+        <label for="tab-1" class="tab-label-1 sombra">Mis datos</label>
+        
+        <input (click)="deshabilitarBotonModificar()" id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+        <label for="tab-2" class="tab-label-2 sombra">Rutas guardadas</label>
+        
+        <input (click)="deshabilitarBotonModificar()" id="tab-3" type="radio" name="radio-set" class="tab-selector-3" />
+        <label for="tab-3" class="tab-label-3 sombra">Mis valoraciones</label>
+                                
+        <div class="content sombra">
+            <div class="content-1">
+                <div class="content-1" style="float: left; width: 20%;">
+                     <div class="content-1 sombra" style="background-color: #ffb95e !important; border-radius: 10px;">
+                        <table style="margin: 0 auto;">
+                            <tr>
+                                <td style="text-align: center; padding-top: 20px;">
+                                    <div class="circular--landscape content-1">
+                                        <img src="{{senderista.fotoPerfil}}">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3 style="text-align: center; margin-top: 5px;">{{senderista.nickname}}</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="content-1 sombra" style="margin-top: 20px; background-color: #ffb95e !important; border-radius: 10px;">
+                        <table style="margin: 0 auto;">
+                            <tr>
+                                <td style="text-align: center; padding-top: 20px;">
+                                    <div class="content-1">
+                                        <button>Darse de baja</button>
+                                        <p>Te echaremos de menos :(</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="content-1 sombra" style="color:white; background-color: #232530 !important; float: right; width: 70%; padding: 30px; border-radius: 10px;">
+                    <table>
+                        <tr>
+                            <td>
+                                <h2>{{senderista.nombre}} {{senderista.apellido}}</h2>
+                            </td>
+                            <td>
+                                <h6 style="float: right;">Miembro desde el: <span style="font-weight: bold;">{{senderista.fechaCreacion}}</span></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h4>Correo electrónico: <span style="font-size: 20px; font-weight: normal;">{{senderista.correo}}</span></h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding-top: 1em">
+                                <div class="descripcion content-1"><h1>Sobre mí</h1>
+                                <p>{{senderista.descripcion}}</p></div>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="content-1" style="float: right; padding-top: 1em">
+                        <app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
+                    </div>
+                </div>
+            </div>
+            <div class="content-2">
+                Contenido2
+            </div>
+            <div class="content-3">
+                Contenido3
+            </div>
         </div>
     </div>
 </div>
@@ -31,7 +85,9 @@
 <ng-template #noSenderista>
     <br>
     <br>
-    <h3>
+    <h3 style="text-align: center;">
       Cargando...
     </h3>
 </ng-template>
+
+</div>

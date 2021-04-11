@@ -27,5 +27,10 @@ export class PerfilGestorComponent implements OnInit {
       console.log("gestor:" + this.gestor.nombre);
     })
   }
-
+  habilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
+  }
+  deshabilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = true;
+  }
 }

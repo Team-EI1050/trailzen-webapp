@@ -5,4 +5,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .myCustomModalClass .modal-dialog { /*estilo para hacer los modals más anchos*/
     max-width: 800px;
-  }
+}
