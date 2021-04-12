@@ -1,5 +1,7 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, Input, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 
 import { Senderista } from '../../modelos/senderista'
 import { SenderistaService } from '../senderista.service'
@@ -13,21 +15,11 @@ export class ModalEliminarSenderistaComponent implements OnInit {
   closeResult = '';
   @Input() senderista: Senderista;
 
-  constructor(private modalService: NgbModal, private senderistaService: SenderistaService) { }
+  constructor(private route: Route, private modalService: NgbModal, private senderistaService: SenderistaService) { }
 
   ngOnInit(): void {
   }
 
-
-  //modal
-  async open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-      console.log(this.closeResult);
-    });
-  }
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -38,12 +30,41 @@ export class ModalEliminarSenderistaComponent implements OnInit {
       return `with: Save`;
     }
   }
-  //---------------
 
 
   getDatosYElimina(){  //toma los datos del modal y elimina el senderista.
     // this.senderistaService.deleteSenderista(this.senderista._id).subscribe();
-    console.log(this.senderista._id);
+    // console.log(this.senderista);
+    Swal.fire({
+      title: '¿Seguro que desea eliminar su perfil?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: `Eliminar`,
+      denyButtonText: `Cancelar`,
+      focusDeny:true,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        try {
+          this.senderistaService.deleteSenderista(this.senderista._id).subscribe( ()=> {
+            Swal.fire('¡Se ha eliminado su perfil!', '', 'success')
+            console.log('Eliminando perfil');
+            // Hay que redirigir a la main page
+          });
+        
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido completar la operación!',
+          })
+        }
+
+      } else if (result.isDenied) {
+        Swal.fire('Su perfil sigue con nosotros', '', 'info')
+        // console.log('Cancelado eliminar perfil');
+      }
+    })
   }
 
 }
