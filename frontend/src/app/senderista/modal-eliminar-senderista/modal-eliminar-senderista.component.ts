@@ -40,13 +40,9 @@ export class ModalEliminarSenderistaComponent implements OnInit {
   //---------------
 
 
-  getDatosYElimina(){  //toma los datos del modal y actualiza el senderista.
-    this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
-
-    this.senderistaService.updateSenderista(this.senderista).subscribe();
+  getDatosYElimina(){  //toma los datos del modal y elimina el senderista.
+    // this.senderistaService.deleteSenderista(this.senderista._id).subscribe();
+    console.log(this.senderista._id);
   }
 
 }
