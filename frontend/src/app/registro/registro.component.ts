@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserService } from '../login/user.service';
 import { Iuser } from '../modelos/Iuser';
+import { Senderista } from '../modelos/senderista';
+import { SenderistaService } from '../senderista/senderista.service';
 
 @Component({
   selector: 'app-registro',
@@ -13,7 +16,7 @@ export class RegistroComponent implements OnInit {
   validos:      Boolean;
   data:         String;
 
-  constructor() { 
+  constructor(private userService: UserService, private senderistaService: SenderistaService) { 
     this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
       nombre:    new FormControl('', Validators.required),
       apellidos: new FormControl('', Validators.required),
@@ -25,7 +28,7 @@ export class RegistroComponent implements OnInit {
       fotoPerfil: new FormControl('')
     });
     this.validos = true; 
-    this.data = "Usuario o contraseña incorrecta";
+    this.data = "Uno de tus campos es incorrecto";
   }
 
   ngOnInit(): void {
@@ -33,14 +36,37 @@ export class RegistroComponent implements OnInit {
   }
 
   registrarse() { //TODO
-    console.log(this.miFormulario.controls['nombre'].value);
-    console.log(this.miFormulario.controls['apellidos'].value);
-    console.log(this.miFormulario.controls['correo'].value);
-    console.log(this.miFormulario.controls['nickname'].value);
-    console.log(this.miFormulario.controls['password'].value);
-    console.log(this.miFormulario.controls['fechaCreacion'].value);
-    console.log(this.miFormulario.controls['descripcion'].value);
-    console.log(this.miFormulario.controls['fotoPerfil'].value);
+    let nombre=(this.miFormulario.controls['nombre'].value);
+    let apellido=(this.miFormulario.controls['apellidos'].value);
+    let correo=(this.miFormulario.controls['correo'].value);
+    let nickname=(this.miFormulario.controls['nickname'].value);
+    let password=(this.miFormulario.controls['password'].value);
+    let fechaCreacion=(this.miFormulario.controls['fechaCreacion'].value);
+    let descripcion=(this.miFormulario.controls['descripcion'].value);
+    let fotoPerfil=(this.miFormulario.controls['fotoPerfil'].value);
+    
+    this.userService.obtenerUsuario(nickname, password, false).subscribe(res => {
+      if (res==null){ //registra el nuevo senderista
+        let nuevoSenderista=new Senderista(nickname,correo,nickname,password,fechaCreacion,descripcion,apellido,fotoPerfil)
+        this.senderistaService.addSenderista(nuevoSenderista).subscribe(nuevo => {
+          if(nuevo==null) {
+            console.log("Problema en el registro");
+          }
+          else{
+            this.user=nuevo;
+            localStorage.setItem("USER", JSON.stringify(this.user));
+            console.log("¡Te has logeado!");
+            
+          }
+        });
+      }
+      else { //si ya existe ese nickname, muestra un error y pone los campos a null
+        this.validos = false;
+          this.miFormulario.controls['nickname'].setValue("");
+          this.miFormulario.controls['password'].setValue("");
+      }
+      
+    });
   }
 
 }
