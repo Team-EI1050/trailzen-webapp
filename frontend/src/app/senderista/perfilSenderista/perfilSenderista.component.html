@@ -1,6 +1,6 @@
 <h2>PERFIL</h2>
 
-<div *ngIf="senderista != undefined">
+<div *ngIf="senderista != undefined; else noSenderista">
 
     <div><span>Nombre: </span>{{senderista.nombre}}</div>
     <div><span>Apellidos: </span>{{senderista.apellido}}</div>
@@ -10,8 +10,15 @@
     <div><span>Descripción: </span>{{senderista.descripcion}}</div>
     <div><span>Foto Perfil: </span>{{senderista.fotoPerfil}}</div>
     <div><span>Fecha Creación: </span>{{senderista.fechaCreacion}}</div>
-
+    <div>
+        <app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
+    </div>
 </div>
 
-<app-modalmodificar-senderista [senderista]="senderista"></app-modalmodificar-senderista>
-<app-modal-eliminar-senderista [senderista]="senderista"></app-modal-eliminar-senderista>
+<ng-template #noSenderista>
+    <br>
+    <br>
+    <h3>
+      No se han obtenido los datos de ningún senderista.
+    </h3>
+</ng-template>

@@ -14,11 +14,18 @@ const RUTAS = [
 ]
 
 function addMock(){
-
-    RUTAS.forEach(obj => {
-        ruta = new Ruta(obj)
-        ruta.save().then(() => console.log("- Mock ruta " + obj.nombre + " añadida."));
-    })
+    Ruta.countDocuments( function (err, count) {
+        if (err){
+            console.log("Error a la hora de contar documetnos en Ruta: " + err)
+        }else{
+            if(count == 0){
+                RUTAS.forEach(obj => {
+                ruta = new Ruta(obj)
+                ruta.save().then(() => console.log("- Mock ruta " + obj.nickname + " añadido/a."));
+            })
+            }
+        }
+      });
 }
 
 exports.addMock = addMock;

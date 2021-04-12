@@ -1,4 +1,6 @@
-export class Gestor {
+import { Iuser } from "./Iuser";
+
+export class Gestor implements Iuser{
   _id: String;
   correo: String ;
   nickname: String ;
@@ -8,4 +10,5 @@ export class Gestor {
   fechaCreacion: String ;
   descripcion: String ;
   dni: String ;
+  tipo: String = "GESTOR";
 }

@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-
+import Swal from 'sweetalert2'
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { Senderista } from '../../modelos/senderista'
@@ -38,11 +38,57 @@ export class ModalmodificarSenderistaComponent {
   //---------------
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
-    this.senderista.nombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    this.senderista.apellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    this.senderista.nickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    this.senderista.descripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
 
-    this.senderistaService.updateSenderista(this.senderista).subscribe();
+    let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
+    let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
+    let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
+    let nDescripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let ok: boolean = true;
+
+    if(nNombre==""){
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "El nombre no puede quedarse vacío"
+      });
+      ok=false;
+    }
+    if(nApellido==""){
+      Swal.fire( {
+          icon: 'error',
+          title: 'Oops...',
+          confirmButtonColor: "#F99721",
+          text: "Debe introducir al menos un apellido"
+      });
+      ok=false;
+    }
+    if(nNickname==""){
+      Swal.fire( {
+        icon: 'error',
+        title: 'Oops...',
+        confirmButtonColor: "#F99721",
+        text: "No puede eliminar su nombre de usuario"
+      });
+      ok=false;
+    }
+    if(ok){
+      this.senderista.nombre = nNombre;
+      this.senderista.apellido = nApellido;
+      this.senderista.nickname = nNickname;
+      this.senderista.descripcion = nDescripcion;
+
+      this.senderistaService.updateSenderista(this.senderista).subscribe(res => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Yaih!',
+          text: "Perfil actualizado correctamente!",
+          showConfirmButton: false,
+          toast: true,
+          timer: 1500,
+          timerProgressBar: true
+        });
+      });
+    }
   }
 }
