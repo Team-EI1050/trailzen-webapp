@@ -26,7 +26,7 @@ mongoose.connect(mongoDb.db, {
   mockGestor.addMock()
   mockRuta.addMock()
 
-  // mongoose.connection.db.dropDatabase();
+  //mongoose.connection.db.dropDatabase();
    
 }, error => {
     console.log('Error en la base de datos: ' + error)

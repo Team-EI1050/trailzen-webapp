@@ -1,46 +1,38 @@
-<h2>Registro</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">Nombre</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">Nombre es un campo obligatorio</div>
-        </div>
+<div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
+    <div class="container" [formGroup]="miFormulario">
+    <from>
+      Nombre <input
+        [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
+        class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
+
+      Apellidos <input
+        [class.is-invalid]="miFormulario.get('apellidos').touched && miFormulario.get('apellidos').invalid" type="text"
+        class="form-control" placeholder="Introduce tus apellidos" formControlName="apellidos">
+
+      Correo electrónico <input
+        [class.is-invalid]="miFormulario.get('correo').touched && miFormulario.get('correo').invalid" type="text"
+        class="form-control" placeholder="Introduce tu correo" formControlName="correo">
+
+
+      Nombre de usuario <input
+        [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
+        class="form-control" placeholder="Introduce tu nickname" formControlName="nickname">
+
+
+      Contraseña <input
+        [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
+        type="password" class="form-control" placeholder="Introduce tu contraseña" formControlName="password">
+
+      <button type="submit" (click)="registrarse()">Registrarse</button>
+      <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
+      <div class="invalid-feedback">{{data}}</div>
+    </from>
+  </div>
+</div>
+
+<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+    <div class="container-fluid bg-3 text-center">
+      <h3>Has iniciado sesión como</h3>
+      <p>{{user.nickname}}</p>
     </div>
-    <div class="form-group">
-        <label for="lastName">Apellidos</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Apellidos es un campo obligatorio</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="mail">Correo</label>
-        <input type="text" formControlName="mail" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mail.errors }" />
-        <div *ngIf="submitted && f.mail.errors" class="invalid-feedback">
-            <div *ngIf="f.mail.errors.required">Correo es un campo obligatorio</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="username">Nickname</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Nickname es un campo obligatorio</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Contraseña</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Contraseña es un campo obligatorio</div>
-            <div *ngIf="f.password.errors.minlength">La contraseña debe tener un mínimo de 6 carácteres</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Registro
-        </button>
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
-    </div>
-</form>
+  </div>
