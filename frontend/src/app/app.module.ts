@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
+import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 
 @NgModule({
   declarations: [	
@@ -26,6 +27,7 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component';
     RutasComponent,
     ModalmodificarSenderistaComponent,
     ModalmodificarGestorComponent,
+    PerfilGestorComponent,
    ],
   imports: [
     BrowserModule,

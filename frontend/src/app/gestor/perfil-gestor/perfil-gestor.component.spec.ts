@@ -1,20 +1,17 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PerfilGestorComponent } from './perfilGestor.component';
+import { PerfilGestorComponent } from './perfil-gestor.component';
 
 describe('PerfilGestorComponent', () => {
   let component: PerfilGestorComponent;
   let fixture: ComponentFixture<PerfilGestorComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ PerfilGestorComponent ]
     })
     .compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PerfilGestorComponent);
