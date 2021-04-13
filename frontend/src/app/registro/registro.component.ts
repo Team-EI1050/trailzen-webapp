@@ -41,13 +41,14 @@ export class RegistroComponent implements OnInit {
     let correo=(this.miFormulario.controls['correo'].value);
     let nickname=(this.miFormulario.controls['nickname'].value);
     let password=(this.miFormulario.controls['password'].value);
-    let fechaCreacion=(this.miFormulario.controls['fechaCreacion'].value);
+    // let fechaCreacion=Date.now;
+    // console.log(fechaCreacion)
     let descripcion=(this.miFormulario.controls['descripcion'].value);
     let fotoPerfil=(this.miFormulario.controls['fotoPerfil'].value);
     
     this.userService.obtenerUsuario(nickname, password, false).subscribe(res => {
       if (res==null){ //registra el nuevo senderista
-        let nuevoSenderista=new Senderista(nickname,correo,nickname,password,fechaCreacion,descripcion,apellido,fotoPerfil)
+        let nuevoSenderista=new Senderista(nickname,correo,nickname,password,Date.now.toString(),descripcion,nombre,apellido)
         this.senderistaService.addSenderista(nuevoSenderista).subscribe(nuevo => {
           if(nuevo==null) {
             console.log("Problema en el registro");

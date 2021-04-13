@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 
 import { Senderista } from '../../modelos/senderista'
 import { SenderistaService } from '../senderista.service'
+import { Iuser } from 'src/app/modelos/Iuser';
+import { user } from 'src/app/modelos/user';
 
 @Component({
   selector: 'app-modal-eliminar-senderista',
@@ -50,8 +52,9 @@ export class ModalEliminarSenderistaComponent implements OnInit {
       if (result.isConfirmed) {
         try {
           this.senderistaService.deleteSenderista(this.senderista._id).subscribe( ()=> {
-            Swal.fire('¡Se ha eliminado su perfil!', '', 'success')
+            Swal.fire('¡Se ha eliminado su perfil!', '', 'success');
             console.log('Eliminando perfil');
+            this.cerrarSesion();
             // Hay que redirigir a la main page
           });
         
@@ -68,6 +71,11 @@ export class ModalEliminarSenderistaComponent implements OnInit {
         // console.log('Cancelado eliminar perfil');
       }
     })
+  }
+
+  cerrarSesion() {
+    let us :Iuser = new user("", "", "USUARIO");
+    localStorage.setItem("USER", JSON.stringify(us));
   }
 
 }

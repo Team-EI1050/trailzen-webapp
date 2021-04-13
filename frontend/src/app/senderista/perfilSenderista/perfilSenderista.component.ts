@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SenderistaService } from '../senderista.service';
-import {  ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Senderista } from '../../modelos/senderista';
 
 @Component({
@@ -26,5 +26,10 @@ export class PerfilSenderistaComponent implements OnInit {
     })
 
   }
-
+  habilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
+  }
+  deshabilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = true;
+  }
 }
