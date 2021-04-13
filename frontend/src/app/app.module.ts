@@ -21,6 +21,7 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './registro/registro.component';
+import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 
 @NgModule({
   declarations: [	
@@ -33,6 +34,7 @@ import { RegistroComponent } from './registro/registro.component';
     NavbarComponent,
     UserLoginComponent,
     RegistroComponent,
+    CerrarSesionComponent,
    ],
   imports: [
     BrowserModule,
