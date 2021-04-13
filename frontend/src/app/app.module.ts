@@ -21,6 +21,7 @@ import { ModalEliminarSenderistaComponent } from './senderista/modal-eliminar-se
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [	
@@ -32,7 +33,8 @@ import { FormsModule } from '@angular/forms';
     ModalmodificarGestorComponent,
     NavbarComponent,
     UserLoginComponent,
-    ModalEliminarSenderistaComponent
+    ModalEliminarSenderistaComponent,
+    RegistroComponent,
    ],
   imports: [
     BrowserModule,

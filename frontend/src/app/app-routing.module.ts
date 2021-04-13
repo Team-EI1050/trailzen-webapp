@@ -5,6 +5,7 @@ import { PerfilGestorComponent } from './gestor/perfilGestor/perfilGestor.compon
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component'
 import { RutasComponent } from './rutas/listadoRutas/rutas.component'
 import { UserLoginComponent } from './login/user-login/user-login.component';
+import { RegistroComponent } from './registro/registro.component';
 
 
 
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'senderista/:id', component: PerfilSenderistaComponent},
   {path: 'gestor/:id', component: PerfilGestorComponent},
   {path: 'ruta', component: RutasComponent},
-  {path: 'login', component: UserLoginComponent}
+  {path: 'login', component: UserLoginComponent},
+  {path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({
