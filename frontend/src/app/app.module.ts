@@ -17,7 +17,6 @@ import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
-import { ModalEliminarSenderistaComponent } from './senderista/modal-eliminar-senderista/modal-eliminar-senderista.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import { RegistroComponent } from './registro/registro.component';
     ModalmodificarGestorComponent,
     NavbarComponent,
     UserLoginComponent,
-    ModalEliminarSenderistaComponent,
     RegistroComponent,
    ],
   imports: [
@@ -43,7 +41,7 @@ import { RegistroComponent } from './registro/registro.component';
     HttpClientModule,
     NgbModule,
     SweetAlert2Module.forRoot(),
-    FormsModule
+    FormsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

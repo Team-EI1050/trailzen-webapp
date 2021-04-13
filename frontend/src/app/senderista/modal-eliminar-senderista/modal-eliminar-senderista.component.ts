@@ -15,7 +15,9 @@ export class ModalEliminarSenderistaComponent implements OnInit {
   closeResult = '';
   @Input() senderista: Senderista;
 
-  constructor(private route: Route, private modalService: NgbModal, private senderistaService: SenderistaService) { }
+  constructor(private route: Route, 
+    private modalService: NgbModal, 
+    private senderistaService: SenderistaService) { }
 
   ngOnInit(): void {
   }
