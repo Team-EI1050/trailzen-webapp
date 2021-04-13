@@ -1,0 +1,38 @@
+<div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
+    <div class="container" [formGroup]="miFormulario">
+    <from>
+      Nombre <input
+        [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
+        class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
+
+      Apellidos <input
+        [class.is-invalid]="miFormulario.get('apellidos').touched && miFormulario.get('apellidos').invalid" type="text"
+        class="form-control" placeholder="Introduce tus apellidos" formControlName="apellidos">
+
+      Correo electrónico <input
+        [class.is-invalid]="miFormulario.get('correo').touched && miFormulario.get('correo').invalid" type="text"
+        class="form-control" placeholder="Introduce tu correo" formControlName="correo">
+
+
+      Nombre de usuario <input
+        [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
+        class="form-control" placeholder="Introduce tu nickname" formControlName="nickname">
+
+
+      Contraseña <input
+        [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
+        type="password" class="form-control" placeholder="Introduce tu contraseña" formControlName="password">
+
+      <button type="submit" (click)="registrarse()">Registrarse</button>
+      <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
+      <div class="invalid-feedback">{{data}}</div>
+    </from>
+  </div>
+</div>
+
+<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+    <div class="container-fluid bg-3 text-center">
+      <h3>Has iniciado sesión como</h3>
+      <p>{{user.nickname}}</p>
+    </div>
+  </div>

@@ -62,7 +62,7 @@ export class SenderistaService {
 
   // Delete senderista
 
-  deleteSenderista(id:string): Observable<Senderista> {
+  deleteSenderista(id:String): Observable<Senderista> {
     
     let API_URL = `${this.REST_API_SENDERISTA}/${id}`;
     return this.httpClient.delete<Senderista>(API_URL)

@@ -18,25 +18,14 @@ export class PerfilGestorComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.log("Id:" + this.getId);
-    // this.gestorService.getGestor(this.getId).subscribe(res => {
-    //   console.log("Res:" + res);
-    //   this.gestor = res;
-    //   console.log("gestor:" + this.gestor.nombre);
-    // })
-    this.getId="123";
-    this.gestor={
-      _id:"123",
-      nombre:"alberto",
-      nickname:"albertus3000",
-      correo:"albertodkjf@gmail.com",
-      apellido: "String",
-      contrasenya: "String",
-      fechaCreacion: "String",
-      descripcion: "String",
-      dni: "String"
-    }
+    this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+    console.log("Id:" + this.getId);
+    this.gestorService.getGestor(this.getId).subscribe(res => {
+      console.log("Res:" + res);
+      this.gestor = res;
+      console.log("gestor:" + this.gestor.nombre);
+    })
+    
   }
   habilitarBotonModificar(){
     (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
