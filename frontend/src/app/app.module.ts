@@ -13,10 +13,16 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 //propios
 import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-senderista/modalmodificar-senderista.component';
 import { ModalmodificarGestorComponent } from './gestor/modalmodificar-gestor/modalmodificar-gestor.component';
+import { ModalEliminarSenderistaComponent } from './senderista/modal-eliminar-senderista/modal-eliminar-senderista.component';
 import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { UserLoginComponent } from './login/user-login/user-login.component';
+import { FormsModule } from '@angular/forms';
+import { RegistroComponent } from './registro/registro.component';
+import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 
 @NgModule({
@@ -27,6 +33,11 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
     RutasComponent,
     ModalmodificarSenderistaComponent,
     ModalmodificarGestorComponent,
+    NavbarComponent,
+    UserLoginComponent,
+    RegistroComponent,
+    CerrarSesionComponent,
+    ModalEliminarSenderistaComponent,
     PerfilGestorComponent,
    ],
   imports: [
@@ -35,7 +46,8 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    FormsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

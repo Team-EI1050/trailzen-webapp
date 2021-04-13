@@ -89,6 +89,7 @@ export class ModalmodificarSenderistaComponent {
           timerProgressBar: true
         });
       });
+      localStorage.setItem("USER", JSON.stringify(this.senderista)); // Añadida por alberto el lunes
     }
   }
 }
