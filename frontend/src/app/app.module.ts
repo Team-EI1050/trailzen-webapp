@@ -13,6 +13,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 //propios
 import { ModalmodificarSenderistaComponent } from './senderista/modalmodificar-senderista/modalmodificar-senderista.component';
 import { ModalmodificarGestorComponent } from './gestor/modalmodificar-gestor/modalmodificar-gestor.component';
+import { ModalEliminarSenderistaComponent } from './senderista/modal-eliminar-senderista/modal-eliminar-senderista.component';
 import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
@@ -35,6 +36,7 @@ import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.comp
     UserLoginComponent,
     RegistroComponent,
     CerrarSesionComponent,
+    ModalEliminarSenderistaComponent,
    ],
   imports: [
     BrowserModule,
