@@ -3,11 +3,10 @@ import { GestorService } from '../gestor.service';
 import { ActivatedRoute } from '@angular/router';
 import { Gestor } from '../../modelos/gestor';
 
-
 @Component({
-  selector: 'app-perfilGestor',
-  templateUrl: './perfilGestor.component.html',
-  styleUrls: ['./perfilGestor.component.css']
+  selector: 'app-perfil-gestor',
+  templateUrl: './perfil-gestor.component.html',
+  styleUrls: ['./perfil-gestor.component.css']
 })
 export class PerfilGestorComponent implements OnInit {
 
@@ -26,6 +25,12 @@ export class PerfilGestorComponent implements OnInit {
       this.gestor = res;
       console.log("gestor:" + this.gestor.nombre);
     })
+    
   }
-
+  habilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
+  }
+  deshabilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = true;
+  }
 }

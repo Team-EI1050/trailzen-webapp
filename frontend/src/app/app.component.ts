@@ -9,24 +9,13 @@ import { user } from './modelos/user';
 })
 export class AppComponent {
   
-  // id = '6064ba53682e2021c83c4457';
-  // title = 'TrailZen';
-  
-  
-  public data:any=[]
-  user: Iuser = new user("Alberto", "Alberto", "USUARIO")
-
+  id = '6074501d3682bd337865596f';
+ 
   constructor(){
   }
 
   ngOnInit(): void {
-
-    this.saveInSession("USER", this.user)
   }
 
-  saveInSession(key, user: Iuser): void {
-    localStorage.setItem(key, JSON.stringify(user));
-
-   }
 
 }
