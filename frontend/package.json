@@ -26,7 +26,7 @@
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.5.0",
     "rxjs": "^6.6.7",
-    "sweetalert2": "^10.15.7",
+    "sweetalert2": "^10.16.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

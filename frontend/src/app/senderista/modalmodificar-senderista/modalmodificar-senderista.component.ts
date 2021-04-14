@@ -85,10 +85,11 @@ export class ModalmodificarSenderistaComponent {
           text: "Perfil actualizado correctamente!",
           showConfirmButton: false,
           toast: true,
-          timer: 1500,
+          timer: 2000,
           timerProgressBar: true
         });
       });
+      localStorage.setItem("USER", JSON.stringify(this.senderista)); // Añadida por alberto el lunes
     }
   }
 }

@@ -1,0 +1,12 @@
+
+
+<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+    <button type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>
+</div>
+
+
+<div *ngIf="user.tipo=='USUARIO' && user.tipo!=null">
+    <div class="container-fluid bg-3 text-center">
+      <h3>No has iniciado sesión</h3>
+    </div>
+  </div>

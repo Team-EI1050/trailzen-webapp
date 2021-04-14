@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SenderistaService } from '../senderista.service';
-import {  ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Senderista } from '../../modelos/senderista';
 
 @Component({
@@ -18,13 +18,18 @@ export class PerfilSenderistaComponent implements OnInit {
   ngOnInit(): void {
 
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-      console.log("Id:" + this.getId);
-      this.senderistaService.getSenderista(this.getId).subscribe(res => {
-        console.log("Res:" + res);
-        this.senderista = res;
-        console.log("senderista:" + this.senderista);
-      })
+    console.log("Id:" + this.getId);
+    this.senderistaService.getSenderista(this.getId).subscribe(res => {
+      console.log("Res:" + res);
+      this.senderista = res;
+      console.log("senderista:" + this.senderista);
+    })
 
   }
-
+  habilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
+  }
+  deshabilitarBotonModificar(){
+    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = true;
+  }
 }
