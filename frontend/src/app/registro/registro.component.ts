@@ -41,33 +41,48 @@ export class RegistroComponent implements OnInit {
     let correo=(this.miFormulario.controls['correo'].value);
     let nickname=(this.miFormulario.controls['nickname'].value);
     let password=(this.miFormulario.controls['password'].value);
-    // let fechaCreacion=Date.now;
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    let fechaCreacion = dd + '/' + mm + '/' + yyyy;
     // console.log(fechaCreacion)
     let descripcion=(this.miFormulario.controls['descripcion'].value);
     let fotoPerfil=(this.miFormulario.controls['fotoPerfil'].value);
-    
-    this.userService.obtenerUsuario(nickname, password, false).subscribe(res => {
-      if (res==null){ //registra el nuevo senderista
-        let nuevoSenderista=new Senderista(nickname,correo,nickname,password,Date.now.toString(),descripcion,nombre,apellido)
-        this.senderistaService.addSenderista(nuevoSenderista).subscribe(nuevo => {
-          if(nuevo==null) {
-            console.log("Problema en el registro");
-          }
-          else{
-            this.user=nuevo;
-            localStorage.setItem("USER", JSON.stringify(this.user));
-            console.log("¡Te has logeado!");
-            
-          }
-        });
-      }
-      else { //si ya existe ese nickname, muestra un error y pone los campos a null
-        this.validos = false;
-          this.miFormulario.controls['nickname'].setValue("");
-          this.miFormulario.controls['password'].setValue("");
-      }
-      
-    });
+      // console.log(nombre);
+      // console.log(apellido);
+      // console.log(correo);
+      // console.log(nickname);
+      // console.log(password);
+    //TODO comprobar los campos son distinto de null
+    if (nombre == '' ||  apellido == '' ||  correo == '' || nickname == '' ||  password == ''){
+      this.validos = false;
+      this.miFormulario.controls['nickname'].setValue("");
+      this.miFormulario.controls['password'].setValue("");
+    }else{
+      this.userService.obtenerUsuario(nickname, password, false).subscribe(res => {
+        if (res==null){ //registra el nuevo senderista
+          let nuevoSenderista=new Senderista(nickname,correo,nickname,password,fechaCreacion,descripcion,nombre,apellido)
+          this.senderistaService.addSenderista(nuevoSenderista).subscribe(nuevo => {
+            if(nuevo==null) {
+              console.log("Problema en el registro");
+            }
+            else{
+              this.user=nuevo;
+              localStorage.setItem("USER", JSON.stringify(this.user));
+              console.log("¡Te has logeado!");
+              
+            }
+          });
+        }
+        else { //si ya existe ese nickname, muestra un error y pone los campos a null
+          this.validos = false;
+            this.miFormulario.controls['nickname'].setValue("");
+            this.miFormulario.controls['password'].setValue("");
+        }
+      });
+    }  
   }
 
 }
+
