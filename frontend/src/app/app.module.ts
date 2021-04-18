@@ -18,19 +18,12 @@ import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
-<<<<<<< HEAD
-import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
-=======
->>>>>>> 6f1f379ea2b603c4b3d5ce96227df8fbd10398bd
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
-<<<<<<< HEAD
-=======
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
->>>>>>> 6f1f379ea2b603c4b3d5ce96227df8fbd10398bd
 
 @NgModule({
   declarations: [	
