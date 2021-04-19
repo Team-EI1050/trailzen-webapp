@@ -17,7 +17,8 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
+    let us :Iuser = new user("", "", "USUARIO");
+    localStorage.setItem("USER", JSON.stringify(us));
   }
-
 
 }

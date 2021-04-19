@@ -9,6 +9,8 @@ import { Iuser } from 'src/app/modelos/Iuser';
 })
 export class NavbarComponent implements OnInit {
 
+  id = '6075a29951822b2eb1f8f43c';
+
   constructor() { }
 
   ngOnInit(): void {

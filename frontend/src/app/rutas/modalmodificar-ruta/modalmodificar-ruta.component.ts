@@ -1,22 +1,22 @@
-import {Component, Input} from '@angular/core';
-import Swal from 'sweetalert2'
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input } from '@angular/core';
 
-import { Senderista } from '../../modelos/senderista'
-import { SenderistaService } from '../senderista.service'
-import { filter } from 'rxjs/operators';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
+
+import { Ruta } from '../../modelos/ruta'
+import { RutaService } from '../ruta.service'
 
 @Component({
-  selector: 'app-modalmodificar-senderista',
-  templateUrl: './modalmodificar-senderista.component.html',
-  styleUrls: ['./modalmodificar-senderista.component.css']
+  selector: 'app-modalmodificar-ruta',
+  templateUrl: './modalmodificar-ruta.component.html',
+  styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarSenderistaComponent {
+export class ModalmodificarRutaComponent {
   closeResult = '';
 
-  @Input() senderista: Senderista;
+  @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, private senderistaService: SenderistaService) {}
+  constructor(private modalService: NgbModal, private gutaService: RutaService) { }
 
   //modal
   async open(content) {
@@ -42,12 +42,11 @@ export class ModalmodificarSenderistaComponent {
   }
   //---------------
 
-  getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
-
+  getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    let nDescripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    let nPuntoInicio = (<HTMLInputElement>document.getElementById("puntoInicio")).value;
+    let nPuntoFin = (<HTMLInputElement>document.getElementById("puntoFin")).value;
     let ok: boolean = true;
 
     if(nNombre==""){
@@ -59,42 +58,41 @@ export class ModalmodificarSenderistaComponent {
       });
       ok=false;
     }
-    if(nApellido==""){
+    if(Number(nDistancia) == NaN || Number(nDistancia) <= 0){
       Swal.fire( {
           icon: 'error',
           title: 'Oops...',
           confirmButtonColor: "#F99721",
-          text: "Debe introducir al menos un apellido"
+          text: "La distancia debe ser mayor a 0"
       });
       ok=false;
     }
-    if(nNickname==""){
+    if(nPuntoInicio=="" || nPuntoFin==""){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
         confirmButtonColor: "#F99721",
-        text: "No puede eliminar su nombre de usuario"
+        text: "Se necesita un punto de inicio y fin"
       });
       ok=false;
     }
     if(ok){
-      this.senderista.nombre = nNombre;
-      this.senderista.apellido = nApellido;
-      this.senderista.nickname = nNickname;
-      this.senderista.descripcion = nDescripcion;
+      this.ruta.nombre = nNombre;
+      this.ruta.distancia = Number(nDistancia);
+      this.ruta.puntoInicio = nPuntoInicio;
+      this.ruta.puntoFin = nPuntoFin;
 
-      this.senderistaService.updateSenderista(this.senderista).subscribe(res => {
+      this.gutaService.updateRuta(this.ruta).subscribe(res => {
         Swal.fire({
           icon: 'success',
           title: 'Yaih!',
-          text: "Perfil actualizado correctamente!",
+          text: "Ruta actualizada correctamente!",
           showConfirmButton: false,
           toast: true,
           timer: 2000,
           timerProgressBar: true
         });
       });
-      localStorage.setItem("USER", JSON.stringify(this.senderista)); // Añadida por alberto el lunes
     }
   }
 }
