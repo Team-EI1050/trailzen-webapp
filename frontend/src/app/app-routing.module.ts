@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', component: PantallaInicioComponent},
   {path: 'senderista/:id', component: PerfilSenderistaComponent},
   {path: 'gestor/:id', component: PerfilGestorComponent},
-  {path: 'ruta', component: RutasComponent},
+  {path: 'ruta/:id', component: RutasComponent},
   {path: 'login', component: UserLoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'cerrarSesion', component: CerrarSesionComponent}
