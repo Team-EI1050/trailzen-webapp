@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../login/user.service';
-import { Iuser } from '../modelos/Iuser';
-import { Senderista } from '../modelos/senderista';
-import { SenderistaService } from '../senderista/senderista.service';
+import { Iuser } from '../../modelos/Iuser';
+import { Senderista } from '../../modelos/senderista';
+import { SenderistaService } from '../../senderista/senderista.service';
 
 @Component({
   selector: 'app-registro',

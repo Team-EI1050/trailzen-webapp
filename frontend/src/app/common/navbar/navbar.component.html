@@ -1,30 +1,42 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <a class="navbar-brand" routerLink="/ruta">Trailzen</a>
+=======
+<nav id="nav-poner-borroso" class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/">
+    <img src="../../../favicon.ico" width="30" height="30" alt="">
+  </a>
+>>>>>>> dev
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
-      <div>
+      <div *ngIf="user.tipo==null || user.tipo=='USUARIO'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Log in</a>
+          <a class="nav-link" routerLink="/login">Iniciar sesión</a>
         </li>
       </div>
-      <div>
+      <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/senderista/{{obtenerUser()}}">Senderista Perfil</a>
+          <a class="nav-link" routerLink="/senderista/{{getUserId()}}">Mi Perfil</a>
         </li>
       </div>
-      <div>
+      <div  *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/gestor/{{obtenerUser()}}">Gestor Perfil</a>
+          <a class="nav-link" routerLink="/gestor/{{getUserId()}}">Mi Perfil</a>
         </li>
       </div>
-      <div>
+      <div *ngIf="user.tipo==null || user.tipo=='USUARIO'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/registro">Registrarse</a>
+          <a class="nav-link" routerLink="/registro">Regístrate en Trailzen</a>
         </li>
       </div>
-      <div>
+      <div *ngIf="user.tipo!='USUARIO'">
         <li class="nav-item">
           <a class="nav-link" routerLink="/cerrarSesion">Cerrar Sesión</a>
+        </li>
+      </div>
+      <div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/ruta/{{id}}">Rutas</a>
         </li>
       </div>
     </ul>

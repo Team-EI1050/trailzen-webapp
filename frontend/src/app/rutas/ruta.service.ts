@@ -38,7 +38,7 @@ export class RutaService {
   
   // Update ruta
 
-  updateRua(data:Ruta): Observable<any> {
+  updateRuta(data:Ruta): Observable<any> {
     
     let API_URL = `${this.REST_API_RUTA}/${data._id}`;
     return this.httpClient.put(API_URL, data)
