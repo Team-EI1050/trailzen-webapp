@@ -1,1 +1,13 @@
-<h2>Rutas works!</h2>
+
+
+<div class="rutas" *ngFor="let ruta of rutas">
+  <div class="ruta">
+    <div class="title">{{ruta.nombre}}</div>
+    <a href = "/ruta/{{ruta._id}}">
+        <img src="https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg"
+            alt="Cinque Terre" width="600" height="400">
+    </a>
+    <div class="valor">Valoracion</div>
+    <div class="dist">{{ruta.distancia}} Km</div>
+  </div>
+</div>

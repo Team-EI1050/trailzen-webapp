@@ -24,6 +24,8 @@ import { UserLoginComponent } from './login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.component';
 
 @NgModule({
   declarations: [	
@@ -39,6 +41,7 @@ import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.comp
     RegistroComponent,
     CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
+    DetallesRutaComponent,
    ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.comp
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ruta } from 'src/app/modelos/ruta';
+import { RutaService } from '../ruta.service';
 
 @Component({
   selector: 'app-rutas',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RutasComponent implements OnInit {
 
-  constructor() { }
+  rutas: Ruta [];
+
+  constructor(private rutaService: RutaService) { }
 
   ngOnInit() {
+
+    this.rutaService.getRutas().subscribe(res => {
+      console.log("Res:" + res);
+      this.rutas = res;
+      console.log("Rutas:" + this.rutas);
+    })
   }
 
 }
