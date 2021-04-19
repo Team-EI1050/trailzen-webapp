@@ -12,6 +12,8 @@ export class AppComponent {
   id = '6074501d3682bd337865596f';
  
   constructor(){
+    let us :Iuser = new user("", "", "USUARIO");
+    localStorage.setItem("USER", JSON.stringify(us));
   }
 
   ngOnInit(): void {

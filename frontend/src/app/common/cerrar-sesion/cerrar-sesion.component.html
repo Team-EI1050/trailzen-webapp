@@ -1,7 +1,7 @@
-
+<app-navbar></app-navbar>
 
 <div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
-    <button type="submit" (click)="cerrarSesion()">Cerrar Sesión</button>
+    <button type="submit" (click)="cerrarSesion()" routerLink="/">Cerrar Sesión</button>
 </div>
 
 
