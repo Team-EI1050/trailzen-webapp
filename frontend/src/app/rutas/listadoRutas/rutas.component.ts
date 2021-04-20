@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Ruta } from 'src/app/modelos/ruta';
-import { RutaService } from '../ruta.service';
 
 @Component({
   selector: 'app-rutas',
@@ -10,21 +7,24 @@ import { RutaService } from '../ruta.service';
 })
 export class RutasComponent implements OnInit {
 
-  ruta: Ruta;
+  constructor() { }
 
-  constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
+  // constructor(private userService: UserService, private senderistaService: SenderistaService) { 
+  //   this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
+  //     nombre:    new FormControl('', Validators.required),
+  //     distancia: new FormControl('', Validators.required),
+  //     puntoInico:  new FormControl('', Validators.required),
+  //     puntoFin:  new FormControl('', Validators.required),
+  //     circular:  new FormControl('', Validators.required),
+  //     aprobada: new FormControl(''),
+  //     fotos: new FormControl('¡Soy un nuevo senderista!'),
+  //     fotoPerfil: new FormControl('')
+  //   });
+  //   this.validos = true; 
+  //   this.data = "Uno de tus campos es incorrecto";
+  // }
 
   ngOnInit() {
-
-    // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
-    // console.log("Id:" + this.getId);
-    this.rutaService.getRuta('6075a29951822b2eb1f8f43c').subscribe(res => {
-      console.log("Res:" + res);
-      this.ruta = res;
-      console.log("senderista:" + this.ruta);
-    })
-
-
   }
 
 }
