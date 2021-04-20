@@ -65,6 +65,28 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [{nombre: "foto1", url: "dir/foto1"}, {nombre: "foto2", url: "dir/foto2"}],
 		viable: true
+  },
+
+	{
+		nombre: "Ruta de ejemplo 7", 
+		distancia: 7.5,
+		puntoInicio: "Punto de inicio 1",
+		puntoFin: "Punto fin 23",
+		circular: true,
+		aprobada: true,
+		fotos: [{nombre: "foto1", url: "dir/foto1"}, {nombre: "foto2", url: "dir/foto2"}],
+		viable: true
+  },
+
+	{
+		nombre: "Ruta de ejemplo 8", 
+		distancia: 13,
+		puntoInicio: "Punto de inicio 1",
+		puntoFin: "Punto fin 23",
+		circular: true,
+		aprobada: true,
+		fotos: [{nombre: "foto1", url: "dir/foto1"}, {nombre: "foto2", url: "dir/foto2"}],
+		viable: true
   }
 ]
 
