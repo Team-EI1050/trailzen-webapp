@@ -1,6 +1,7 @@
 div.rutas {
-  width: 65%;
+  width: 80%;
   margin: 0 auto;
+  margin-right: 3%;
 }
 div.ruta {
   border: solid black 1px;

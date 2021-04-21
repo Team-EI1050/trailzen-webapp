@@ -22,7 +22,7 @@ export class DetallesRutaComponent implements OnInit {
     this.rutaService.getRuta(this.getId).subscribe(res => {
       console.log("Res:" + res);
       this.ruta = res;
-      console.log("Ruta:" + this.ruta);
+      console.log("Ruta:" + this.ruta.nombre);
     })
 
   }
