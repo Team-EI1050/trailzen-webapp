@@ -55,7 +55,7 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
       console.log("Variable coor: " +coord);
 
       if(coord.length>1){
-        var polygon = L.polyline(coord, { color: 'red', fillOpacity: 0 }).addTo(this);
+        var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this); //tambien queda bien #008987
         this.fitBounds(polygon.getBounds());
       }
     }

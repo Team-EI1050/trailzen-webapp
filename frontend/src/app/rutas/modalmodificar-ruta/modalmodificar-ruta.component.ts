@@ -11,7 +11,7 @@ import { RutaService } from '../ruta.service'
   templateUrl: './modalmodificar-ruta.component.html',
   styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarRutaComponent {
+export class ModalmodificarRutaComponent{
   closeResult = '';
 
   @Input() ruta: Ruta;
@@ -24,6 +24,8 @@ export class ModalmodificarRutaComponent {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el navbar antes de abrir el modal
     //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
     this.modalService.open(content, {centered: true, ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
+      (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
+      //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -46,6 +48,8 @@ export class ModalmodificarRutaComponent {
   getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
+    console.log("Circular? "+nCircular);
 
     let ok: boolean = true;
 
@@ -67,18 +71,24 @@ export class ModalmodificarRutaComponent {
       });
       ok=false;
     }
-    if(this.ruta.coordenadas.length<2){
+    if(this.ruta.coordenadas.length<3){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
         confirmButtonColor: "#F99721",
-        text: "Se necesita marcar la ruta sobre el mapa."
+        text: "Se necesitan marcar al menos 3 puntos de ruta sobre el mapa."
       });
       ok=false;
     }
     if(ok){
+
       this.ruta.nombre = nNombre;
       this.ruta.distancia = Number(nDistancia);
+      this.ruta.circular = nCircular;
+
+      if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+        this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+      }
 
       this.rutaService.updateRuta(this.ruta).subscribe(res => {
         Swal.fire({
