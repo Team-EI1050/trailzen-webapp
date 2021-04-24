@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { Ruta } from 'src/app/modelos/ruta';
 
 
 const iconRetinaUrl = './assets/marker-icon-2x.png';
@@ -25,7 +26,8 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MapaRutaComponent implements OnInit, AfterViewInit {
 
   private mapa;
-  public coordenadasRuta: any = [];
+  public coordenadasRuta = new Array<{ lat: Number , lon: Number }>();
+  @Input() ruta: Ruta;
 
   constructor() { }
 
@@ -49,7 +51,7 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
     this.mapa.on('click', onMapClick);
 
     function onMapClick(e) {
-      coord.push([e.latlng.lat,e.latlng.lng]);
+      coord.push({lat: e.latlng.lat, lon: e.latlng.lng });
       console.log("Variable coor: " +coord);
 
       if(coord.length>1){
@@ -60,6 +62,11 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    console.log(this.ruta.coordenadas);
+    this.ruta.coordenadas=this.coordenadasRuta;
+  }
+  ngOnDestroy(): void{
+    console.log("Array bueno FINAL: "+this.ruta.coordenadas)
   }
 
   mostrarCoordenadas(){
