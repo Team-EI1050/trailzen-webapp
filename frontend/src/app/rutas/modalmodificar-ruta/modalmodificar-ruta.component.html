@@ -22,17 +22,8 @@
                     <div class="dere"><input required type="number" maxlength="10" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="distancia" value="{{ruta.distancia}}"></div>
                   </div>
                 </li>
-                <li class="sinPuntitos">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">Punto de inicio</label></div>
-                    <div class="dere"><input required type="text" minlength="3" maxlength="40" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="puntoInicio" value="{{ruta.puntoInicio}}"></div>
-                  </div>
-                </li>
-                <li class="sinPuntitos">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">Punto de fin</label></div>
-                    <div class="dere"><input required type="text" minlength="3" maxlength="40" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="puntoFin" value="{{ruta.puntoFin}}"></div>
-                  </div>
+                <li>
+                  <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
                 </li>
             </ul>
         </div>

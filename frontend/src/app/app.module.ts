@@ -25,6 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
+import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
     CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
+    MapaRutaComponent,
    ],
   imports: [
     BrowserModule,
