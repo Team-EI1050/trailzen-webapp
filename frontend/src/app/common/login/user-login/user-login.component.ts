@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Iuser } from 'src/app/modelos/Iuser';
 import { UserService } from '../user.service';
 
@@ -17,7 +18,7 @@ export class UserLoginComponent implements OnInit {
   miFormulario: FormGroup;
 
 
-  constructor( private userService: UserService ) { 
+  constructor( private userService: UserService, private router: Router ) { 
     this.validos = true; 
     this.data = "Usuario o contraseña incorrecta";
     this.miFormulario = new FormGroup({
@@ -52,6 +53,7 @@ export class UserLoginComponent implements OnInit {
           if (res.contrasenya == password) {
             this.user = res;
             localStorage.setItem("USER", JSON.stringify(this.user));
+            this.router.navigate(['/']);
           
           // No se han encontrado datos válidos.
           } else { 
@@ -60,6 +62,11 @@ export class UserLoginComponent implements OnInit {
             this.miFormulario.controls['nickname'].setValue("");
             this.miFormulario.controls['password'].setValue("");
           }
+        } else {
+          console.log("datos sin rellenar");
+          this.validos = false;
+          this.miFormulario.controls['nickname'].setValue("");
+          this.miFormulario.controls['password'].setValue("");
         }
       });
 
