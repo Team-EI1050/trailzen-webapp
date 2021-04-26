@@ -1,40 +1,66 @@
 <app-navbar></app-navbar>
 
 <div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
-    <div class="container" [formGroup]="miFormulario">
-    <from>
-      Nombre <input
-        [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
-        class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
-
-      Apellidos <input
-        [class.is-invalid]="miFormulario.get('apellidos').touched && miFormulario.get('apellidos').invalid" type="text"
-        class="form-control" placeholder="Introduce tus apellidos" formControlName="apellidos">
-
-      Correo electrónico <input
-        [class.is-invalid]="miFormulario.get('correo').touched && miFormulario.get('correo').invalid" type="text"
-        class="form-control" placeholder="Introduce tu correo" formControlName="correo">
-
-
-      Nombre de usuario <input
-        [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
-        class="form-control" placeholder="Introduce tu nickname" formControlName="nickname">
-
-
-      Contraseña <input
-        [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
+  <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
+    <div style="height: 711px;" class="container contenedor content sombra" [formGroup]="miFormulario">
+      <div class="content-1 sombra" style="margin: 0 auto; color:white; background-color: #232530 !important; width: 90%; padding: 30px; border-radius: 10px;">
+      <from>
+        <div>
+          Nombre
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
+          class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
+        </div>
+        <div style="margin-top: 5%;">
+          Apellidos
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('apellidos').touched && miFormulario.get('apellidos').invalid" type="text"
+          class="form-control" placeholder="Introduce tus apellidos" formControlName="apellidos">
+        </div>
+        <div style="margin-top: 5%;">
+          Correo electrónico
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('correo').touched && miFormulario.get('correo').invalid" type="text"
+          class="form-control" placeholder="Introduce tu correo" formControlName="correo">
+        </div>
+        <div style="margin-top: 5%;">
+          Nombre de usuario
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
+          class="form-control" placeholder="Introduce tu nickname" formControlName="nickname">
+        </div>
+        <div style="margin-top: 5%;">
+          Contraseña
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
         type="password" class="form-control" placeholder="Introduce tu contraseña" formControlName="password">
+        </div>
 
-      <button type="submit" (click)="registrarse()">Registrarse</button>
-      <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
-      <div class="invalid-feedback">{{data}}</div>
-    </from>
+        <!-- <button type="button" class="cancelbtn" routerLink="/">Cancelar</button> -->
+        <div class="invalid-feedback">{{data}}</div>
+      </from>
+      </div>
+      <div style="text-align: center; width: 100%;">
+        <button class="sombra" style="font-size: 22px; margin-top: 5%; width: 200px; background-color: #ffb95e !important; border-radius: 10px;" type="submit" (click)="registrarse()">Iniciar sesión</button>
+      </div>
+    </div>
   </div>
 </div>
 
+
 <div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
-    <div class="container-fluid bg-3 text-center">
-      <h3>Has iniciado sesión como</h3>
-      <p>{{user.nickname}}</p>
-    </div>
+  <div style="margin-top: 100px;" class="container-fluid bg-3 text-center">
+    <h3>Has iniciado sesión como</h3>
+    <p>{{user.nickname}}</p>
   </div>
+</div>

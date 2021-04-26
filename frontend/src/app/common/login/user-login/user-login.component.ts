@@ -55,15 +55,17 @@ export class UserLoginComponent implements OnInit {
           
           // No se han encontrado datos válidos.
           } else { 
-          this.validos = false;
-          this.miFormulario.controls['nickname'].setValue("");
-          this.miFormulario.controls['password'].setValue("");
+            console.log("datos ivalidos");
+            this.validos = false;
+            this.miFormulario.controls['nickname'].setValue("");
+            this.miFormulario.controls['password'].setValue("");
           }
         }
       });
 
     // El nickname o la contraseña no se han rellenado.
     } else {
+      console.log("datos sin rellenar");
       this.validos = false;
       this.miFormulario.controls['nickname'].setValue("");
       this.miFormulario.controls['password'].setValue("");
