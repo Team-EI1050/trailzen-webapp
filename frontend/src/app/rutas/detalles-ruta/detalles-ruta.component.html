@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+
+<div>
+  <ng-template [ngIf] = "ruta != undefined">                      
+      <table>
+        <tr> 
+          <td class="titulo" colspan="2">{{ruta.nombre}}</td>
+        </tr>
+        <tr>
+          <td class="imagen">
+            <img src="https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg" >
+          </td>
+          <td class="info">
+            <div class="descripcion">{{ruta.descripcion}}</div>
+            <div class="distancia">{{ruta.distancia}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td class="comentarios">Comentarios y demas</td>
+          <td class="botones">
+            <!-- <div *ngIf = "user.tipo!=null && user.tipo=='GESTOR'"></div> -->
+            <div class="boton"><button>Contratar monitor</button></div>
+            <div class="boton"><button>Proponer expedición</button></div>
+          </td>
+        </tr>
+      </table>
+  </ng-template>
+</div>

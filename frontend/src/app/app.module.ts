@@ -26,6 +26,8 @@ import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
+import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
+
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
+    DetallesRutaComponent
    ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
+    // BrowserAnimationsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]
