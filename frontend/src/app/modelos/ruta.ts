@@ -8,4 +8,5 @@ export class Ruta {
   aprobada: Boolean ;
   fotos: [ { nombre: String , url: String } ];
   viable: Boolean 
+  descripcion: String;
 }

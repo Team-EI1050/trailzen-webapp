@@ -2,11 +2,10 @@ table {
   width: 70%;;
   margin: auto;
   margin-top: 50px;
-  border: solid black 1px;
+  background-color: #666;;
 }
 
 td {
-  border: solid black 1px;
   width: 50%;
 }
 
@@ -16,6 +15,7 @@ td.titulo {
   font-size: xxx-large;
   font-kerning: none;
   font-family: sans-serif;
+  background: #ffb95e;
 
 }
 
@@ -30,6 +30,41 @@ td.info {
   padding-left: 50px;
   padding-right: 50px;
   text-align: justify;
+  background: #232530;
+  /* border:2px solid rgb(214, 214, 214); */
+  border-radius: 15px;
+  color: white;
 
+}
+
+td.comentarios {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  color: white; 
+}
+
+td.botones{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+div.boton{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+button {
+  border-radius: 15px;
+  border: 2px solid #ffb95e;
+  width: 250px;
+  height: 50px;
+  background-color: #666;
+  color: #ffb95e;
 }
 

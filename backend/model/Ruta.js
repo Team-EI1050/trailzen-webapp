@@ -9,7 +9,8 @@ let Ruta = new Schema ({
     circular: { type: Boolean },
     aprobada: { type: Boolean },
     fotos: [ { nombre: { type: String }, url:{ type: String }}],
-    viable: { type: Boolean }
+    viable: { type: Boolean },
+    descripcion: { type: String }
 },{collection: 'rutas'
 })
 
