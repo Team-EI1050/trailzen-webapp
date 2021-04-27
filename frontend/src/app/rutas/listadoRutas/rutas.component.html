@@ -3,7 +3,8 @@
 <div style="width: 100%; margin-top: 2%;">
   <div class="rutas">
     <div *ngFor="let ruta of rutas">
-      <a href = "/ruta/{{ruta._id}}">
+
+      <a routerLink = "/ruta/{{ruta._id}}">
         <div id="container" class="container ruta" style="background-size: cover; background-image: url(https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg);">
           <div id="top" class="top">
             <div class="top-left">{{ruta.nombre}}</div>

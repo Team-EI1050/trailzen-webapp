@@ -20,9 +20,7 @@ export class DetallesRutaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.user);
-    console.log(JSON.parse(localStorage.getItem("USER")));
-    console.log(this.user)
+    this.user = JSON.parse(localStorage.getItem("USER"));
 
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
     console.log("Id:" + this.getId);
