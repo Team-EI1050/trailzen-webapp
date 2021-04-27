@@ -26,7 +26,8 @@ import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
-import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
+import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
-    ProponerRutaComponent,
+    DetallesRutaComponent
    ],
   imports: [
     BrowserModule,
@@ -54,6 +55,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
+    // BrowserAnimationsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]
