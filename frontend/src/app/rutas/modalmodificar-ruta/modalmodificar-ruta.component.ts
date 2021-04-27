@@ -11,18 +11,21 @@ import { RutaService } from '../ruta.service'
   templateUrl: './modalmodificar-ruta.component.html',
   styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarRutaComponent {
+export class ModalmodificarRutaComponent{
   closeResult = '';
 
   @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, private gutaService: RutaService) { }
+  constructor(private modalService: NgbModal, private rutaService: RutaService) {
+  }
 
   //modal
   async open(content) {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el navbar antes de abrir el modal
-    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
+    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
     this.modalService.open(content, {centered: true, ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
+      (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
+      //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -31,7 +34,7 @@ export class ModalmodificarRutaComponent {
 
   private getDismissReason(reason: any): string {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -45,8 +48,9 @@ export class ModalmodificarRutaComponent {
   getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
     let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
-    let nPuntoInicio = (<HTMLInputElement>document.getElementById("puntoInicio")).value;
-    let nPuntoFin = (<HTMLInputElement>document.getElementById("puntoFin")).value;
+    let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
+    console.log("Circular? "+nCircular);
+
     let ok: boolean = true;
 
     if(nNombre==""){
@@ -67,22 +71,26 @@ export class ModalmodificarRutaComponent {
       });
       ok=false;
     }
-    if(nPuntoInicio=="" || nPuntoFin==""){
+    if(this.ruta.coordenadas.length<3){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
         confirmButtonColor: "#F99721",
-        text: "Se necesita un punto de inicio y fin"
+        text: "Se necesitan marcar al menos 3 puntos de ruta sobre el mapa."
       });
       ok=false;
     }
     if(ok){
+
       this.ruta.nombre = nNombre;
       this.ruta.distancia = Number(nDistancia);
-      this.ruta.puntoInicio = nPuntoInicio;
-      this.ruta.puntoFin = nPuntoFin;
+      this.ruta.circular = nCircular;
 
-      this.gutaService.updateRuta(this.ruta).subscribe(res => {
+      if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+        this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+      }
+
+      this.rutaService.updateRuta(this.ruta).subscribe(res => {
         Swal.fire({
           icon: 'success',
           title: 'Yaih!',

@@ -19,14 +19,13 @@ import { AppComponent } from './app.component';
 import { PerfilSenderistaComponent } from './senderista/perfilSenderista/perfilSenderista.component';
 import { PantallaInicioComponent } from './common/pantalla-inicio/pantalla-inicio.component';
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
-import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './common/login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.component';
+import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
+import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,8 @@ import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.compo
     RegistroComponent,
     CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
-    DetallesRutaComponent,
+    ModalmodificarRutaComponent,
+    MapaRutaComponent,
    ],
   imports: [
     BrowserModule,
@@ -52,7 +52,7 @@ import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.compo
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]
