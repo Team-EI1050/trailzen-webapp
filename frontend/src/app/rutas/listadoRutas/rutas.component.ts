@@ -18,11 +18,10 @@ export class RutasComponent implements OnInit {
 
     // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
     // console.log("Id:" + this.getId);
-    this.rutaService.getRuta('6083fd7a8f75f149bccbc228').subscribe(res => {
+    this.rutaService.getRuta('6087ef7c1bf63131ec570d7b').subscribe(res => {
       this.ruta = res;
       console.log("Ruta:" + res);
     })
-
 
   }
 
