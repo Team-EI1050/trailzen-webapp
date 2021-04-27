@@ -13,25 +13,29 @@
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Nombre</label></div>
-                    <div class="dere"><input required type="text" minlength="3" maxlength="20" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{ruta.nombre}}"></div>
+                    <div class="dere"><input required size="30" type="text" minlength="3" maxlength="60" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{ruta.nombre}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
                     <div class="izqui"><label for="">Distancia (Km)</label></div>
-                    <div class="dere"><input required type="number" maxlength="10" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="distancia" value="{{ruta.distancia}}"></div>
+                    <div class="dere"><input required type="number" maxlength="10" id="distancia" value="{{ruta.distancia}}"></div>
                   </div>
                 </li>
                 <li class="sinPuntitos">
                   <div class= "gordo">
-                    <div class="izqui"><label for="">Punto de inicio</label></div>
-                    <div class="dere"><input required type="text" minlength="3" maxlength="40" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="puntoInicio" value="{{ruta.puntoInicio}}"></div>
+                    <div class="izqui"><label for="">¿Es circular?</label></div>
+                    <div class="dere">
+                      <label class="switch">
+                        <input type="checkbox" id="circular" checked="{{ruta.circular}}">
+                        <span class="slider round"></span>
+                      </label>
+                    </div>
                   </div>
                 </li>
-                <li class="sinPuntitos">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">Punto de fin</label></div>
-                    <div class="dere"><input required type="text" minlength="3" maxlength="40" size="(this.value.length + 3)+'px';" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="puntoFin" value="{{ruta.puntoFin}}"></div>
+                <li>
+                  <div style="width: fit-content; border: solid #ff8800 3px; margin-left: 43px;">
+                    <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
                   </div>
                 </li>
             </ul>
