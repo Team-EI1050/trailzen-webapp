@@ -16,6 +16,8 @@ export class ProponerRutaComponent implements OnInit {
   data:         String;
 
   constructor(private userService: UserService, private senderistaService: SenderistaService) { 
+    this.user = JSON.parse(localStorage.getItem("USER"));
+    console.log(this.user);
     this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
       nombre:    new FormControl('', Validators.required),
       distancia: new FormControl('', Validators.required),

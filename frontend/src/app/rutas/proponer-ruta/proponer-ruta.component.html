@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div *ngIf="user.tipo=='SENDERISTA' || user.tipo==null">
+<div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
     <div class="container" [formGroup]="miFormulario">
     <from>
       Nombre <input
@@ -35,10 +35,3 @@
     </from>
   </div>
 </div>
-
-<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
-    <div class="container-fluid bg-3 text-center">
-      <h3>Has iniciado sesión como</h3>
-      <p>{{user.nickname}}</p>
-    </div>
-  </div>

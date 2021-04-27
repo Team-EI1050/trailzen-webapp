@@ -8,6 +8,7 @@ import { UserLoginComponent } from './common/login/user-login/user-login.compone
 import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.component';
+import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
 
 
 
