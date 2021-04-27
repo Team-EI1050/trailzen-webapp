@@ -25,11 +25,7 @@ import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
-<<<<<<< HEAD
-import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
-=======
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
->>>>>>> dev
 
 @NgModule({
   declarations: [
@@ -46,11 +42,7 @@ import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
     CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
-<<<<<<< HEAD
-    ProponerRutaComponent,
-=======
     MapaRutaComponent,
->>>>>>> dev
    ],
   imports: [
     BrowserModule,

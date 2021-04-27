@@ -4,6 +4,7 @@ import { UserService } from '../login/user.service';
 import { Iuser } from '../../modelos/Iuser';
 import { Senderista } from '../../modelos/senderista';
 import { SenderistaService } from '../../senderista/senderista.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
@@ -16,7 +17,7 @@ export class RegistroComponent implements OnInit {
   validos:      Boolean;
   data:         String;
 
-  constructor(private userService: UserService, private senderistaService: SenderistaService) { 
+  constructor(private userService: UserService, private senderistaService: SenderistaService, private router: Router ) { 
     this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
       nombre:    new FormControl('', Validators.required),
       apellidos: new FormControl('', Validators.required),
@@ -71,6 +72,7 @@ export class RegistroComponent implements OnInit {
               this.user=nuevo;
               localStorage.setItem("USER", JSON.stringify(this.user));
               console.log("¡Te has logeado!");
+              this.router.navigate(['/']);
               
             }
           });
