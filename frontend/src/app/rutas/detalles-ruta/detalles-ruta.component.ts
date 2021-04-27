@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Iuser } from 'src/app/modelos/Iuser';
 import { Ruta } from 'src/app/modelos/ruta';
 import { RutaService } from '../ruta.service';
 
@@ -10,12 +11,16 @@ import { RutaService } from '../ruta.service';
 })
 export class DetallesRutaComponent implements OnInit {
 
+  user: Iuser;
+
   getId: any;
   ruta: Ruta
 
   constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
 
   ngOnInit(): void {
+
+    this.user = JSON.parse(localStorage.getItem("USER"));
 
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
     console.log("Id:" + this.getId);

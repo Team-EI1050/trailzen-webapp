@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Iuser } from 'src/app/modelos/Iuser';
 import { Ruta } from 'src/app/modelos/ruta';
 import { RutaService } from '../ruta.service';
 
@@ -10,10 +11,13 @@ import { RutaService } from '../ruta.service';
 export class RutasComponent implements OnInit {
 
   rutas: Ruta [];
+  user: Iuser;
 
   constructor(private rutaService: RutaService) { }
 
   ngOnInit() {
+
+    this.user = JSON.parse(localStorage.getItem("USER"));
 
     this.rutaService.getRutas().subscribe(res => {
       console.log("Res:" + res);

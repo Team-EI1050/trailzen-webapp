@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <div>
   <ng-template [ngIf] = "ruta != undefined">                      
       <table>
@@ -17,6 +18,8 @@
         <tr>
           <td class="comentarios">Comentarios y demas</td>
           <td class="botones">
+            <div *ngIf = "user.tipo!=null && user.tipo=='GESTOR'"></div>
+            <!-- <div class="boton"><app-modalmodificar-ruta [ruta]="ruta"></app-modalmodificar-ruta></div> -->
             <div class="boton"><button>Contratar monitor</button></div>
             <div class="boton"><button>Proponer expedición</button></div>
           </td>
