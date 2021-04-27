@@ -10,24 +10,13 @@
         [class.is-invalid]="miFormulario.get('distancia').touched && miFormulario.get('distancia').invalid" type="text"
         class="form-control" placeholder="Distancia en KM" formControlName="distancia">
 
-      Punto Inicio <input
-        [class.is-invalid]="miFormulario.get('inicio').touched && miFormulario.get('inicio').invalid" type="inicio"
-        class="form-control" placeholder="Introduce tu inicio" formControlName="inicio">
-
-
-      Punto Fin <input
-        [class.is-invalid]="miFormulario.get('fin').touched && miFormulario.get('fin').invalid" type="text"
-        class="form-control" placeholder="Introduce tu fin" formControlName="fin">
-
+      Descripción <input
+      [class.is-invalid]="miFormulario.get('descripcion').touched && miFormulario.get('descripcion').invalid" type="text"
+      class="form-control" placeholder="Breve descripcion de la ruta" formControlName="descripcion">
 
       Circular <input
         [class.is-invalid]="miFormulario.get('circular').touched && miFormulario.get('circular').invalid"
         type="checkbox" class="form-control" placeholder="¿Es una ruta circular?" formControlName="circular">
-
-    
-      Fotos <input
-        [class.is-invalid]="miFormulario.get('fotos').touched && miFormulario.get('fotos').invalid"
-        type="text" class="form-control" placeholder="Introduce tu fotos" formControlName="fottos">
 
       <button type="submit" (click)="proponerRuta()">Registrarse</button>
       <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>

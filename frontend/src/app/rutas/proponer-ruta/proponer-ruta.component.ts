@@ -25,8 +25,10 @@ export class ProponerRutaComponent implements OnInit {
       puntoFin:  new FormControl('', Validators.required),
       circular:  new FormControl('', Validators.required),
       aprobada: new FormControl(true),
-      fotos: new FormControl('¡Soy un nuevo senderista!'),
-      viable: new FormControl(true)
+      viable: new FormControl(true),
+      creador: new FormControl(this.user._id),
+      descripcion: new FormControl('', Validators.required),
+
     });
     this.validos = true; 
     this.data = "Uno de tus campos es incorrecto";
