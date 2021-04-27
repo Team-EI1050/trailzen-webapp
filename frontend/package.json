@@ -25,6 +25,7 @@
     "@sweetalert2/ngx-sweetalert2": "^9.0.0",
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.5.0",
+    "leaflet": "^1.7.1",
     "rxjs": "^6.6.7",
     "sweetalert2": "^10.16.0",
     "tslib": "^2.0.0",
