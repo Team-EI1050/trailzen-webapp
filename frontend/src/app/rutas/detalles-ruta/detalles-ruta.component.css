@@ -31,7 +31,6 @@ td.info {
   padding-right: 50px;
   text-align: justify;
   background: #232530;
-  /* border:2px solid rgb(214, 214, 214); */
   border-radius: 15px;
   color: white;
 
@@ -46,12 +45,17 @@ td.comentarios {
   color: white; 
 }
 
-td.botones{
+td.botones {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 50px;
   padding-right: 50px;
   text-align: center;
+}
+
+span {
+  font-weight: bold;
+  font-style: italic;
 }
 
 div.boton{

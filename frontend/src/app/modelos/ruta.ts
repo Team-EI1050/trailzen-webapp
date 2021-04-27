@@ -6,7 +6,8 @@ export class Ruta {
   circular: Boolean ;
   aprobada: Boolean ;
   fotos: [ { nombre: String , url: String } ];
-  viable: Boolean 
+  viable: Boolean ;
+  creador: String;
   descripcion: String;
   valoraciones: [ {valoracion: Number, nickname: String} ] 
 }
