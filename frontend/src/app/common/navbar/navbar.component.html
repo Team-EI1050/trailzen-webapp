@@ -29,11 +29,16 @@
           <a class="nav-link" routerLink="/cerrarSesion">Cerrar Sesión</a>
         </li>
       </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proponerRuta">Proponer Ruta</a>
+        </li>
+      </div>
       <div>
         <li class="nav-item">
           <a class="nav-link" routerLink="/proponerRuta">Rutas</a>
         </li>
       </div>
-    </ul>
+     </ul> 
   </div>
 </nav>

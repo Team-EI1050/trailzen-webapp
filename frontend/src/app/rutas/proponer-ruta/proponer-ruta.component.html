@@ -1,4 +1,5 @@
-<div *ngIf="user.tipo=='USER' || user.tipo==null">
+<app-navbar></app-navbar>
+<div *ngIf="user.tipo=='SENDERISTA' || user.tipo==null">
     <div class="container" [formGroup]="miFormulario">
     <from>
       Nombre <input

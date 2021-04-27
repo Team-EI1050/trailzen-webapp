@@ -31,6 +31,7 @@ export class ProponerRutaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("USER"));
   }
 
 }

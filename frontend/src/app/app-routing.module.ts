@@ -19,8 +19,7 @@ const routes: Routes = [
   {path: 'login', component: UserLoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'cerrarSesion', component: CerrarSesionComponent},
-  {path: 'proponerRuta', component: ProponerRutaComponent}
-  
+  {path: 'proponerRuta', component: ProponerRutaComponent}  
 ];
 
 @NgModule({
