@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Ruta } from 'src/app/modelos/ruta';
+import { RutaService } from '../ruta.service';
 
 @Component({
   selector: 'app-rutas',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RutasComponent implements OnInit {
 
-  constructor() { }
+  ruta: Ruta;
+
+  constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
 
   ngOnInit() {
+
+    // this.getId = this.activatedRoute.snapshot.paramMap.get('id');
+    // console.log("Id:" + this.getId);
+    this.rutaService.getRuta('6087ef7c1bf63131ec570d7b').subscribe(res => {
+      this.ruta = res;
+      console.log("Ruta:" + res);
+    })
+
   }
 
 }

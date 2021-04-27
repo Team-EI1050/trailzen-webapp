@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <!-- El modal en si -->
 <ng-template #content let-modal>
     <div class="modal-header">
@@ -39,7 +40,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close(); getDatosYActualiza()">Guardar</button>
+      <button type="button" class="btn btn-outline-dark boton-modal" (click)="modal.close(); getDatosYActualiza()">Guardar</button>
     </div>
   </ng-template>
   <!-- Previa a abrirse el modal -->

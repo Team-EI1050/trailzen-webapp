@@ -1,30 +1,31 @@
-import {Component, Input} from '@angular/core';
-import Swal from 'sweetalert2'
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import {Component, Input } from '@angular/core';
 
-import { Senderista } from '../../modelos/senderista'
-import { SenderistaService } from '../senderista.service'
-import { filter } from 'rxjs/operators';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2'
+
+import { Ruta } from '../../modelos/ruta'
+import { RutaService } from '../ruta.service'
 
 @Component({
-  selector: 'app-modalmodificar-senderista',
-  templateUrl: './modalmodificar-senderista.component.html',
-  styleUrls: ['./modalmodificar-senderista.component.css']
+  selector: 'app-modalmodificar-ruta',
+  templateUrl: './modalmodificar-ruta.component.html',
+  styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarSenderistaComponent {
+export class ModalmodificarRutaComponent{
   closeResult = '';
 
-  @Input() senderista: Senderista;
+  @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, private senderistaService: SenderistaService) {}
+  constructor(private modalService: NgbModal, private rutaService: RutaService) {
+  }
 
   //modal
   async open(content) {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el navbar antes de abrir el modal
-    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
+    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
     this.modalService.open(content, {centered: true, ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
       (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-      (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+      //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -33,7 +34,7 @@ export class ModalmodificarSenderistaComponent {
 
   private getDismissReason(reason: any): string {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -44,12 +45,12 @@ export class ModalmodificarSenderistaComponent {
   }
   //---------------
 
-  getDatosYActualiza(){  //toma los datos del modal y actualiza el senderista.
-
+  getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    let nApellido = (<HTMLInputElement>document.getElementById("apellido")).value;
-    let nNickname = (<HTMLInputElement>document.getElementById("nickname")).value;
-    let nDescripcion = (<HTMLInputElement>document.getElementById("descripcion")).value;
+    let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
+    console.log("Circular? "+nCircular);
+
     let ok: boolean = true;
 
     if(nNombre==""){
@@ -61,42 +62,45 @@ export class ModalmodificarSenderistaComponent {
       });
       ok=false;
     }
-    if(nApellido==""){
+    if(Number(nDistancia) == NaN || Number(nDistancia) <= 0){
       Swal.fire( {
           icon: 'error',
           title: 'Oops...',
           confirmButtonColor: "#F99721",
-          text: "Debe introducir al menos un apellido"
+          text: "La distancia debe ser mayor a 0"
       });
       ok=false;
     }
-    if(nNickname==""){
+    if(this.ruta.coordenadas.length<3){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
         confirmButtonColor: "#F99721",
-        text: "No puede eliminar su nombre de usuario"
+        text: "Se necesitan marcar al menos 3 puntos de ruta sobre el mapa."
       });
       ok=false;
     }
     if(ok){
-      this.senderista.nombre = nNombre;
-      this.senderista.apellido = nApellido;
-      this.senderista.nickname = nNickname;
-      this.senderista.descripcion = nDescripcion;
 
-      this.senderistaService.updateSenderista(this.senderista).subscribe(res => {
+      this.ruta.nombre = nNombre;
+      this.ruta.distancia = Number(nDistancia);
+      this.ruta.circular = nCircular;
+
+      if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+        this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+      }
+
+      this.rutaService.updateRuta(this.ruta).subscribe(res => {
         Swal.fire({
           icon: 'success',
           title: 'Yaih!',
-          text: "Perfil actualizado correctamente!",
+          text: "Ruta actualizada correctamente!",
           showConfirmButton: false,
           toast: true,
           timer: 2000,
           timerProgressBar: true
         });
       });
-      localStorage.setItem("USER", JSON.stringify(this.senderista)); // Añadida por alberto el lunes
     }
   }
 }

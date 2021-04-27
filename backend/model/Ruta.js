@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 let Ruta = new Schema ({
     nombre: { type: String },
     distancia: { type: Number },
-    puntoInicio: { type: String },
-    puntoFin: { type: String },
+    coordenadas: [ {lat: {type: Number}, lon:{type: Number}} ], //Array de coordenadas para dibujar la ruta
     circular: { type: Boolean },
     aprobada: { type: Boolean },
     fotos: [ { nombre: { type: String }, url:{ type: String }}],
-    viable: { type: Boolean }
+    viable: { type: Boolean },
+    valoraciones: [ {valoracion: {type: Number}, nickname:{type: String}} ] //Valorar una ruta
 },{collection: 'rutas'
 })
 

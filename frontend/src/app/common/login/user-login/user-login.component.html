@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
+  <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
+    <div style="height: 443px;" class="container contenedor content sombra" [formGroup]="miFormulario">
+      <div class="content-1 sombra" style="margin: 0 auto; color:white; background-color: #232530 !important; width: 90%; padding: 30px; border-radius: 10px;">
+      <from>
+        <div>
+          Nombre de usuario
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('nickname').touched && miFormulario.get('nickname').invalid" type="text"
+          class="form-control" placeholder="Introduce tu nickname" formControlName="nickname">
+        </div>
+        <div style="margin-top: 5%;">
+          Contraseña
+        </div>
+        <div style="width: 80%; margin: auto;">
+          <input
+          [class.is-invalid]="miFormulario.get('password').touched && miFormulario.get('password').invalid"
+          type="password" class="form-control" placeholder="Introduce tu contraseña" formControlName="password">
+        </div>
+        <div style="margin-top: 2%;">
+          <label class="checkbox-inline"><input style="width: -10%;" type="checkbox" value="" formControlName="soyGestor"> Soy Gestor</label>
+        </div>
+      </from>
+    </div>
+    <!-- <button type="button" class="cancelbtn" routerLink="/">Cancelar</button> -->
+    <div style="text-align: center; width: 100%;">
+      <button class="sombra" style="font-size: 22px; margin-top: 5%; width: 200px; background-color: #ffb95e !important; border-radius: 10px;" type="submit" (click)="getUser()">Iniciar sesión</button>
+    </div>
+    <div id="invalido" class="invalid-feedback">{{data}}</div>
+  </div>
+</div>
+
+<div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+  <div style="margin-top: 100px;" class="container-fluid bg-3 text-center">
+    <h3>Has iniciado sesión como</h3>
+    <p>{{user.nickname}}</p>
+  </div>
+</div>
