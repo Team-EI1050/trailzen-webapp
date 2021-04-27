@@ -7,6 +7,7 @@ import { RutasComponent } from './rutas/listadoRutas/rutas.component'
 import { UserLoginComponent } from './common/login/user-login/user-login.component';
 import { RegistroComponent } from './common/registro/registro.component';
 import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
+import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
 
 
 
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: 'ruta/:id', component: RutasComponent},
   {path: 'login', component: UserLoginComponent},
   {path: 'registro', component: RegistroComponent},
-  {path: 'cerrarSesion', component: CerrarSesionComponent}
+  {path: 'cerrarSesion', component: CerrarSesionComponent},
+  {path: 'proponerRuta', component: ProponerRutaComponent}
   
 ];
 
