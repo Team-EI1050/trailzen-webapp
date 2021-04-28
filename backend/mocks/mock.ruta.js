@@ -9,8 +9,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "alberto",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 4,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 4}, {nickname: "miriam", valoracion: 3} ],
+		// comentarios: [ {nickname: "alberto", comentario: "Genial"}, {nickname: "senderista", comentario: "Muy bonita"}, {nickname: "miriam", comentario: "Con mucho barro"}, {nickname: "alberto", comentario: "Buenas vistas"} ]
   },
 	{
 		nombre: "Ruta ejemplo 1", 
@@ -20,8 +23,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 3,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 1}, {nickname: "miriam", valoracion: 3} ],
+		// comentarios: [ {nickname: "alberto", comentario: "Genial"}, {nickname: "senderista", comentario: "Demasiado marron"}, {nickname: "miriam", comentario: "Con mucho barro"} ]
   },
 	{
 		nombre: "Ruta ejemplo 2", 
@@ -31,8 +37,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 2,
+		// valoraciones: [ {nickname: "alberto", valoracion: 2}, {nickname: "senderista", valoracion: 1}, {nickname: "miriam", valoracion: 3} ],
+		// comentarios: [ {nickname: "alberto", comentario: "Las he visto mejores"}, {nickname: "senderista", comentario: "Rocosa"}, {nickname: "miriam", comentario: "No esta mal"} ]
   },
 	{
 		nombre: "Ruta ejemplo 3", 
@@ -42,8 +51,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 4,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 5}, {nickname: "miriam", valoracion: 2} ],
+		// comentarios: [ {nickname: "alberto", comentario: "No pagaria por ella"}, {nickname: "senderista", comentario: "Con demasiada agua"}, {nickname: "miriam", comentario: "Infestada de insectos"} ]
   },
 	{
 		nombre: "Ruta ejemplo 4", 
@@ -53,8 +65,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 4,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 5}, {nickname: "miriam", valoracion: 2} ],
+		// comentarios: [ {nickname: "alberto", comentario: "No pagaria por ella"}, {nickname: "senderista", comentario: "Con demasiada agua"}, {nickname: "miriam", comentario: "Infestada de insectos"} ]
   },
 	{
 		nombre: "Ruta ejemplo 5", 
@@ -64,8 +79,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 4,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 5}, {nickname: "miriam", valoracion: 2} ],
+		// comentarios: [ {nickname: "alberto", comentario: "No pagaria por ella"}, {nickname: "senderista", comentario: "Con demasiada agua"}, {nickname: "miriam", comentario: "Infestada de insectos"} ]
   },
 	{
 		nombre: "Ruta ejemplo 6", 
@@ -75,8 +93,11 @@ const RUTAS = [
 		aprobada: true,
 		fotos: [],
 		viable: true,
+		creador: "admin1",
 		descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-		valoraciones: [ {valoracion: 4, nickname:"alberto"}, {valoracion: 3, nickname:"miriam"} ] //Valorar una ruta
+		valoracion: 4,
+		// valoraciones: [ {nickname: "alberto", valoracion: 5}, {nickname: "senderista", valoracion: 5}, {nickname: "miriam", valoracion: 2} ],
+		// comentarios: [ {nickname: "alberto", comentario: "No pagaria por ella"}, {nickname: "senderista", comentario: "Con demasiada agua"}, {nickname: "miriam", comentario: "Infestada de insectos"} ]
   }
 ]
 

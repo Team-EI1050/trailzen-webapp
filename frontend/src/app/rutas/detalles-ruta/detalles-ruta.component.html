@@ -2,7 +2,7 @@
 
 <div>
   <ng-template [ngIf] = "ruta != undefined">                      
-      <table>
+      <table class="sombra">
         <tr> 
           <td class="titulo" colspan="2">{{ruta.nombre}}</td>
         </tr>
@@ -11,18 +11,27 @@
             <app-mapa-detalle [ruta]="ruta"></app-mapa-detalle>
           </td>
           <td class="info">
-            <div class="descripcion">{{ruta.descripcion}}</div>
-            <div class="distancia">{{ruta.distancia}}</div>
+            <div class="datos">{{ruta.descripcion}}</div>
+            <br>
+            <div class="datos">
+              <span>Longitud : &nbsp;</span>
+              {{ruta.distancia}} Km
+              <br>
+              <span>Dificultad : &nbsp;</span>
+              <br>
+              <span>Valoración : &nbsp;</span>
+              {{ruta.valoracion}}
+            </div>
           </td>
         </tr>
         <tr>
           <td class="comentarios">Comentarios y demas</td>
           <td class="botones">
-            <!-- <div *ngIf = "user.tipo!=null && user.tipo=='GESTOR'">
-              <app-modalmodificar-ruta></app-modalmodificar-ruta>
-            </div> -->
-            <div class="boton"><button>Contratar monitor</button></div>
-            <div class="boton"><button>Proponer expedición</button></div>
+            <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">
+              <app-modalmodificar-ruta [ruta]="ruta"></app-modalmodificar-ruta>
+            </div>
+            <div class="boton"><button type="button">Contratar monitor</button></div>
+            <div class="boton"><button type="button">Proponer expedición</button></div>
           </td>
         </tr>
       </table>
