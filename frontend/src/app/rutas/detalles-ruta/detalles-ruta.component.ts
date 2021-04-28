@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Iuser } from 'src/app/modelos/Iuser';
@@ -14,7 +15,7 @@ export class DetallesRutaComponent implements OnInit {
   user: Iuser;
 
   getId: any;
-  ruta: Ruta
+  @Input() ruta;
 
   constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
 

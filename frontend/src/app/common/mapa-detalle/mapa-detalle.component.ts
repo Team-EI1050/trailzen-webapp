@@ -34,7 +34,8 @@ export class MapaDetalleComponent implements OnInit, AfterViewInit {
     let coord = []; //gracias
     coord = this.ruta.coordenadas; //a ti tambien --> valor por referencia rules :)
 
-    var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this); //tambien queda bien #008987
+    var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this.mapa); //tambien queda bien #008987
     this.mapa.fitBounds(polygon.getBounds());
+    console.log("Termino de creal el mapa, la ruta:  ", this.ruta.coordenadas)
   }
 }
