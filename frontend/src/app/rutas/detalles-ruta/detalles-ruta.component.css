@@ -1,8 +1,13 @@
 table {
-  width: 70%;;
+  width: 70%;
   margin: auto;
   margin-top: 50px;
-  background-color: #666;;
+  background-color: #666;
+  border-radius: 15px;
+}
+
+.sombra{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 td {
@@ -16,7 +21,7 @@ td.titulo {
   font-kerning: none;
   font-family: sans-serif;
   background: #ffb95e;
-
+border-radius: 15px 15px 0px 0px;
 }
 
 td.imagen {
@@ -31,7 +36,6 @@ td.info {
   padding-right: 50px;
   text-align: justify;
   background: #232530;
-  border-radius: 15px;
   color: white;
 
 }

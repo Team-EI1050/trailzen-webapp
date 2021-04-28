@@ -2,7 +2,7 @@
 
 <div>
   <ng-template [ngIf] = "ruta != undefined">                      
-      <table>
+      <table class="sombra">
         <tr> 
           <td class="titulo" colspan="2">{{ruta.nombre}}</td>
         </tr>
@@ -20,6 +20,7 @@
               <span>Dificultad : &nbsp;</span>
               <br>
               <span>Valoración : &nbsp;</span>
+              {{ruta.valoracion}}
             </div>
           </td>
         </tr>

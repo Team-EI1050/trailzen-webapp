@@ -14,6 +14,18 @@ const SENDERISTAS = [
     fotoPerfil: "https://photonomad.es/wp-content/uploads/2018/12/selfie.jpg",
     tipo: "SENDERISTA"
   }, 
+  { 
+    _id: "senderista",
+    correo: "alXX@uji.es",
+  nickname: "alberto",
+  contrasenya: "senderista",
+  fechaCreacion: "23/03/2021",
+  descripcion: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
+  nombre: "Senderista",
+  apellido: "Apellidos",
+  fotoPerfil: "https://photonomad.es/wp-content/uploads/2018/12/selfie.jpg",
+  tipo: "SENDERISTA"
+  }, 
   { _id: "miriam",
     correo: "al356376@uji.es",
       nickname: "miriam",
