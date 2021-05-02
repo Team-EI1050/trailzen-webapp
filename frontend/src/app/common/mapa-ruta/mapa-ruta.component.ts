@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Ruta } from 'src/app/modelos/ruta';
-
 
 const iconRetinaUrl = './assets/marker-icon-2x.png';
 const iconUrl = './assets/marker-icon.png';
@@ -23,7 +22,7 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './mapa-ruta.component.html',
   styleUrls: ['./mapa-ruta.component.css']
 })
-export class MapaRutaComponent implements OnInit, AfterViewInit {
+export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private mapa;
   public coordenadasRuta = new Array<{ lat: Number , lon: Number }>();
@@ -62,20 +61,10 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log(this.ruta.coordenadas);
     this.ruta.coordenadas=this.coordenadasRuta;
+    document.getElementById("map").setAttribute("id", "mapoff");
   }
   ngOnDestroy(): void{
-    console.log("Array bueno FINAL: "+this.ruta.coordenadas)
-  }
-
-  mostrarCoordenadas(){
-    console.log("Array bueno: "+this.coordenadasRuta);
-    // var latlngs = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
-    // var polygon = L.polygon(this.coordenadasRuta, { color: 'red', fillOpacity: 0 }).addTo(this.mapa);
-    // // zoom the map to the polygon
-    // if(this.coordenadasRuta.length>1){
-    //   this.mapa.fitBounds(polygon.getBounds());
-    // }
+    document.getElementById("mapoff").setAttribute("id", "map");
   }
 }

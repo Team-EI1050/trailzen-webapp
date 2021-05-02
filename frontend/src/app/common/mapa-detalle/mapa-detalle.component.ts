@@ -19,9 +19,7 @@ export class MapaDetalleComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.mapa = L.map("mapaDetalle", {
-      center: [ 40.401, -3.68 ],
-      zoom: 6
+    this.mapa = L.map("map", {
     });
 
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -36,6 +34,13 @@ export class MapaDetalleComponent implements OnInit, AfterViewInit {
 
     var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this.mapa); //tambien queda bien #008987
     this.mapa.fitBounds(polygon.getBounds());
-    console.log("Termino de creal el mapa, la ruta:  ", this.ruta.coordenadas)
+  }
+
+  actualizaMapa(): void {
+    if(this.mapa != undefined) {
+      console.log("Se me llama OnChanges")
+      var polygon = L.polyline(this.ruta.coordenadas, { color: '#004789', fillOpacity: 0 }).addTo(this.mapa); //tambien queda bien #008987
+      this.mapa.fitBounds(polygon.getBounds());
+    }
   }
 }

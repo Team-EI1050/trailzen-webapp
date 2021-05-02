@@ -11,7 +11,7 @@ import { RutaService } from '../ruta.service'
   templateUrl: './modalmodificar-ruta.component.html',
   styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarRutaComponent{
+export class ModalmodificarRutaComponent {
   closeResult = '';
 
   @Input() ruta: Ruta;
@@ -91,6 +91,7 @@ export class ModalmodificarRutaComponent{
       }
 
       this.rutaService.updateRuta(this.ruta).subscribe(res => {
+        this.ruta = res;
         Swal.fire({
           icon: 'success',
           title: 'Yaih!',
