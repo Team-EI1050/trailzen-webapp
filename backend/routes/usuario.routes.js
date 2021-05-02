@@ -11,29 +11,27 @@ userRoute.route('/').post((req, res, next) => {
     Senderista.findById(req.body['nickname']),
     Gestor.findById(req.body['nickname'])
   ]).then(value => {
-    if(value.some((value) => value != null))
+    if (value.some((value) => value != null))
       next(new Error('[ERROR]: Ya existe un usuario/a con este nickname'))
     else {
-      if (req.body['tipo'] == 'SENDERISTA'){
+      if (req.body['tipo'] == 'SENDERISTA') {
         Senderista.create(req.body, (error, data) => {
           if (error) {
-            console.log('[ERROR]: Error en la creación de usuario/a ')
-            console.log('[ERROR]: ' + error)
+            console.log('[ERROR] Error en la creación de usuario/a ')
             return next(error)
           } else {
             res.json(data)
-            console.log('[STATUS]: Senderista ( ' +  req.body['nickname']  + ' ) añadido/a');
+            console.log('[STATUS] Senderista ( ' + req.body['nickname'] + ' ) añadido/a');
           }
         })
       } else {
         Gestor.create(req.body, (error, data) => {
           if (error) {
-            console.log('[ERROR]: Error en la creación de usuario/a ')
-            console.log('[ERROR]: ' + error)
+            console.log('[ERROR] Error en la creación de usuario/a ')
             return next(error)
           } else {
             res.json(data)
-            console.log('[STATUS]: Gestor ( ' +  req.body['nickname']  + ' ) añadido/a');
+            console.log('[STATUS] Gestor ( ' + req.body['nickname'] + ' ) añadido/a');
           }
         })
       }
@@ -43,9 +41,26 @@ userRoute.route('/').post((req, res, next) => {
 
 
 
-
-
-
+// Obtener un usuario de la base de datos
+userRoute.route('/:id').get((req, res) => {
+  Promise.all([
+    Senderista.findById(req.params['id']),
+    Gestor.findById(req.params['id'])
+  ]).then(value => {
+    let o = null  
+    for (let i in value){
+      if (value[i] != null){
+       o = value[i]
+      } 
+    }
+    if (o == null)
+      console.log('[ERROR] No se ha encontrado al usuario/a ( ' + req.params['id'] + ' )');
+    else{
+      console.log('[STATUS] Obtenido usuario/a ( ' + req.params['id'] + ' )');
+    }
+    res.json(o)
+  })
+});
 
 
 
