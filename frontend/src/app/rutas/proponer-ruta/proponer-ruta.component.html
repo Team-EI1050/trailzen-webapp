@@ -13,6 +13,9 @@
       Descripción <input
       [class.is-invalid]="miFormulario.get('descripcion').touched && miFormulario.get('descripcion').invalid" type="text"
       class="form-control" placeholder="Breve descripcion de la ruta" formControlName="descripcion">
+      
+      Coordenadas
+      <app-mapa-ruta [ruta]="coordenadas"></app-mapa-ruta>
 
       Circular <input
         [class.is-invalid]="miFormulario.get('circular').touched && miFormulario.get('circular').invalid"
