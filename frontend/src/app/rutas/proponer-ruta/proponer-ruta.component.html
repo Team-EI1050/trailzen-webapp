@@ -15,11 +15,28 @@
       class="form-control" placeholder="Breve descripcion de la ruta" formControlName="descripcion">
       
       Coordenadas
-      <app-mapa-ruta [ruta]="coordenadas"></app-mapa-ruta>
+      <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
 
       Circular <input
         [class.is-invalid]="miFormulario.get('circular').touched && miFormulario.get('circular').invalid"
         type="checkbox" class="form-control" placeholder="¿Es una ruta circular?" formControlName="circular">
+
+      Dificultad<select
+      [class.is-invalid]="miFormulario.get('dificultad').touched && miFormulario.get('dificultad').invalid"
+      class="form-control" placeholder="Seleccione dificultad" formControlName="dificultad">
+        <option value="facil">Fácil</option>
+        <option value="media">Media</option>
+        <option value="dificil">Difícil</option>
+      </select>
+
+      Provincia<select
+      [class.is-invalid]="miFormulario.get('provincia').touched && miFormulario.get('provincia').invalid"
+      class="form-control" placeholder="Seleccione provincia" formControlName="provincia">
+        <option value="castellon">Castellón</option>
+        <option value="valencia">Valencia</option>
+        <option value="alicante">Alicante</option>
+      </select>
+
 
       <button type="submit" (click)="proponerRuta()">Registrarse</button>
       <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
