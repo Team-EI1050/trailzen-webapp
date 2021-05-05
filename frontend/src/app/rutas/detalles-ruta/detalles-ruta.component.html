@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div>
+<div id="poner-borroso">
   <ng-template [ngIf] = "ruta != undefined">                      
       <table class="sombra">
         <tr> 
@@ -29,7 +29,7 @@
             <div class="datos">{{ruta.descripcion}}</div>
             <br>
             <div class="datos">
-              <span>Longitud : &nbsp;</span>
+              <span>Longitud aproximada : &nbsp;</span>
               {{ruta.distancia}} Km
               <br>
               <span>Dificultad : &nbsp;</span>

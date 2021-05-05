@@ -16,16 +16,16 @@ export class ModalmodificarRutaComponent {
 
   @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, private rutaService: RutaService) {
+  constructor(private modalService: NgbModal, public rutaService: RutaService) {
   }
 
   //modal
   async open(content) {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el navbar antes de abrir el modal
-    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
+    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
     this.modalService.open(content, {centered: true, ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
       (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-      //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+      (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -34,7 +34,10 @@ export class ModalmodificarRutaComponent {
 
   private getDismissReason(reason: any): string {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    this.rutaService.getRuta(this.ruta._id.toString()).subscribe(data => {
+      this.ruta = data;
+    });
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -47,7 +50,7 @@ export class ModalmodificarRutaComponent {
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    //let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
     let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
     console.log("Circular? "+nCircular);
 
@@ -59,15 +62,6 @@ export class ModalmodificarRutaComponent {
         title: 'Oops...',
         confirmButtonColor: "#F99721",
         text: "El nombre no puede quedarse vacío"
-      });
-      ok=false;
-    }
-    if(Number(nDistancia) == NaN || Number(nDistancia) <= 0){
-      Swal.fire( {
-          icon: 'error',
-          title: 'Oops...',
-          confirmButtonColor: "#F99721",
-          text: "La distancia debe ser mayor a 0"
       });
       ok=false;
     }
@@ -83,7 +77,8 @@ export class ModalmodificarRutaComponent {
     if(ok){
 
       this.ruta.nombre = nNombre;
-      this.ruta.distancia = Number(nDistancia);
+      this.ruta.distancia = Number((Number(this.rutaService.contadorKm[0])/1000).toFixed(2)); //arte
+      this.rutaService.contadorKm = new Array(1);
       this.ruta.circular = nCircular;
 
       if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
