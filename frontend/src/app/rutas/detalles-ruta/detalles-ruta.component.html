@@ -9,6 +9,9 @@
         <tr>
           <td class="imagen">
             <ngb-carousel>
+              <ng-template ngbSlide>
+                <app-mapa-detalle [ruta]="ruta"></app-mapa-detalle>
+              </ng-template>
               <ng-template ngbSlide *ngFor="let image of ruta.fotos">
                 <div class="picsum-img-wrapper">
                   <img [src]="image.url" alt="Random first slide">

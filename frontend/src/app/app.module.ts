@@ -27,6 +27,7 @@ import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.comp
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
+import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.compon
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
-    DetallesRutaComponent
+    DetallesRutaComponent,
+    MapaDetalleComponent
    ],
   imports: [
     BrowserModule,
