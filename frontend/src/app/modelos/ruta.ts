@@ -13,8 +13,7 @@ export class Ruta {
   creador: String;
   valoraciones: [ {valoracion: Number, nickname: String} ] 
 
-
-  constructor(id: String, nombre: String, distancia:Number, coordenadas: [],
+  constructor(id: String, nombre: String, distancia:Number, coordenadas: { lat: Number , lon: Number } [],
     circular:Boolean, aprobada: Boolean, viable:Boolean, descripcion:String, dificultad: String, provincia:String, creador: String){
     this._id = id;
     this.nombre=nombre;
@@ -29,5 +28,5 @@ export class Ruta {
     this.provincia = provincia;
     this.creador = creador;
     this.valoraciones=null;
-}
+  }
 }

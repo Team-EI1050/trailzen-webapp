@@ -17,9 +17,10 @@ export class ProponerRutaComponent implements OnInit {
   miFormulario: FormGroup;
   validos:      Boolean;
   data:         String;
-  @Input() ruta: Ruta;
+  ruta: Ruta;
 
   constructor(private rutaService: RutaService,  private router: Router) { 
+    this.ruta=new Ruta(null,null,null,null,null,null,null,null,null,null,null);
     this.user = JSON.parse(localStorage.getItem("USER"));
     console.log(this.user);
     this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
@@ -27,13 +28,14 @@ export class ProponerRutaComponent implements OnInit {
       distancia: new FormControl('', Validators.required),
       ruta: new FormControl(Validators.required),
       circular:  new FormControl('', Validators.required),
-      aprobada: new FormControl(true),
+      aprobada: new FormControl(false),
       viable: new FormControl(true),
       creador: new FormControl(this.user._id),
       descripcion: new FormControl('', Validators.required),
       dificultad: new FormControl('', Validators.required),
       provincia: new FormControl('', Validators.required)
     });
+    this.ruta.coordenadas=[{ lat: null , lon: null }];
     this.validos = true; 
     this.data = "Uno de tus campos es incorrecto";
   }
@@ -45,10 +47,8 @@ export class ProponerRutaComponent implements OnInit {
   proponerRuta(){
       let nombre=(this.miFormulario.controls['nombre'].value);
       let distancia=(this.miFormulario.controls['distancia'].value);
-      //let ruta.coordenadas=(this.miFormulario.controls['ruta'].value);
-      let ruta=(this.miFormulario.controls['ruta'].value);
       let aprobada=true;
-      let viable= true;
+      let viable= null;
       let circular=(this.miFormulario.controls['circular'].value);
       let descripcion=(this.miFormulario.controls['descripcion'].value);
       let creador=nombre;
@@ -56,14 +56,14 @@ export class ProponerRutaComponent implements OnInit {
       let provincia=(this.miFormulario.controls['provincia'].value);    
       
 
-      if (nombre == '' ||  distancia == '' ||  ruta.length < 3 || descripcion == ''){
+      if (nombre == '' ||  distancia == '' ||  this.ruta.coordenadas.length < 3 || descripcion == ''){
         this.validos = false;
         this.miFormulario.controls['nombre'].setValue("");
         this.miFormulario.controls['distancia'].setValue("");
       }else{
         // this.rutaService.getRuta(id).subscribe(res => {
         //   if (res==null){ //registra la nueva ruta
-            let nuevaRuta=new Ruta('',nombre,distancia,ruta,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
+            let nuevaRuta=new Ruta('',nombre,distancia,this.ruta.coordenadas,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
             this.rutaService.addRuta(nuevaRuta).subscribe(nuevo => {
               if(nuevaRuta==null) {
                 console.log("Problema al crear la ruta");
