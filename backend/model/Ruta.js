@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const Comentario = require('./Comentario');
-const Valoracion = require('./Valoracion');
 const Schema = mongoose.Schema;
 
 let Ruta = new Schema ({
@@ -14,8 +12,8 @@ let Ruta = new Schema ({
     creador: String,
     descripcion: String,
     valoracion: Number,
-    // valoraciones: [ Valoracion ],
-    // comentarios: [ Comentario ]
+    valoraciones: [ { nickname: String, valor: String } ],
+    comentarios: [ { nickname: String, comentario: String } ]
 },{collection: 'rutas'
 })
 

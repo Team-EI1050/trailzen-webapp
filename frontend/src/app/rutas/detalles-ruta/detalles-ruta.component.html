@@ -8,9 +8,18 @@
         </tr>
         <tr>
           <td class="imagen">
-            <img src="https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg" >
+            <ngb-carousel>
+              <ng-template ngbSlide *ngFor="let image of ruta.fotos">
+                <div class="picsum-img-wrapper">
+                  <img [src]="image.url" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3>{{image.nombre}}</h3>
+                </div>
+              </ng-template>
+            </ngb-carousel>
           </td>
-          <td class="info">
+          <td class="info" rowspan="2">
             <div class="datos">{{ruta.descripcion}}</div>
             <br>
             <div class="datos">
@@ -25,7 +34,27 @@
           </td>
         </tr>
         <tr>
-          <td class="comentarios">Comentarios y demas</td>
+          <td>
+            Formuluario
+          </td>
+        </tr>
+        <tr>
+          <td class="comentarios">
+            <p class="title">Comentarios</p>
+            <div class="scrollbar scrollbar-primary">
+              <div class="force-overflow">
+                <div *ngFor = "let comentario of ruta.comentarios">
+                  <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                </div>
+              </div>
+              
+            </div>
+
+            <!-- <div *ngFor = "let comentario of ruta.comentarios">
+              <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+            </div> -->
+            
+          </td>
           <td class="botones">
             <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">
               <app-modalmodificar-ruta [ruta]="ruta"></app-modalmodificar-ruta>

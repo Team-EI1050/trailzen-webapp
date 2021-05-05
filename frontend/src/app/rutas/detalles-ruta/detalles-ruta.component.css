@@ -2,6 +2,7 @@ table {
   width: 70%;
   margin: auto;
   margin-top: 50px;
+  border: 1px solid black;
   background-color: #666;
   border-radius: 15px;
 }
@@ -12,6 +13,7 @@ table {
 
 td {
   width: 50%;
+  border: 1px solid black;
 }
 
 td.titulo {
@@ -21,7 +23,7 @@ td.titulo {
   font-kerning: none;
   font-family: sans-serif;
   background: #ffb95e;
-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
 }
 
 td.imagen {
@@ -46,7 +48,28 @@ td.comentarios {
   padding-left: 50px;
   padding-right: 50px;
   text-align: center;
-  color: white; 
+  color: white;
+}
+
+p.title {
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: justify;
+  color: #ffb95e;
+}
+
+p.comentario {
+  font-style: italic;
+  border: 2px solid #232530;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 15px;
+  max-width: 500px;
+  background-color:rgb(151, 151, 151);
 }
 
 td.botones {
