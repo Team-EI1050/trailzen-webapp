@@ -51,11 +51,10 @@ export class ProponerRutaComponent implements OnInit {
       let viable= null;
       let circular=(this.miFormulario.controls['circular'].value);
       let descripcion=(this.miFormulario.controls['descripcion'].value);
-      let creador=nombre;
+      let creador=this.user._id;
       let dificultad=(this.miFormulario.controls['dificultad'].value);
       let provincia=(this.miFormulario.controls['provincia'].value);    
       
-
       if (nombre == '' ||  distancia == '' ||  this.ruta.coordenadas.length < 3 || descripcion == ''){
         this.validos = false;
         this.miFormulario.controls['nombre'].setValue("");
@@ -63,27 +62,31 @@ export class ProponerRutaComponent implements OnInit {
       }else{
         // this.rutaService.getRuta(id).subscribe(res => {
         //   if (res==null){ //registra la nueva ruta
-            let nuevaRuta=new Ruta(null,nombre,distancia,this.ruta.coordenadas,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
-            this.rutaService.addRuta(nuevaRuta).subscribe(nuevo => {
-              if(nuevaRuta==null) {
-                console.log("Problema al crear la ruta");
-              }
-              else{
-                console.log("Ruta registrada");
-                this.router.navigate(['/']);
-                
-              }
-            });
-          // }
-          // else { //si ya existe ese nickname, muestra un error y pone los campos a null
-          //   this.validos = false;
-          //     this.miFormulario.controls['nombre'].setValue("");
-          //     this.miFormulario.controls['distancia'].setValue("");
-          // }
-        // });
-      }  
-    
-  }
+
+        if (circular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+          this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+        }
+          let nuevaRuta=new Ruta(null,nombre,distancia,this.ruta.coordenadas,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
+          this.rutaService.addRuta(nuevaRuta).subscribe(nuevo => {
+            if(nuevaRuta==null) {
+              console.log("Problema al crear la ruta");
+            }
+            else{
+              console.log("Ruta registrada");
+              this.router.navigate(['/']);
+              
+            }
+          });
+        // }
+        // else { //si ya existe ese nickname, muestra un error y pone los campos a null
+        //   this.validos = false;
+        //     this.miFormulario.controls['nombre'].setValue("");
+        //     this.miFormulario.controls['distancia'].setValue("");
+        // }
+      // });
+    }  
+  
+}
 
 }
 
