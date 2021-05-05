@@ -18,8 +18,7 @@
       <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
 
       Circular <input
-        [class.is-invalid]="miFormulario.get('circular').touched && miFormulario.get('circular').invalid"
-        type="checkbox" class="form-control" placeholder="¿Es una ruta circular?" formControlName="circular">
+        type="checkbox" class="form-control" formControlName="circular" value=true>
 
       Dificultad<select
       [class.is-invalid]="miFormulario.get('dificultad').touched && miFormulario.get('dificultad').invalid"

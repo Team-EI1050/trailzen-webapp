@@ -27,7 +27,7 @@ export class ProponerRutaComponent implements OnInit {
       nombre:    new FormControl('', Validators.required),
       distancia: new FormControl('', Validators.required),
       ruta: new FormControl(Validators.required),
-      circular:  new FormControl('', Validators.required),
+      circular:  new FormControl(false),
       aprobada: new FormControl(false),
       viable: new FormControl(true),
       creador: new FormControl(this.user._id),
@@ -63,7 +63,7 @@ export class ProponerRutaComponent implements OnInit {
       }else{
         // this.rutaService.getRuta(id).subscribe(res => {
         //   if (res==null){ //registra la nueva ruta
-            let nuevaRuta=new Ruta('',nombre,distancia,this.ruta.coordenadas,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
+            let nuevaRuta=new Ruta(null,nombre,distancia,this.ruta.coordenadas,circular,aprobada, viable,descripcion,dificultad,provincia,creador)
             this.rutaService.addRuta(nuevaRuta).subscribe(nuevo => {
               if(nuevaRuta==null) {
                 console.log("Problema al crear la ruta");
