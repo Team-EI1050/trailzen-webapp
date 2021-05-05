@@ -11,6 +11,9 @@
             <ngb-carousel>
               <ng-template ngbSlide>
                 <app-mapa-detalle [ruta]="ruta"></app-mapa-detalle>
+                <div class="carousel-caption">
+                  <h3>Mapa</h3>
+                </div>
               </ng-template>
               <ng-template ngbSlide *ngFor="let image of ruta.fotos">
                 <div class="picsum-img-wrapper">
@@ -37,8 +40,15 @@
           </td>
         </tr>
         <tr>
-          <td>
-            Formuluario
+          <td class="formulario">
+            <form>
+              <div>
+                <ngb-rating max=5 [(rate)]="currentRate"></ngb-rating>
+              </div>
+              <div class="textarea">
+                <textarea maxlength="150" rows="4" cols="54" id="comentario" placeholder="Deja tu opinión"></textarea>
+              </div>
+            </form>
           </td>
         </tr>
         <tr>

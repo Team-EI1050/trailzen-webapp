@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import { map } from 'rxjs/operators';
 import { Ruta } from 'src/app/modelos/ruta';
 
 @Component({
@@ -31,6 +32,13 @@ export class MapaDetalleComponent implements OnInit, AfterViewInit {
 
     let coord = []; //gracias
     coord = this.ruta.coordenadas; //a ti tambien --> valor por referencia rules :)
+
+    // window.dispatchEvent(new Event('resize'))
+
+    setTimeout(() => {
+      this.mapa.invalidateSize();
+      this.mapa.fitBounds(polygon.getBounds());
+    }, 0);
 
     var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this.mapa); //tambien queda bien #008987
     this.mapa.fitBounds(polygon.getBounds());
