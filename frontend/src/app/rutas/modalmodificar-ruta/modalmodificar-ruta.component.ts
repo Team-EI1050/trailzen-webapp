@@ -1,4 +1,5 @@
 import {Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2'
@@ -14,9 +15,11 @@ import { RutaService } from '../ruta.service'
 export class ModalmodificarRutaComponent {
   closeResult = '';
 
+  modificarCoordenadas: boolean = false;
+
   @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, public rutaService: RutaService) {
+  constructor(private modalService: NgbModal, public rutaService: RutaService, private router: Router) {
   }
 
   //modal
@@ -50,9 +53,9 @@ export class ModalmodificarRutaComponent {
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    //let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    this.modificarCoordenadas = (<HTMLInputElement>document.getElementById("modificarCoordenadas")).checked;
     let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
-    console.log("Circular? "+nCircular);
+    console.log("modificar coordenadas? "+this.modificarCoordenadas);
 
     let ok: boolean = true;
 
@@ -65,7 +68,7 @@ export class ModalmodificarRutaComponent {
       });
       ok=false;
     }
-    if(this.ruta.coordenadas.length<3){
+    if(this.modificarCoordenadas && this.ruta.coordenadas.length<3){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
@@ -76,26 +79,57 @@ export class ModalmodificarRutaComponent {
     }
     if(ok){
 
-      this.ruta.nombre = nNombre;
-      this.ruta.distancia = Number((Number(this.rutaService.contadorKm[0])/1000).toFixed(2)); //arte
-      this.rutaService.contadorKm = new Array(1);
-      this.ruta.circular = nCircular;
+      if(!this.modificarCoordenadas){ //Se mantienen las coordenadas de la ruta
+        this.rutaService.getRuta(this.ruta._id.toString()).subscribe(data =>{
+          this.ruta = data;
+          this.ruta.nombre = nNombre;
+          this.ruta.circular = nCircular;
+          if (nCircular && this.ruta.coordenadas[this.ruta.coordenadas.length-1] != this.ruta.coordenadas[0]){ 
+            //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+            this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+          }
+          this.rutaService.updateRuta(this.ruta).subscribe(res => {
+            this.ruta = res;
+            Swal.fire({
+              icon: 'success',
+              title: 'Yaih!',
+              text: "Ruta actualizada correctamente!",
+              showConfirmButton: false,
+              toast: true,
+              timer: 2000,
+              timerProgressBar: true
+            });
+          });
+        })
+      } else{ //Se modifican las coordenadas de la ruta
+        
+        this.ruta.nombre = nNombre;
+        this.ruta.distancia = Number((Number(this.rutaService.contadorKm[0])/1000).toFixed(2)); //arte
+        this.rutaService.contadorKm = new Array(1);
+        this.ruta.circular = nCircular;
 
-      if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
-        this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
-      }
+        if (nCircular && this.ruta.coordenadas[this.ruta.coordenadas.length-1] != this.ruta.coordenadas[0]){ 
+          //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+          this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+        }
 
-      this.rutaService.updateRuta(this.ruta).subscribe(res => {
-        this.ruta = res;
-        Swal.fire({
-          icon: 'success',
-          title: 'Yaih!',
-          text: "Ruta actualizada correctamente!",
-          showConfirmButton: false,
-          toast: true,
-          timer: 2000,
-          timerProgressBar: true
+        this.rutaService.updateRuta(this.ruta).subscribe(res => {
+          this.ruta = res;
+          Swal.fire({
+            icon: 'success',
+            title: 'Yaih!',
+            text: "Ruta actualizada correctamente!",
+            showConfirmButton: false,
+            toast: true,
+            timer: 2000,
+            timerProgressBar: true
+          });
         });
+      }
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+          console.log(currentUrl);
       });
     }
   }
