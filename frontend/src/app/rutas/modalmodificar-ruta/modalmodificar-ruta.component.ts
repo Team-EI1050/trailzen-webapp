@@ -1,6 +1,9 @@
-import {Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Iuser } from 'src/app/modelos/Iuser';
 import Swal from 'sweetalert2'
 
 import { Ruta } from '../../modelos/ruta'
@@ -14,10 +17,43 @@ import { RutaService } from '../ruta.service'
 export class ModalmodificarRutaComponent{
   closeResult = '';
 
+  user:         Iuser;
+  miFormulario: FormGroup;
+  validos:      Boolean;
+  data:         String;
+
+
   @Input() ruta: Ruta;
 
-  constructor(private modalService: NgbModal, private rutaService: RutaService) {
+  constructor(
+    private modalService: NgbModal, 
+    private rutaService: RutaService, 
+    private router: Router)
+    {
+
+      this.user = JSON.parse(localStorage.getItem("USER"));
+
+      console.log(this.user);
+      this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
+        nombre:    new FormControl('', Validators.required),
+        distancia: new FormControl('', Validators.required),
+        ruta: new FormControl(Validators.required),
+        circular:  new FormControl(false),
+        aprobada: new FormControl(false),
+        viable: new FormControl(true),
+        creador: new FormControl(this.user._id),
+        descripcion: new FormControl('', Validators.required),
+        dificultad: new FormControl('', Validators.required),
+        provincia: new FormControl('', Validators.required)
+      });
+      this.ruta.coordenadas=[{ lat: null , lon: null }];
+      this.validos = true; 
+      this.data = "Uno de tus campos es incorrecto";
   }
+
+  // ngOnInit() {
+  //   this.user = JSON.parse(localStorage.getItem("USER"));
+  // }
 
   //modal
   async open(content) {
@@ -103,4 +139,5 @@ export class ModalmodificarRutaComponent{
       });
     }
   }
+
 }

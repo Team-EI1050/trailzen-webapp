@@ -11,18 +11,37 @@
             <img src="https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg" >
           </td>
           <td class="info">
-            <div class="descripcion">{{ruta.descripcion}}</div>
-            <div class="distancia">{{ruta.distancia}}</div>
+            <div class="descripcion"><h4>Descripción</h4>{{ruta.descripcion}}</div>
+            <div class="distancia" style="margin-top: 30px;">
+              <h4>Detalles</h4>
+              <p>Distacia: {{ruta.distancia}} Km</p>
+
+              <div *ngIf = "user.tipo!==null && user.tipo==='GESTOR'">
+                <p>Aprobada: {{ruta.aprobada}}</p>
+                <!-- <p>coordenadas: {{ruta.coordenadas}}</p> -->
+                <!-- <p>circular: {{ruta.circular}}</p> -->
+                <!-- <p>fotos: {{ruta.fotos}}</p> -->
+                <p>viable: {{ruta.viable}}</p>
+                <!-- <p>dificultad: {{ruta.dificultad}}</p> -->
+                <!-- <p>provincia: {{ruta.provincia}}</p> -->
+                <!-- <p>creador: {{ruta.creador}}</p> -->
+                <!-- <p>valoraciones: {{ruta.valoraciones}}</p> -->
+              </div>
+
+            </div>
           </td>
         </tr>
         <tr>
           <td class="comentarios">Comentarios y demas</td>
           <td class="botones">
-            <!-- <div *ngIf = "user.tipo!=null && user.tipo=='GESTOR'">
+            <div *ngIf = "user.tipo!==null && user.tipo==='GESTOR'">
               <app-modalmodificar-ruta></app-modalmodificar-ruta>
-            </div> -->
+            </div>
             <div class="boton"><button>Contratar monitor</button></div>
             <div class="boton"><button>Proponer expedición</button></div>
+            <div *ngIf = "user.tipo!==null && user.tipo==='GESTOR'" class="boton">
+              <button (click)="aprobarRuta()">Aprobar ruta</button>
+            </div>
           </td>
         </tr>
       </table>
