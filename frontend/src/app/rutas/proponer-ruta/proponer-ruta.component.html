@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
-    <div class="container" [formGroup]="miFormulario">
-    <from>
+    <div class="container">
+    <form  [formGroup]="miFormulario">
       Nombre <input
         [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
         class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
@@ -37,9 +37,9 @@
       </select>
 
 
-      <button type="submit" (click)="proponerRuta()">Registrarse</button>
+      <button type="submit" (click)="proponerRuta()">Proponer</button>
       <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
       <div class="invalid-feedback">{{data}}</div>
-    </from>
+    </form>
   </div>
 </div>

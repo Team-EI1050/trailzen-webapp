@@ -2,9 +2,9 @@
 
 <div *ngIf="user.tipo=='USUARIO' || user.tipo==null">
   <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
-    <div style="height: 711px;" class="container contenedor content sombra" [formGroup]="miFormulario">
+    <div style="height: 711px;" class="container contenedor content sombra">
       <div class="content-1 sombra" style="margin: 0 auto; color:white; background-color: #232530 !important; width: 90%; padding: 30px; border-radius: 10px;">
-      <from>
+      <form [formGroup]="miFormulario">
         <div>
           Nombre
         </div>
@@ -48,10 +48,10 @@
 
         <!-- <button type="button" class="cancelbtn" routerLink="/">Cancelar</button> -->
         <div class="invalid-feedback">{{data}}</div>
-      </from>
+      </form>
       </div>
       <div style="text-align: center; width: 100%;">
-        <button class="sombra" style="font-size: 22px; margin-top: 5%; width: 200px; background-color: #ffb95e !important; border-radius: 10px;" type="submit" (click)="registrarse()">Iniciar sesión</button>
+        <button class="sombra" style="font-size: 22px; margin-top: 5%; width: 200px; background-color: #ffb95e !important; border-radius: 10px;" type="submit" (click)="registrarse()">Registrarse</button>
       </div>
     </div>
   </div>
