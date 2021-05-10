@@ -44,11 +44,10 @@ export class DetallesRutaComponent implements OnInit {
     let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
     console.log("Comentario: " + coment)
 
-    if (valor != NaN) {
-      this.valoracion.nickname = this.user.nickname;
-      this.valoracion.valor = valor;
-      this.ruta.valoraciones.push(this.valoracion);
-      this.calcularValoracion()
+    if (valor != NaN || valor != undefined || valor != null) {
+        this.valoracion.nickname = this.user.nickname;
+        this.valoracion.valor = valor;
+        this.calcularValoracion(this.valoracion)
     }
 
     if (coment != ""){
@@ -65,18 +64,33 @@ export class DetallesRutaComponent implements OnInit {
 
   }
 
-  calcularValoracion() {
+  calcularValoracion(valoracion: {nickname: String, valor: Number}) {
     this.suma = 0;
+    let previo = false;
     
-    for (var valoracion of this.ruta.valoraciones) {
-      var valor = valoracion.valor
-      console.log("Valoracion: " + valoracion.valor)
-      this.suma = Number(this.suma) + Number(valor)
-      console.log("Suma: " + this.suma)
+    // Se recorren todas las valoraciones previas acumulando las puntuaciones, y si es del mismo usuario se sustituye por la nueva puntuación
+    for (var rate of this.ruta.valoraciones) {
+      if (rate.nickname == valoracion.nickname) {
+        previo = true;
+        rate.valor = valoracion.valor
+        this.suma = Number(this.suma) + Number(rate.valor)
+        console.log("Repetido - " + rate.nickname + ": " + rate.valor)
+      } else {
+        this.suma = Number(this.suma) + Number(rate.valor)
+        console.log(rate.nickname + ": " + rate.valor)
+      }
     }
+
+    // Si el usuario no había valorado, se añade la puntuación y se acumula a la suma total
+    if (previo == false) {
+      this.ruta.valoraciones.push(valoracion);
+      this.suma = Number(this.suma) + Number(valoracion.valor)
+      console.log("Nuevo - " + valoracion.nickname + ": " + valoracion.valor)
+    }
+
+    // Se calcula la media de las valoraciones
     this.ruta.valoracion = (this.suma / this.ruta.valoraciones.length).toFixed(1)
 
-    console.log(this.ruta.valoracion)
   }
 
 }
