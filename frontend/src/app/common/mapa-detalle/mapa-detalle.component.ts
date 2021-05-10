@@ -52,3 +52,5 @@ export class MapaDetalleComponent implements OnInit, AfterViewInit {
     }
   }
 }
+
+

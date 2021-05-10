@@ -1,15 +1,14 @@
 <app-navbar></app-navbar>
 <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
-    <div class="container">
+  <div class="container">
     <form  [formGroup]="miFormulario">
       Nombre <input
         [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
         class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
 
-      Distancia <input
+      <!-- Distancia <input
         [class.is-invalid]="miFormulario.get('distancia').touched && miFormulario.get('distancia').invalid" type="text"
-        class="form-control" placeholder="Distancia en KM" formControlName="distancia">
-
+        class="form-control" placeholder="Distancia en KM" formControlName="distancia"> -->
       Descripción <input
       [class.is-invalid]="miFormulario.get('descripcion').touched && miFormulario.get('descripcion').invalid" type="text"
       class="form-control" placeholder="Breve descripcion de la ruta" formControlName="descripcion">

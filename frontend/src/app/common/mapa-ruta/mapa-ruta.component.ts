@@ -44,6 +44,8 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
+    console.log("hasta aqui")
+
     tiles.addTo(this.mapa);
 
     let contador = [];
