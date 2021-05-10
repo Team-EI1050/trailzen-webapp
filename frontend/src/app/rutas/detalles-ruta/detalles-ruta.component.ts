@@ -1,3 +1,4 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Iuser } from 'src/app/modelos/Iuser';
@@ -12,9 +13,12 @@ import { RutaService } from '../ruta.service';
 export class DetallesRutaComponent implements OnInit {
 
   user: Iuser;
-
+  valoracion: { nickname: String, valor: Number };
+  comentario: { nickname: String, comentario: String };
+  currentRate;
+  suma: number;
   getId: any;
-  ruta: Ruta
+  @Input() ruta;
 
   constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
 
@@ -29,6 +33,63 @@ export class DetallesRutaComponent implements OnInit {
       this.ruta = res;
       console.log("Ruta:" + this.ruta.nombre);
     })
+
+  }
+
+  crearOpinion() {
+    this.valoracion = {nickname: "", valor: NaN}
+    this.comentario = {nickname: "", comentario: ""}
+    let valor = this.currentRate;
+    console.log("Valor: " + valor)
+    let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
+    console.log("Comentario: " + coment)
+
+    if (valor != NaN || valor != undefined || valor != null) {
+        this.valoracion.nickname = this.user.nickname;
+        this.valoracion.valor = valor;
+        this.calcularValoracion(this.valoracion)
+    }
+
+    if (coment != ""){
+      this.comentario.nickname = this.user.nickname;
+      this.comentario.comentario = coment;
+      this.ruta.comentarios.push(this.comentario);
+    }
+
+    this.rutaService.updateRuta(this.ruta).subscribe(res => {
+      this.rutaService.getRuta(this.getId).subscribe(res => {
+        this.ruta = res;
+      })
+    });
+
+  }
+
+  calcularValoracion(valoracion: {nickname: String, valor: Number}) {
+    this.suma = 0;
+    let previo = false;
+    
+    // Se recorren todas las valoraciones previas acumulando las puntuaciones, y si es del mismo usuario se sustituye por la nueva puntuación
+    for (var rate of this.ruta.valoraciones) {
+      if (rate.nickname == valoracion.nickname) {
+        previo = true;
+        rate.valor = valoracion.valor
+        this.suma = Number(this.suma) + Number(rate.valor)
+        console.log("Repetido - " + rate.nickname + ": " + rate.valor)
+      } else {
+        this.suma = Number(this.suma) + Number(rate.valor)
+        console.log(rate.nickname + ": " + rate.valor)
+      }
+    }
+
+    // Si el usuario no había valorado, se añade la puntuación y se acumula a la suma total
+    if (previo == false) {
+      this.ruta.valoraciones.push(valoracion);
+      this.suma = Number(this.suma) + Number(valoracion.valor)
+      console.log("Nuevo - " + valoracion.nickname + ": " + valoracion.valor)
+    }
+
+    // Se calcula la media de las valoraciones
+    this.ruta.valoracion = (this.suma / this.ruta.valoraciones.length).toFixed(1)
 
   }
 

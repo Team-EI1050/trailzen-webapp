@@ -1,14 +1,25 @@
 let Gestor = require('../model/Gestor');
 
 const GESTOR = [
-    { _id: "admin1",
-      correo: "al567826@uji.es",
+  { _id: "admin1",
+    correo: "al567826@uji.es",
     nickname: "admin1",
     nombre: "Daniel",
     apellido: "Garcia Ruiz",
     contrasenya: "Extrauren",
     fechaCreacion: "23/03/2021",
     descripcion: "Gestor de la plataforma trailzen", 
+    dni: "56456734F",
+    tipo: "GESTOR"
+  }, 
+  { _id: "admin",
+    correo: "admin@uji.es",
+    nickname: "admin",
+    nombre: "Admin",
+    apellido: "Admin",
+    contrasenya: "admin",
+    fechaCreacion: "23/03/2021",
+    descripcion: "Admin de la plataforma trailzen", 
     dni: "56456734F",
     tipo: "GESTOR"
   }, 
