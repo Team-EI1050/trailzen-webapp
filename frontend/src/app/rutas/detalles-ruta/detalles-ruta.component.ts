@@ -13,7 +13,10 @@ import { RutaService } from '../ruta.service';
 export class DetallesRutaComponent implements OnInit {
 
   user: Iuser;
-
+  valoracion: { nickname: String, valor: Number };
+  comentario: { nickname: String, comentario: String };
+  currentRate;
+  suma: number;
   getId: any;
   @Input() ruta;
 
@@ -31,6 +34,49 @@ export class DetallesRutaComponent implements OnInit {
       console.log("Ruta:" + this.ruta.nombre);
     })
 
+  }
+
+  crearOpinion() {
+    this.valoracion = {nickname: "", valor: NaN}
+    this.comentario = {nickname: "", comentario: ""}
+    let valor = this.currentRate;
+    console.log("Valor: " + valor)
+    let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
+    console.log("Comentario: " + coment)
+
+    if (valor != NaN) {
+      this.valoracion.nickname = this.user.nickname;
+      this.valoracion.valor = valor;
+      this.ruta.valoraciones.push(this.valoracion);
+      this.calcularValoracion()
+    }
+
+    if (coment != ""){
+      this.comentario.nickname = this.user.nickname;
+      this.comentario.comentario = coment;
+      this.ruta.comentarios.push(this.comentario);
+    }
+
+    this.rutaService.updateRuta(this.ruta).subscribe(res => {
+      this.rutaService.getRuta(this.getId).subscribe(res => {
+        this.ruta = res;
+      })
+    });
+
+  }
+
+  calcularValoracion() {
+    this.suma = 0;
+    
+    for (var valoracion of this.ruta.valoraciones) {
+      var valor = valoracion.valor
+      console.log("Valoracion: " + valoracion.valor)
+      this.suma = Number(this.suma) + Number(valor)
+      console.log("Suma: " + this.suma)
+    }
+    this.ruta.valoracion = (this.suma / this.ruta.valoraciones.length).toFixed(1)
+
+    console.log(this.ruta.valoracion)
   }
 
 }

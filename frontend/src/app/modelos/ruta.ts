@@ -9,5 +9,7 @@ export class Ruta {
   viable: Boolean ;
   creador: String;
   descripcion: String;
-  valoraciones: [ {valoracion: Number, nickname: String} ] 
+  valoracion: Number;
+  valoraciones: [ { nickname: String, valor: String } ];
+  comentarios: [ { nickname: String, comentario: String } ];
 }
