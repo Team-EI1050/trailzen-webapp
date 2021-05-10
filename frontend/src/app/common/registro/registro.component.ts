@@ -60,7 +60,7 @@ export class RegistroComponent implements OnInit {
       this.miFormulario.controls['nickname'].setValue("");
       this.miFormulario.controls['password'].setValue("");
     }else{
-      this.userService.obtenerUsuario(nickname, password, false).subscribe(res => {
+      this.userService.obtenerUsuario(nickname).subscribe(res => {
         if (res==null){ //registra el nuevo senderista
           let nuevoSenderista=new Senderista(nickname,correo,nickname,password,fechaCreacion,descripcion,nombre,apellido)
           this.senderistaService.addSenderista(nuevoSenderista).subscribe(nuevo => {

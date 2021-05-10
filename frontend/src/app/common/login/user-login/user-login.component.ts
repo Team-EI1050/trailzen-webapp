@@ -23,8 +23,7 @@ export class UserLoginComponent implements OnInit {
     this.data = "Usuario o contraseña incorrecta";
     this.miFormulario = new FormGroup({
       nickname:  new FormControl('', Validators.required),
-      password:  new FormControl('', Validators.required),
-      soyGestor: new FormControl('')
+      password:  new FormControl('', Validators.required)
     });
   }
 
@@ -38,13 +37,12 @@ export class UserLoginComponent implements OnInit {
 
     let nickname  = this.miFormulario.controls['nickname'].value;
     let password  = this.miFormulario.controls['password'].value;
-    let soyGestor = this.miFormulario.controls['soyGestor'].value;
 
     // Comprueba que los datos de entrada sean válidos.
     if (this.userService.validarDatos(nickname, password)) {
 
       // Trata de obtener el usuario introducido. 
-      this.userService.obtenerUsuario(nickname, password, soyGestor).subscribe(res => {
+      this.userService.obtenerUsuario(nickname).subscribe(res => {
 
         // Se trata de una respuesta correcta.
         if (res != null) {
