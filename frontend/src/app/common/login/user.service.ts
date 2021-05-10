@@ -10,8 +10,7 @@ import { Iuser } from '../../modelos/Iuser';
 export class UserService {
 
   REST_API:  string = 'http://localhost:8000';
-  SENDERISA: string = 'senderista';
-  GESTOR:    string = 'gestor';
+  USER: string = 'user';
 
   httpHeaders: HttpHeaders;
   user:        Iuser;
@@ -27,11 +26,8 @@ export class UserService {
   }
 
   // Hace una petición al server para obtener el senderista o el gestor y lo devuelve.
-  obtenerUsuario(nickname: String, pasword: string, soyGestor: Boolean) {
-    let API_URL;
-    // Operador ternario
-    API_URL = (soyGestor) ? `${this.REST_API}/${this.GESTOR.toLowerCase()}/${nickname}` : `${this.REST_API}/${this.SENDERISA.toLowerCase()}/${nickname}`;
-    return this.httpClient.get<Iuser>(API_URL);
+  obtenerUsuario(nickname: String) {
+    return this.httpClient.get<Iuser>(`${this.REST_API}/${this.USER.toLowerCase()}/${nickname}`);
   }
 
   // Handle error
