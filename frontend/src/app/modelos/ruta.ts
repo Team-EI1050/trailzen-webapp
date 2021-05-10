@@ -1,7 +1,7 @@
 export class Ruta {
   _id: String;
   nombre: String ;
-  distancia: Number ;
+  distancia: Number;
   coordenadas: { lat: Number , lon: Number } [];
   circular: Boolean ;
   aprobada: Boolean ;
