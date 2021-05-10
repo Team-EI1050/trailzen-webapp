@@ -61,19 +61,23 @@ export class PerfilGestorComponent implements OnInit {
         console.log("2 RUTA -> "+ruta._id);
         console.log("3 RUTA -> "+ruta.aprobada);
         
-        if (ruta.aprobada === true) {
+        if ( ruta.aprobada === true) {
           console.log("APROBADA TRUE");
         } else if (ruta.aprobada !== true) {
           console.log("APROBADA NO TRUE");
         }
 
-        if (ruta.aprobada !== true && ruta.viable !== false) {
+        if ( (ruta.aprobada === false || ruta.aprobada === null) && (ruta.viable === false || ruta.viable === null) ) {
           this.rutasSinValidar.push(ruta);
+          console.log("-0- Sin Validar");
           console.log(ruta);
-        } else if (ruta.aprobada === true && ruta.viable === true) {
+        } else if ( ruta.aprobada === true && ruta.viable === true ) {
+          console.log("-0- Validada");
           this.rutasValidadas.push(ruta);
         }
         console.log("4 Ruta --> "+ruta+" | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
+        console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
+        console.log("6 RutasValidadas --> "+this.rutasValidadas);
       })
     })
     
