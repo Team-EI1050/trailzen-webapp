@@ -1,6 +1,53 @@
 <app-navbar></app-navbar>
 
 <div style="width: 100%; margin-top: 2%;">
+<div class="m-3">
+  <h3>Angular search by filter</h3>
+  <div class="wrap">
+    <div class="search">
+      <input type="text" [(ngModel)]="term" class="searchTerm" placeholder="What are you looking for?">
+    </div>
+
+    <div *ngFor="let ruta of rutas | filter:term">
+      <a routerLink="/ruta/{{ruta._id}}">
+        <div id="container" class="container ruta"
+            style="background-size: cover; background-image: url(https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg);">
+            <div id="top" class="top">
+                <div class="top-left">{{ruta.nombre}}</div>
+                <div class="top-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-circle-fill" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="8" />
+                    </svg>
+                </div>
+            </div>
+            <div id="bottom" class="bottom">
+                <div class="bottom-left">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-star-fill icono-bottom" viewBox="0 0 16 16">
+                        <path
+                            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                    </svg>
+                    {{ruta.valoracion}}
+                </div>
+                <div class="bottom-right">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-signpost-split-fill icono-bottom" viewBox="0 0 16 16">
+                        <path
+                            d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z" />
+                    </svg>
+                    {{ruta.distancia}} Km
+                </div>
+            </div>
+        </div>
+    </a>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 
+<div style="width: 100%; margin-top: 2%;">
   <div class="rutas">
     <div *ngFor="let ruta of rutas">
 
@@ -32,4 +79,4 @@
       </a>
     </div>
   </div>
-</div>
+</div> -->

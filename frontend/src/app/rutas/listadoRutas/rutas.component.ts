@@ -12,7 +12,9 @@ export class RutasComponent implements OnInit {
 
   rutas: Ruta [];
   user: Iuser;
-
+  searchTerm: string;
+  term: string;
+  
   constructor(private rutaService: RutaService) { }
 
   ngOnInit() {

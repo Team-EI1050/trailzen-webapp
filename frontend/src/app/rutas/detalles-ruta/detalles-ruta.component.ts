@@ -1,8 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Iuser } from 'src/app/modelos/Iuser';
-import { Ruta } from 'src/app/modelos/ruta';
+import { Iuser } from '../../modelos/Iuser';
 import { RutaService } from '../ruta.service';
 
 @Component({

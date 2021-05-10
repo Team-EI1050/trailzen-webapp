@@ -28,6 +28,8 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RutaComponent } from './rutas/ruta/ruta.component';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.compone
     ModalmodificarRutaComponent,
     MapaRutaComponent,
     DetallesRutaComponent,
-    MapaDetalleComponent
+    MapaDetalleComponent,
+    RutaComponent
    ],
   imports: [
     BrowserModule,
@@ -57,7 +60,7 @@ import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.compone
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
-    // BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]
