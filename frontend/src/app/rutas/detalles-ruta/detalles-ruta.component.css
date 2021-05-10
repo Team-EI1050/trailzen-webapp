@@ -47,6 +47,10 @@ td.formulario {
   padding-right: 50px;
 }
 
+div.opinion {
+  border: 3px, solid #ffb95e;
+  border-radius: 15px;
+}
 textarea {
   background: rgb(209, 209, 209);
   border-radius: 10px;
