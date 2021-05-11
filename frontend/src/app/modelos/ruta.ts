@@ -1,13 +1,16 @@
 export class Ruta {
   _id: String;
   nombre: String ;
-  distancia: Number ;
+  distancia: Number;
   coordenadas: { lat: Number , lon: Number } [];
   circular: Boolean ;
   aprobada: Boolean ;
   fotos: [ { nombre: String , url: String } ];
-  viable: Boolean;
+  viable: Boolean ;
+  creador: String;
   descripcion: String;
+  valoracion: Number;
+  comentarios: [ { nickname: String, comentario: String } ];
   dificultad: String;
   provincia: String;
   creador: String;

@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { Ruta } from 'src/app/modelos/ruta';
-
+import { RutaService } from 'src/app/rutas/ruta.service';
 
 const iconRetinaUrl = './assets/marker-icon-2x.png';
 const iconUrl = './assets/marker-icon.png';
@@ -23,13 +23,14 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './mapa-ruta.component.html',
   styleUrls: ['./mapa-ruta.component.css']
 })
-export class MapaRutaComponent implements OnInit, AfterViewInit {
+export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private mapa;
   public coordenadasRuta = new Array<{ lat: Number , lon: Number }>();
   @Input() ruta: Ruta;
+  public auxDistancia: Number[] = new Array(1);
 
-  constructor() { }
+  constructor(public rutaService: RutaService) { }
 
   ngAfterViewInit(): void {
 
@@ -45,14 +46,22 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
     });
     tiles.addTo(this.mapa);
 
+    let contador = [];
     let coord = []; //gracias 
     coord = this.coordenadasRuta; //a ti tambien --> valor por referencia rules :)
+    contador = this.auxDistancia;
 
     this.mapa.on('click', onMapClick);
 
     function onMapClick(e) {
+      if(coord.length == 1){
+        contador[0]=0;
+      }
+      if(coord.length>0){
+        contador[0] = (contador[0] += this.distance(coord[coord.length-1], e.latlng));
+      }
       coord.push({lat: e.latlng.lat, lon: e.latlng.lng });
-      console.log("Variable coor: " +coord);
+      console.log("Variable coor: " ,coord, "Variable contador: ",contador);
 
       if(coord.length>1){
         var polygon = L.polyline(coord, { color: '#004789', fillOpacity: 0 }).addTo(this); //tambien queda bien #008987
@@ -62,20 +71,13 @@ export class MapaRutaComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    console.log(this.ruta.coordenadas);
-    this.ruta.coordenadas=this.coordenadasRuta;
+    //this.auxDistancia[0] = this.ruta.distancia;
+    this.ruta.coordenadas = this.coordenadasRuta;
+    this.rutaService.contadorKm = this.auxDistancia;
+    document.getElementById("map").setAttribute("id", "mapoff");
   }
   ngOnDestroy(): void{
-    console.log("Array bueno FINAL: "+this.ruta.coordenadas)
-  }
-
-  mostrarCoordenadas(){
-    console.log("Array bueno: "+this.coordenadasRuta);
-    // var latlngs = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
-    // var polygon = L.polygon(this.coordenadasRuta, { color: 'red', fillOpacity: 0 }).addTo(this.mapa);
-    // // zoom the map to the polygon
-    // if(this.coordenadasRuta.length>1){
-    //   this.mapa.fitBounds(polygon.getBounds());
-    // }
+    console.log("Exploto ",this.auxDistancia);
+    document.getElementById("mapoff").setAttribute("id", "map");
   }
 }

@@ -38,6 +38,7 @@ mongoose.connect(mongoDb.db, {
 const senderistaRoute = require('./routes/senderista.routes');
 const gestorRoute = require('./routes/gestor.routes');
 const rutaRoute = require('./routes/ruta.routes');
+const userRoute = require('./routes/usuario.routes');
 
 const app = express();
 app.use(express.json());
@@ -55,6 +56,7 @@ app.use(express.static(path.join(__dirname, 'dist/backend')));
 app.use('/senderista', senderistaRoute)
 app.use('/gestor', gestorRoute)
 app.use('/ruta', rutaRoute)
+app.use('/user', userRoute)
 
 // PORT
 const port = process.env.PORT || 8000;

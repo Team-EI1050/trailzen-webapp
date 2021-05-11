@@ -14,6 +14,8 @@ export class RutaService {
 
   httpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
 
+  contadorKm: Number[] = new Array(1);
+
   constructor(private httpClient: HttpClient) { }
 
   // Get rutas

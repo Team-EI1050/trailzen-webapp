@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Gestor = new Schema ({
-    _id: { type: String },
-    correo: { type: String },
-    nickname: { type: String },
-    nombre: { type: String },
-    apellido: { type: String },
-    contrasenya: { type: String },
-    fechaCreacion: { type: String },
-    descripcion: { type: String },
-    dni: { type: String },
-    tipo: { type: String}
+    _id: String,
+    correo: String,
+    nickname: String,
+    nombre: String,
+    apellido: String,
+    contrasenya: String,
+    fechaCreacion: String,
+    descripcion: String,
+    dni: String,
+    tipo: String
 },{collection: 'gestores'
 })
 

@@ -27,6 +27,7 @@ import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.comp
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
+import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
 import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
 
 
@@ -47,6 +48,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     ModalmodificarRutaComponent,
     MapaRutaComponent,
     DetallesRutaComponent,
+    MapaDetalleComponent
     ProponerRutaComponent,
    ],
   imports: [

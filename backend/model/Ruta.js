@@ -2,16 +2,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Ruta = new Schema ({
-    nombre: { type: String },
-    distancia: { type: Number },
-    coordenadas: [ {lat: {type: Number}, lon:{type: Number}} ], //Array de coordenadas para dibujar la ruta
-    circular: { type: Boolean },
-    aprobada: { type: Boolean },
-    fotos: [ { nombre: { type: String }, url:{ type: String }}],
-    viable: { type: Boolean },
-    creador: { type: String },
-    descripcion: { type: String },
-    valoraciones: [ {valoracion: {type: Number}, nickname:{type: String}} ] //Valorar una ruta
+    nombre: String,
+    distancia: Number,
+    coordenadas: [ {lat: Number, lon: Number} ], //Array de coordenadas para dibujar la ruta
+    circular: Boolean,
+    aprobada: Boolean,
+    fotos: [ { nombre: String, url: String} ],
+    viable: Boolean,
+    creador: String,
+    descripcion: String,
+    valoracion: Number,
+    valoraciones: [ { nickname: String, valor: String } ],
+    comentarios: [ { nickname: String, comentario: String } ]
 },{collection: 'rutas'
 })
 

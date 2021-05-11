@@ -22,6 +22,15 @@ input:invalid {
   border: 2px dashed #ff8800;
 }
 
+.botonTrailZen {
+  border-radius: 15px;
+  border: 2px solid #ffb95e;
+  width: 250px;
+  height: 50px;
+  background-color: #666;
+  color: #ffb95e;
+}
+
 /*******SLIDER***/
 /* The switch - the box around the slider */
 .switch {

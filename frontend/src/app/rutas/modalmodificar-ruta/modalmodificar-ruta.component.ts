@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -14,41 +13,14 @@ import { RutaService } from '../ruta.service'
   templateUrl: './modalmodificar-ruta.component.html',
   styleUrls: ['./modalmodificar-ruta.component.css']
 })
-export class ModalmodificarRutaComponent{
+export class ModalmodificarRutaComponent {
   closeResult = '';
 
-  user:         Iuser;
-  miFormulario: FormGroup;
-  validos:      Boolean;
-  data:         String;
-
+  modificarCoordenadas: boolean = false;
 
   @Input() ruta: Ruta;
 
-  constructor(
-    private modalService: NgbModal, 
-    private rutaService: RutaService, 
-    private router: Router)
-    {
-
-      this.user = JSON.parse(localStorage.getItem("USER"));
-
-      console.log(this.user);
-      this.miFormulario = new FormGroup({ //atributos del formulario para el resgitro del senderista
-        nombre:    new FormControl('', Validators.required),
-        distancia: new FormControl('', Validators.required),
-        ruta: new FormControl(Validators.required),
-        circular:  new FormControl(false),
-        aprobada: new FormControl(false),
-        viable: new FormControl(true),
-        creador: new FormControl(this.user._id),
-        descripcion: new FormControl('', Validators.required),
-        dificultad: new FormControl('', Validators.required),
-        provincia: new FormControl('', Validators.required)
-      });
-      this.ruta.coordenadas=[{ lat: null , lon: null }];
-      this.validos = true; 
-      this.data = "Uno de tus campos es incorrecto";
+  constructor(private modalService: NgbModal, public rutaService: RutaService, private router: Router) {
   }
 
   // ngOnInit() {
@@ -58,10 +30,10 @@ export class ModalmodificarRutaComponent{
   //modal
   async open(content) {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el navbar antes de abrir el modal
-    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
+    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'blur(5px)'; //pone borroso el fondo antes de abrir el modal
     this.modalService.open(content, {centered: true, ariaLabelledBy: 'modal-basic-title', windowClass: "myCustomModalClass"}).result.then((result) => {
       (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-      //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+      (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -70,7 +42,10 @@ export class ModalmodificarRutaComponent{
 
   private getDismissReason(reason: any): string {
     (<HTMLInputElement><unknown>document.getElementById("nav-poner-borroso")).style.filter = 'none'; //desactiva el blur del navbar
-    //(<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    (<HTMLInputElement><unknown>document.getElementById("poner-borroso")).style.filter = 'none'; //desactiva el efecto de blur al salir del modal
+    this.rutaService.getRuta(this.ruta._id.toString()).subscribe(data => {
+      this.ruta = data;
+    });
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -83,9 +58,9 @@ export class ModalmodificarRutaComponent{
 
   getDatosYActualiza(){  //toma los datos del modal y actualiza el guta.
     let nNombre = (<HTMLInputElement>document.getElementById("nombre")).value;
-    let nDistancia = (<HTMLInputElement>document.getElementById("distancia")).value;
+    this.modificarCoordenadas = (<HTMLInputElement>document.getElementById("modificarCoordenadas")).checked;
     let nCircular = Boolean((<HTMLInputElement>document.getElementById("circular")).checked);
-    console.log("Circular? "+nCircular);
+    console.log("modificar coordenadas? "+this.modificarCoordenadas);
 
     let ok: boolean = true;
 
@@ -98,16 +73,7 @@ export class ModalmodificarRutaComponent{
       });
       ok=false;
     }
-    if(Number(nDistancia) == NaN || Number(nDistancia) <= 0){
-      Swal.fire( {
-          icon: 'error',
-          title: 'Oops...',
-          confirmButtonColor: "#F99721",
-          text: "La distancia debe ser mayor a 0"
-      });
-      ok=false;
-    }
-    if(this.ruta.coordenadas.length<3){
+    if(this.modificarCoordenadas && this.ruta.coordenadas.length<3){
       Swal.fire( {
         icon: 'error',
         title: 'Oops...',
@@ -118,24 +84,57 @@ export class ModalmodificarRutaComponent{
     }
     if(ok){
 
-      this.ruta.nombre = nNombre;
-      this.ruta.distancia = Number(nDistancia);
-      this.ruta.circular = nCircular;
+      if(!this.modificarCoordenadas){ //Se mantienen las coordenadas de la ruta
+        this.rutaService.getRuta(this.ruta._id.toString()).subscribe(data =>{
+          this.ruta = data;
+          this.ruta.nombre = nNombre;
+          this.ruta.circular = nCircular;
+          if (nCircular && this.ruta.coordenadas[this.ruta.coordenadas.length-1] != this.ruta.coordenadas[0]){ 
+            //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+            this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+          }
+          this.rutaService.updateRuta(this.ruta).subscribe(res => {
+            this.ruta = res;
+            Swal.fire({
+              icon: 'success',
+              title: 'Yaih!',
+              text: "Ruta actualizada correctamente!",
+              showConfirmButton: false,
+              toast: true,
+              timer: 2000,
+              timerProgressBar: true
+            });
+          });
+        })
+      } else{ //Se modifican las coordenadas de la ruta
+        
+        this.ruta.nombre = nNombre;
+        this.ruta.distancia = Number((Number(this.rutaService.contadorKm[0])/1000).toFixed(2)); //arte
+        this.rutaService.contadorKm = new Array(1);
+        this.ruta.circular = nCircular;
 
-      if (nCircular){ //Si es circular, añade el punto de inicio como final para cerrar la ruta.
-        this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
-      }
+        if (nCircular && this.ruta.coordenadas[this.ruta.coordenadas.length-1] != this.ruta.coordenadas[0]){ 
+          //Si es circular, añade el punto de inicio como final para cerrar la ruta.
+          this.ruta.coordenadas.push(this.ruta.coordenadas[0]);
+        }
 
-      this.rutaService.updateRuta(this.ruta).subscribe(res => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Yaih!',
-          text: "Ruta actualizada correctamente!",
-          showConfirmButton: false,
-          toast: true,
-          timer: 2000,
-          timerProgressBar: true
+        this.rutaService.updateRuta(this.ruta).subscribe(res => {
+          this.ruta = res;
+          Swal.fire({
+            icon: 'success',
+            title: 'Yaih!',
+            text: "Ruta actualizada correctamente!",
+            showConfirmButton: false,
+            toast: true,
+            timer: 2000,
+            timerProgressBar: true
+          });
         });
+      }
+      let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+          console.log(currentUrl);
       });
     }
   }
