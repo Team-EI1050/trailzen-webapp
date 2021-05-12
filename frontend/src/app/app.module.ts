@@ -29,6 +29,7 @@ import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
 import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
+import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     MapaDetalleComponent,
     DetallesRutaComponent,
     ProponerRutaComponent,
+    MapaProponerComponent,
    ],
   imports: [
     BrowserModule,
