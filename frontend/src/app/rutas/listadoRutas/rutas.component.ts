@@ -20,12 +20,12 @@ export class RutasComponent implements OnInit {
   ngOnInit() {
 
     this.user = JSON.parse(localStorage.getItem("USER"));
-    console.log(this.user)
+    // console.log(this.user)
 
     this.rutaService.getRutas().subscribe(res => {
-      console.log("Res:" + res);
+      // console.log("Res:" + res);
       this.rutas = res;
-      console.log("Rutas:" + this.rutas);
+      // console.log("Rutas:" + this.rutas);
     })
   }
 
