@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Iuser } from 'src/app/modelos/Iuser';
+import { Iuser } from '../../../app/modelos/Iuser';
+import { user } from '../../../app/modelos/user';
 
 @Component({
   selector: 'app-navbar',
@@ -22,6 +23,11 @@ export class NavbarComponent implements OnInit {
   getUserId(): String {
     let us :Iuser = JSON.parse(localStorage.getItem("USER"));
     return us.nickname;
+  }
+
+  cerrarSesion(){
+    let us :Iuser = new user("", "", "USUARIO");
+    localStorage.setItem("USER", JSON.stringify(us));
   }
 
 }
