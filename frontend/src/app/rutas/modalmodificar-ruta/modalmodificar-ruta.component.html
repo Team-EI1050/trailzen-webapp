@@ -2,90 +2,136 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Modificar datos de ruta</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
     <form>
       <div class="form-group">
-          <ul>
-              <li class="sinPuntitos">
-                <div class= "gordo">
-                  <div class="izqui"><label for="">Nombre</label></div>
-                  <div class="dere"><input required size="30" type="text" minlength="3" maxlength="60" onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';" id="nombre" value="{{ruta.nombre}}"></div>
-                </div>
-              </li>
-              <li class="sinPuntitos">
+        <ul>
+          <li class="sinPuntitos">
+            <div class="gordo">
+              <div class="izqui"><label for="">Nombre</label></div>
+              <div class="dere">
+                <input
+                  required
+                  size="30"
+                  type="text"
+                  minlength="3"
+                  maxlength="60"
+                  onkeypress="this.style.width = ((this.value.length + 3) * 8) + 'px';"
+                  id="nombre"
+                  value="{{ ruta.nombre }}"
+                />
+              </div>
+            </div>
+          </li>
+          <li class="sinPuntitos">
+            <div class="gordo">
+              <div class="izqui"><label for="">Distancia (Km)</label></div>
+              <div class="dere">
+                <input
+                  required
+                  type="number"
+                  maxlength="10"
+                  id="distancia"
+                  value="{{ ruta.distancia }}"
+                />
+              </div>
+            </div>
+          </li>
+          <li class="sinPuntitos">
+            <div class="gordo">
+              <div class="izqui"><label for="">¿Es circular?</label></div>
+              <div class="dere">
+                <label class="switch">
+                  <input
+                    type="checkbox"
+                    id="circular"
+                    checked="{{ ruta.circular }}"
+                  />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </li>
+          <!-- <li class="sinPuntitos">
                 <div class= "gordo">
                   <div class="izqui"><label for="">Distancia (Km)</label></div>
                   <div class="dere"><input required type="number" maxlength="10" id="distancia" value="{{ruta.distancia}}"></div>
                 </div>
-              </li>
-              <li class="sinPuntitos">
-                <div class= "gordo">
-                  <div class="izqui"><label for="">¿Es circular?</label></div>
-                  <div class="dere">
-                    <label class="switch">
-                      <input type="checkbox" id="circular" checked="{{ruta.circular}}">
-                      <span class="slider round"></span>
-                    </label>
-                  </div>
-                </li>
-                <!-- <li class="sinPuntitos">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">Distancia (Km)</label></div>
-                    <div class="dere"><input required type="number" maxlength="10" id="distancia" value="{{ruta.distancia}}"></div>
-                  </div>
-                </li> -->
-                <li class="sinPuntitos" *ngIf="ruta.circular">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">¿Es circular?</label></div>
-                    <div class="dere">
-                      <label class="switch">
-                        <input type="checkbox" id="circular" checked>
-                        <span class="slider round"></span>
-                      </label>
-                    </div>
-                  </div>
-                </li>
-                <li class="sinPuntitos" *ngIf="!ruta.circular">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">¿Es circular?</label></div>
-                    <div class="dere">
-                      <label class="switch">
-                        <input type="checkbox" id="circular">
-                        <span class="slider round"></span>
-                      </label>
-                    </div>
-                  </div>
-                </li>
-                <li class="sinPuntitos">
-                  <div class= "gordo">
-                    <div class="izqui"><label for="">Modificar coordenadas con las marcadas</label></div>
-                    <div class="dere">
-                      <label class="switch">
-                        <input type="checkbox" id="modificarCoordenadas">
-                        <span class="slider round"></span>
-                      </label>
-                    </div>
-                  </div>
-                </li>
-                <br>
-                <br>
-                <li>
-                  <div style="width: fit-content; height: fit-content; border: solid #ff8800 3px; margin-left: 43px;">
-                    <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
-                  </div>
-                </li>
-            </ul>
-        </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark boton-modal" (click)="modal.close(); getDatosYActualiza()">Guardar</button>
-    </div>
-  </ng-template>
-  <!-- Previa a abrirse el modal -->
-  <!-- <button id="botonModificar" class="btn btn-lg btn-outline-primary" (click)="open(content)">Modificar datos de ruta</button> -->
-  <button id="botonModificar" class="botonTrailZen" (click)="open(content)">Modificar datos de ruta</button>
+              </li> -->
+          <li class="sinPuntitos" *ngIf="ruta.circular">
+            <div class="gordo">
+              <div class="izqui"><label for="">¿Es circular?</label></div>
+              <div class="dere">
+                <label class="switch">
+                  <input type="checkbox" id="circular" checked />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </li>
+          <li class="sinPuntitos" *ngIf="!ruta.circular">
+            <div class="gordo">
+              <div class="izqui"><label for="">¿Es circular?</label></div>
+              <div class="dere">
+                <label class="switch">
+                  <input type="checkbox" id="circular" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </li>
+          <li class="sinPuntitos">
+            <div class="gordo">
+              <div class="izqui">
+                <label for="">Modificar coordenadas con las marcadas</label>
+              </div>
+              <div class="dere">
+                <label class="switch">
+                  <input type="checkbox" id="modificarCoordenadas" />
+                  <span class="slider round"></span>
+                </label>
+              </div>
+            </div>
+          </li>
+          <br />
+          <br />
+          <li>
+            <div
+              style="
+                width: fit-content;
+                height: fit-content;
+                border: solid #ff8800 3px;
+                margin-left: 43px;
+              "
+            >
+              <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark boton-modal"
+      (click)="modal.close(); getDatosYActualiza()"
+    >
+      Guardar
+    </button>
+  </div>
+</ng-template>
+<!-- Previa a abrirse el modal -->
+<!-- <button id="botonModificar" class="btn btn-lg btn-outline-primary" (click)="open(content)">Modificar datos de ruta</button> -->
+<button id="botonModificar" class="botonTrailZen" (click)="open(content)">
+  Modificar datos de ruta
+</button>

@@ -13,7 +13,6 @@ export class Ruta {
   comentarios: [ { nickname: String, comentario: String } ];
   dificultad: String;
   provincia: String;
-  creador: String;
   valoraciones: [ {valoracion: Number, nickname: String} ] 
 
   constructor(id: String, nombre: String, distancia:Number, coordenadas: { lat: Number , lon: Number } [],

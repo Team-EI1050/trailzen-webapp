@@ -282,3 +282,49 @@ div.dist {
 .tabs__tab > *:last-child {
   margin-bottom: 0px;
 }
+
+/* TABLE */
+.details {
+  position: relative;
+}
+
+.details span {
+  position: absolute;
+  top: 0;
+  transform: translateY(70%);
+  display: none;
+  color: #373946;
+  background: white;
+  z-index: 20;
+  /* min-width: 100%; */
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.details:hover span {
+  display: inline;
+}
+
+td.panelRutas {
+  padding: 1rem;
+  /* background: #ffb95e; */
+  /* border: 1px solid black; */
+}
+
+div.limitaLong {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+table.blacked tr:hover {
+  color: white;
+  background-color: #373946;
+}
+
+table.blacked a {
+  color: white;
+}
+table.blacked a:hover {
+  color: rgb(224, 217, 217);
+}

@@ -1,239 +1,338 @@
 <app-navbar></app-navbar>
 
 <div id="poner-borroso">
-<div>
-    <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
-        <div id="contenedor">
-            <!-- <input (click)="habilitarBotonModificar()" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" /> -->
-            <input (click)="show('misDatos')" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
-            <label for="tab-1" class="tab-label-1 sombra">Mis datos</label>
+    <div>
+        <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
+            <div id="contenedor">
+                <!-- <input (click)="habilitarBotonModificar()" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" /> -->
+                <input (click)="show('misDatos')" id="tab-1" type="radio" name="radio-set" class="tab-selector-1"
+                    checked="checked" />
+                <label for="tab-1" class="tab-label-1 sombra">Mis datos</label>
 
-            <input (click)="show('creacionRutas')" id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
-            <label for="tab-2" class="tab-label-2 sombra">Creación de rutas</label>
+                <input (click)="show('creacionRutas')" id="tab-2" type="radio" name="radio-set"
+                    class="tab-selector-2" />
+                <label for="tab-2" class="tab-label-2 sombra">Creación de rutas</label>
 
-            <input (click)="show('validacionRutas')" id="tab-3" type="radio" name="radio-set" class="tab-selector-3"  />
-            <label for="tab-3" class="tab-label-3 sombra">Validación de rutas</label>
+                <input (click)="show('validacionRutas')" id="tab-3" type="radio" name="radio-set"
+                    class="tab-selector-3" />
+                <label for="tab-3" class="tab-label-3 sombra">Validación de rutas</label>
 
-            <div class="content sombra">
-                <div class="content-1" *ngIf="selectedTab==='misDatos'">
-                    <div class="content-1" style="float: left; width: 20%;">
-                          <div class="content-1 sombra" style="background-color: #ffb95e !important; border-radius: 10px;">
-                            <table style="margin: 0 auto;">
-                                <tr>
-                                    <td style="text-align: center; padding-top: 20px;">
-                                        <div class="circular--landscape content-1">
-                                            <!-- https://i.pinimg.com/originals/60/99/f3/6099f305983371dadaceae99f5c905bf.png -->
-                                            <img src="http://cdn.benchmark.pl/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="content-1" *ngIf="gestor != undefined">
-                                            <h3 style="text-align: center; margin-top: 5px;">{{gestor.nickname}}</h3>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+                <div class="content sombra">
+                    <div class="content-1" *ngIf="selectedTab==='misDatos'">
+                        <div class="content-1" style="float: left; width: 20%;">
+                            <div class="content-1 sombra"
+                                style="background-color: #ffb95e !important; border-radius: 10px;">
+                                <table style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 20px;">
+                                            <div class="circular--landscape content-1">
+                                                <!-- https://i.pinimg.com/originals/60/99/f3/6099f305983371dadaceae99f5c905bf.png -->
+                                                <img
+                                                    src="http://cdn.benchmark.pl/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="content-1" *ngIf="gestor != undefined">
+                                                <h3 style="text-align: center; margin-top: 5px;">{{gestor.nickname}}
+                                                </h3>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="content-1 sombra"
+                                style="margin-top: 20px; background-color: #ffb95e !important; border-radius: 10px;  height: 58px;">
+                                <table style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 20px;">
+                                            <div class="content-1">
+                                                <h6>TrailZen Corporative</h6>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
-                        <div class="content-1 sombra" style="margin-top: 20px; background-color: #ffb95e !important; border-radius: 10px;  height: 58px;">
-                            <table style="margin: 0 auto;">
-                                <tr>
-                                    <td style="text-align: center; padding-top: 20px;">
-                                        <div class="content-1">
-                                            <h6>TrailZen Corporative</h6>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+
+                        <div class="content-1 sombra"
+                            style="color:white; background-color: #232530 !important; float: right; width: 70%; padding: 30px; border-radius: 10px;">
+                            <div class="content-1" *ngIf="gestor != undefined">
+                                <table style="width: -webkit-fill-available;">
+                                    <tr>
+                                        <td>
+                                            <h2>{{gestor.nombre}} {{gestor.apellido}}</h2>
+                                        </td>
+                                        <td>
+                                            <h6 style="float: right;">Miembro desde el: <span
+                                                    style="font-weight: bold;">{{gestor.fechaCreacion}}</span></h6>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <h4>Correo electrónico: <span
+                                                    style="font-size: 20px; font-weight: normal;">{{gestor.correo}}</span>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" style="padding-top: 1em">
+                                            <div class="descripcion content-1">
+                                                <h1>Sobre mí</h1>
+                                                <p>{{gestor.descripcion}}</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="content-1" style="float: right; padding-top: 1em">
+                                <app-modalmodificar-gestor [gestor]="gestor"></app-modalmodificar-gestor>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="content-1 sombra" style="color:white; background-color: #232530 !important; float: right; width: 70%; padding: 30px; border-radius: 10px;">
-                        <div class="content-1" *ngIf="gestor != undefined">
-                            <table style="width: -webkit-fill-available;">
-                                <tr>
-                                    <td>
-                                        <h2>{{gestor.nombre}} {{gestor.apellido}}</h2>
-                                    </td>
-                                    <td>
-                                        <h6 style="float: right;">Miembro desde el: <span style="font-weight: bold;">{{gestor.fechaCreacion}}</span></h6>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <h4>Correo electrónico: <span style="font-size: 20px; font-weight: normal;">{{gestor.correo}}</span></h4>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" style="padding-top: 1em">
-                                        <div class="descripcion content-1"><h1>Sobre mí</h1>
-                                        <p>{{gestor.descripcion}}</p></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="content-1" style="float: right; padding-top: 1em">
-                            <app-modalmodificar-gestor [gestor]="gestor"></app-modalmodificar-gestor>
-                        </div>
+
+
+                    <div class="content-2" *ngIf="selectedTab==='creacionRutas'">
+                        Contenido2
                     </div>
-                </div>
-                
-
-
-                <div class="content-2" *ngIf="selectedTab==='creacionRutas'">
-                    Contenido2
-                </div>
 
 
 
-                <div class="content-3" *ngIf="selectedTab==='validacionRutas'">
+                    <div class="content-3" *ngIf="selectedTab==='validacionRutas'">
 
-                    <div class="content-3 tabs">
-                        <nav class="tabs__nav">
-                            <a
-                                (click)="showInside( 'one' )"
-                                class="tabs__nav-item"
-                                [class.tabs__nav-item--on]="( selectedTabInside === 'one' )">
-                                Sin validar
-                            </a>
-                            <a
-                                (click)="showInside( 'two' )"
-                                class="tabs__nav-item"
-                                [class.tabs__nav-item--on]="( selectedTabInside === 'two' )">
-                                Validadas
-                            </a>
-                            <a
-                                (click)="showInside( 'three' )"
-                                class="tabs__nav-item"
-                                [class.tabs__nav-item--on]="( selectedTabInside === 'three' )">
-                                Todas
-                            </a>
-                        </nav>
-                        <div #tabsContentRef class="content-3 tabs__content" [ngSwitch]="selectedTabInside">
-                            <div *ngSwitchCase="( 'one' )" class="content-3 tabs__tab">
-                                <div class="content-3" style="width: 100%; margin-top: 2%;">
-                                    <div class="content-3 rutas">
-                                        <p>
-                                            Rutas Sin Validar -> {{rutasSinValidar}}
-                                        </p>
-                                        <div class="content-3" *ngIf="rutasSinValidar != undefined">
-                                            <div class="content-3" *ngFor="let ruta of rutasSinValidar">
-                                                <div class="content-3" *ngIf="ruta != undefined">
-                                                    <p>
-                                                        Ruta Sin Validar -> {{ruta}}
-                                                    </p>
-                                                    <!-- <app-detalles-ruta></app-detalles-ruta> -->
-                                                    <!-- <a routerLink = "/ruta/{{ruta._id}}">
-                                                    <div id="container" class="content-3 container ruta" style="background-size: cover; background-image: url(https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg);">
-                                                        <div id="top" class="content-3 top">
-                                                            <div class="content-3 top-left">{{ruta.nombre}}</div>
-                                                            <div class="content-3 top-right">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                                <circle cx="8" cy="8" r="8"/>
-                                                                </svg>
-                                                            </div>
+                        <div class="content-3 tabs">
+                            <nav class="tabs__nav">
+                                <a (click)="showInside( 'one' )" class="tabs__nav-item"
+                                    [class.tabs__nav-item--on]="( selectedTabInside === 'one' )">
+                                    Sin validar
+                                </a>
+                                <a (click)="showInside( 'two' )" class="tabs__nav-item"
+                                    [class.tabs__nav-item--on]="( selectedTabInside === 'two' )">
+                                    Validadas
+                                </a>
+                                <a (click)="showInside( 'three' )" class="tabs__nav-item"
+                                    [class.tabs__nav-item--on]="( selectedTabInside === 'three' )">
+                                    Todas
+                                </a>
+                            </nav>
+                            <div #tabsContentRef class="content-3 tabs__content" [ngSwitch]="selectedTabInside">
+                                <div *ngSwitchCase="( 'one' )" class="content-3 tabs__tab">
+                                    <div class="content-3" style="width: 100%; margin: 0 auto;">
+                                        <div class="content-3">
+                                            <table class="table table-hover blacked"
+                                                style="color:white; background-color: #232530 !important; padding: 30px; border-radius: 10px; width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 20%;">Título</th>
+                                                        <th style="width: 6%;">Longitud</th>
+                                                        <th style="width: 6%;">Dificultad</th>
+                                                        <th style="width: 14%;">Valoración</th>
+                                                        <th style="width: 24%;">Descripción</th>
+                                                        <th style="width: 14%;" colspan="2">Validación/Denegación</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- <div class="content-3" *ngFor="let ruta of rutas"> -->
+                                                    <tr *ngFor="let ruta of rutasSinValidar">
+                                                        <td class="panelRutas details">
+                                                            <a routerLink="/ruta/{{ruta._id}}" target="_blank">
+                                                                <div style="width: 100%; max-width: 275px;"
+                                                                    class="content-3 limitaLong">
+                                                                    {{ruta.nombre}}</div>
+                                                            </a>
+                                                            <span>{{ruta.nombre}}</span>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.distancia}}
+                                                                Km</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.dificultad}}</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.valoracion}}</div>
+                                                        </td>
+                                                        <td class="panelRutas details">
+                                                            <div style="width: 100%; max-width: 500px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.descripcion}}</div>
+                                                            <span>{{ruta.descripcion}}</span>
+                                                        </td>
+
+                                                        <div
+                                                            *ngIf="ruta.aprobada==false; then thenBlock else elseBlock">
                                                         </div>
-                                                        <div id="bottom" class="content-3 bottom">
-                                                            <div class="content-3 bottom-left">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill icono-bottom" viewBox="0 0 16 16">
-                                                                <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                                </svg>
-                                                                4,5/5
-                                                            </div>
-                                                            <div class="content-3 bottom-right">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-split-fill icono-bottom" viewBox="0 0 16 16">
-                                                                <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z"/>
-                                                                </svg>
-                                                                {{ruta.distancia}} Km
-                                                            </div>
+                                                        <ng-template #thenBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>VALIDAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                        <ng-template #elseBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>DENEGAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngSwitchCase="( 'two' )" class="content-3 tabs__tab">
+                                    <div class="content-3" style="width: 100%; margin: 0 auto;">
+                                        <div class="content-3">
+                                            <table class="table table-hover blacked"
+                                                style="color:white; background-color: #232530 !important; padding: 30px; border-radius: 10px; width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 20%;">Título</th>
+                                                        <th style="width: 6%;">Longitud</th>
+                                                        <th style="width: 6%;">Dificultad</th>
+                                                        <th style="width: 14%;">Valoración</th>
+                                                        <th style="width: 24%;">Descripción</th>
+                                                        <th style="width: 14%;" colspan="2">Validación/Denegación</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- <div class="content-3" *ngFor="let ruta of rutas"> -->
+                                                    <tr *ngFor="let ruta of rutasValidadas">
+                                                        <td class="panelRutas details">
+                                                            <a routerLink="/ruta/{{ruta._id}}" target="_blank">
+                                                                <div style="width: 100%; max-width: 275px;"
+                                                                    class="content-3 limitaLong">
+                                                                    {{ruta.nombre}}</div>
+                                                            </a>
+                                                            <span>{{ruta.nombre}}</span>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.distancia}}
+                                                                Km</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.dificultad}}</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.valoracion}}</div>
+                                                        </td>
+                                                        <td class="panelRutas details">
+                                                            <div style="width: 100%; max-width: 500px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.descripcion}}</div>
+                                                            <span>{{ruta.descripcion}}</span>
+                                                        </td>
+
+                                                        <div
+                                                            *ngIf="ruta.aprobada==false; then thenBlock else elseBlock">
                                                         </div>
-                                                    </div>
-                                                    </a> -->
-                                                </div>
-                                            </div>
+                                                        <ng-template #thenBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>VALIDAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                        <ng-template #elseBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>DENEGAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div *ngSwitchCase="( 'two' )" class="content-3 tabs__tab">
-                                <div class="content-3" style="width: 100%; margin-top: 2%;">
-                                    <div class="content-3 rutas">
-                                        <p>
-                                            Rutas Validadas -> {{rutasValidadas}}
-                                        </p>
-                                        <div class="content-3" *ngFor="let ruta of rutasValidadas">
-                                            <p>
-                                                Ruta Validada -> {{ruta}}
-                                            </p>
-                                            <!-- <a routerLink = "/ruta/{{ruta._id}}">
-                                            <div id="container" class="content-3 container ruta" style="background-size: cover; background-image: url(https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg);">
-                                                <div id="top" class="content-3 top">
-                                                    <div class="content-3 top-left">{{ruta.nombre}}</div>
-                                                    <div class="content-3 top-right">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                        <circle cx="8" cy="8" r="8"/>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div id="bottom" class="content-3 bottom">
-                                                    <div class="content-3 bottom-left">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill icono-bottom" viewBox="0 0 16 16">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                        </svg>
-                                                        4,5/5
-                                                    </div>
-                                                    <div class="content-3 bottom-right">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-split-fill icono-bottom" viewBox="0 0 16 16">
-                                                        <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z"/>
-                                                        </svg>
-                                                        {{ruta.distancia}} Km
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </a> -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                <div *ngSwitchCase="( 'three' )" class="content-3 tabs__tab">
+                                    <div class="content-3" style="width: 100%; margin: 0 auto;">
+                                        <div class="content-3">
+                                            <table class="table table-hover blacked"
+                                                style="color:white; background-color: #232530 !important; padding: 30px; border-radius: 10px; width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 20%;">Título</th>
+                                                        <th style="width: 6%;">Longitud</th>
+                                                        <th style="width: 6%;">Dificultad</th>
+                                                        <th style="width: 14%;">Valoración</th>
+                                                        <th style="width: 24%;">Descripción</th>
+                                                        <th style="width: 14%;" colspan="2">Validación/Denegación</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- <div class="content-3" *ngFor="let ruta of rutas"> -->
+                                                    <tr *ngFor="let ruta of rutas">
+                                                        <td class="panelRutas details">
+                                                            <a routerLink="/ruta/{{ruta._id}}" target="_blank">
+                                                                <div style="width: 100%; max-width: 275px;"
+                                                                    class="content-3 limitaLong">
+                                                                    {{ruta.nombre}}</div>
+                                                            </a>
+                                                            <span>{{ruta.nombre}}</span>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.distancia}}
+                                                                Km</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.dificultad}}</div>
+                                                        </td>
+                                                        <td class="panelRutas">
+                                                            <div style="width: 100%; max-width: 60px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.valoracion}}</div>
+                                                        </td>
+                                                        <td class="panelRutas details">
+                                                            <div style="width: 100%; max-width: 500px;"
+                                                                class="content-3 limitaLong">
+                                                                {{ruta.descripcion}}</div>
+                                                            <span>{{ruta.descripcion}}</span>
+                                                        </td>
 
-                            <div *ngSwitchCase="( 'three' )" class="content-3 tabs__tab">
-                                <div class="content-3" style="width: 100%; margin-top: 2%;">
-                                    <div class="content-3 rutas">
-                                        <div class="content-3" *ngFor="let ruta of rutas">
-                                            <a routerLink = "/ruta/{{ruta._id}}">
-                                            <div id="container" class="content-3 container ruta" style="background-size: cover; background-image: url(https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg);">
-                                                <div id="top" class="content-3 top">
-                                                    <div class="content-3 top-left">{{ruta.nombre}}</div>
-                                                    <div class="content-3 top-right">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                        <circle cx="8" cy="8" r="8"/>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div id="bottom" class="content-3 bottom">
-                                                    <div class="content-3 bottom-left">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill icono-bottom" viewBox="0 0 16 16">
-                                                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-                                                        </svg>
-                                                        4,5/5
-                                                    </div>
-                                                    <div class="content-3 bottom-right">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-signpost-split-fill icono-bottom" viewBox="0 0 16 16">
-                                                        <path d="M7 16h2V6h5a1 1 0 0 0 .8-.4l.975-1.3a.5.5 0 0 0 0-.6L14.8 2.4A1 1 0 0 0 14 2H9v-.586a1 1 0 0 0-2 0V7H2a1 1 0 0 0-.8.4L.225 8.7a.5.5 0 0 0 0 .6l.975 1.3a1 1 0 0 0 .8.4h5v5z"/>
-                                                        </svg>
-                                                        {{ruta.distancia}} Km
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </a>
+                                                        <!-- <td class="panelRutas" style="text-align: center;">
+                                                            <span>VALIDAR</span>
+                                                        </td>
+                                                        <td class="panelRutas" style="text-align: center;">
+                                                            <span *ngIf="ruta['aprobada'] == 'true'">DENEGAR</span>
+                                                        </td> -->
+
+                                                        <div
+                                                            *ngIf="ruta.aprobada==false; then thenBlock else elseBlock">
+                                                        </div>
+                                                        <ng-template #thenBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>VALIDAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                        <ng-template #elseBlock>
+                                                            <td class="panelRutas" style="text-align: center;">
+                                                                <span>DENEGAR</span>
+                                                            </td>
+                                                        </ng-template>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <!-- <div *ngSwitchCase="( 'three' )" class="content-3 tabs__tab">
+
+                                <!-- <div *ngSwitchCase="( 'three' )" class="content-3 tabs__tab">
                                 <div class="content-3" style="width: 100%; margin-top: 2%;">
                                     <div class="content-3 rutas">
                                         <div class="content-3" *ngFor="let ruta of rutas">
@@ -267,12 +366,12 @@
                                     </div>
                                 </div>
                             </div> -->
+                            </div>
                         </div>
-                    </div>
 
-                   
-                    
-                    <!-- <div class="content-3" style="float: left; width: 20%;">
+
+
+                        <!-- <div class="content-3" style="float: left; width: 20%;">
                         <div class="content-3 sombra" style="background-color: #ffb95e !important; border-radius: 10px;">
                             <table style="margin: 0 auto;">
                                 <tr>
@@ -328,9 +427,9 @@
                             <app-modalmodificar-gestor [gestor]="gestor"></app-modalmodificar-gestor>
                         </div>
                     </div> -->
+                    </div>
                 </div>
+
             </div>
-            
         </div>
     </div>
-</div>

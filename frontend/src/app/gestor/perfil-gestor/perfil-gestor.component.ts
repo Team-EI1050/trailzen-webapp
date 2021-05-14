@@ -34,8 +34,6 @@ export class PerfilGestorComponent implements OnInit {
     ) {
     this.selectedTab = 'misDatos';
     this.selectedTabInside = 'one';
-    this.rutasSinValidar = [];
-    this.rutasValidadas = [];
   }
 
   ngOnInit(): void {
@@ -50,40 +48,59 @@ export class PerfilGestorComponent implements OnInit {
 
 
     this.user = JSON.parse(localStorage.getItem("USER"));
-    console.log("USER: "+this.user.nickname);
+    console.log("USER: "+this.user['nickname']);
 
     this.rutaService.getRutas().subscribe(res => {
       console.log("###########");
-      console.log("Res: "+JSON.stringify(res));
+      // console.log("Res: "+JSON.stringify(res));
 
       this.rutas = res;
+      this.rutasValidadas = res;
+      this.rutasSinValidar = res;
+      
       console.log("1 RUTA -> "+res[0]._id);
       
-      this.rutas.forEach(function (ruta) {
-        console.log("2 RUTA -> "+ruta._id);
-        console.log("3 RUTA -> "+ruta.aprobada);
+      this.rutasValidadas.forEach(function (ruta) {
+        console.log(" - - - - VALIDADAS - - - - ");
+        // console.log("VALIDADAS | 2 RUTA -> "+ruta._id);
+        // console.log("VALIDADAS | 3 RUTA aprobada -> "+ruta.aprobada);
         
         if ( ruta.aprobada === true) {
-          console.log("APROBADA TRUE");
+          console.log("VALIDADAS | APROBADA TRUE");
         } else if (ruta.aprobada !== true) {
-          console.log("APROBADA NO TRUE");
+          console.log("VALIDADAS | APROBADA NO TRUE");
+          this.rutasValidadas = this.rutasValidadas.filter(obj => obj !== ruta);
         }
 
-        if ( (ruta.aprobada === false || ruta.aprobada === null) && (ruta.viable === false || ruta.viable === null) ) {
-          this.rutasSinValidar.push(ruta);
-          console.log("-0- Sin Validar");
-          console.log(ruta);
-        } else if ( ruta.aprobada === true && ruta.viable === true ) {
-          console.log("-0- Validada");
-          this.rutasValidadas.push(ruta);
-        }
-        console.log("4 Ruta --> "+ruta+" | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
-        console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
-        console.log("6 RutasValidadas --> "+this.rutasValidadas);
-      })
-    })
-    
+        // console.log("## VALIDADAS | 4 Ruta --> ");
+        // Object.keys(ruta).forEach((prop)=> console.log("## VALIDADAS | "+prop +": " + ruta[prop]));
+        // console.log("## VALIDADAS | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
+      });
+
+      // this.rutasSinValidar.forEach(function (ruta) {
+      //   console.log(" - - - - SIN VALIDAR - - - - ");
+      //   // console.log("SIN VALIDAR | 2 RUTA -> "+ruta._id);
+      //   // console.log("SIN VALIDAR | 3 RUTA -> "+ruta.aprobada);
+        
+      //   if ( ruta.aprobada === true) {
+      //     console.log("SIN VALIDAR | APROBADA TRUE");
+      //     this.rutasSinValidar = this.rutasSinValidar.filter(obj => obj !== ruta);
+      //   } else if (ruta.aprobada !== true) {
+      //     console.log("SIN VALIDAR | APROBADA NO TRUE");
+      //   }
+
+      //   // console.log("## SIN VALIDAR | 4 Ruta --> ");
+      //   // Object.keys(ruta).forEach((prop)=> console.log("## SIN VALIDAR | "+prop +": " + ruta[prop]));
+      //   // console.log("## SIN VALIDAR | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
+      // });
+
+      console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
+      console.log("6 RutasValidadas --> "+this.rutasValidadas);
+
+      
+    });  
   }
+
   habilitarBotonModificar(){
     (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
   }

@@ -48,7 +48,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     ModalmodificarRutaComponent,
     MapaRutaComponent,
     DetallesRutaComponent,
-    MapaDetalleComponent
+    MapaDetalleComponent,
     ProponerRutaComponent,
    ],
   imports: [
