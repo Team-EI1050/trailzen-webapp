@@ -59,13 +59,28 @@
         <tr>
           <td class="comentarios">
             <p class="title">Comentarios</p>
-            <div class="scrollbar scrollbar-primary">
+            <table class="comments" maxHeight="250" style="width: 640px; overflow: visible;">
+              <tr *ngFor = "let comentario of ruta.comentarios">
+                <td style="width: 80%;">
+                  <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                </td>
+                <td>
+                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'" style="width: 20%; margin-left: 20px; margin-bottom: 16px;">
+                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <!-- <div class="scrollbar scrollbar-primary">
               <div class="force-overflow">
                 <div *ngFor = "let comentario of ruta.comentarios">
                   <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'">
+                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
+                  </div>
                 </div>
               </div>         
-            </div>           
+            </div>            -->
           </td>
           <td class="botones">
             <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">

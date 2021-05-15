@@ -28,6 +28,7 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
+import { ModalEliminarComentarioComponent } from './rutas/modal-eliminar-comentario/modal-eliminar-comentario.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.compone
     ModalmodificarRutaComponent,
     MapaRutaComponent,
     DetallesRutaComponent,
-    MapaDetalleComponent
+    MapaDetalleComponent,
+    ModalEliminarComentarioComponent
    ],
   imports: [
     BrowserModule,

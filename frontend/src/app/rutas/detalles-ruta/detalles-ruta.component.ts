@@ -1,8 +1,8 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Iuser } from 'src/app/modelos/Iuser';
-import { Ruta } from 'src/app/modelos/ruta';
+import { Iuser } from '../../modelos/Iuser';
+import { Ruta } from '../../modelos/ruta';
 import { RutaService } from '../ruta.service';
 
 @Component({
@@ -39,14 +39,14 @@ export class DetallesRutaComponent implements OnInit {
   crearOpinion() {
     this.valoracion = {nickname: "", valor: NaN}
     this.comentario = {nickname: "", comentario: ""}
-    let valor = this.currentRate;
-    console.log("Valor: " + valor)
+    console.log("Valor: " + this.currentRate)
     let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
     console.log("Comentario: " + coment)
 
-    if (valor != NaN || valor != undefined || valor != null) {
+    if (this.currentRate.toString() != 'NaN') {
+      console.log('Considerando valoraciones')
         this.valoracion.nickname = this.user.nickname;
-        this.valoracion.valor = valor;
+        this.valoracion.valor = this.currentRate;
         this.calcularValoracion(this.valoracion)
     }
 
@@ -63,6 +63,7 @@ export class DetallesRutaComponent implements OnInit {
     });
 
   }
+
 
   calcularValoracion(valoracion: {nickname: String, valor: Number}) {
     this.suma = 0;
