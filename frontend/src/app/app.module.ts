@@ -1,3 +1,4 @@
+
 //vanilla
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,8 +29,12 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RutaComponent } from './rutas/ruta/ruta.component';
 import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
 import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
+
+
 
 
 @NgModule({
@@ -50,6 +55,8 @@ import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.comp
     MapaRutaComponent,
     MapaDetalleComponent,
     DetallesRutaComponent,
+    MapaDetalleComponent,
+    RutaComponent
     ProponerRutaComponent,
     MapaProponerComponent,
    ],
@@ -61,7 +68,7 @@ import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.comp
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
-    // BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

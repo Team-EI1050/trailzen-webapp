@@ -26,7 +26,7 @@
       </div>
       <div *ngIf="user.tipo!='USUARIO'">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cerrarSesion">Cerrar Sesión</a>
+          <a class="nav-link" routerLink="/ruta" (click)="cerrarSesion()">Cerrar Sesión</a>
         </li>
       </div>
       <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
