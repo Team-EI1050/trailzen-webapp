@@ -34,6 +34,11 @@
           <a class="nav-link" routerLink="/proponerRuta">Proponer Ruta</a>
         </li>
       </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proponerRuta">Crear Ruta</a>
+        </li>
+      </div>
      </ul> 
   </div>
 </nav>

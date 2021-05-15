@@ -1,20 +1,22 @@
 <app-navbar></app-navbar>
-<div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
-  <div class="container">
+<div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA' || user.tipo!=null && user.tipo=='GESTOR'">
+  <div style="width: 110em; height: 20em; margin: 0 auto; margin-top: 50px;">
+    <div style="height: 1024px;" class="container contenedor content sombra">
+      <div class="content-1 sombra" style="margin: 0 auto; color:white; background-color: #232530 !important; width: 90%; padding: 30px; border-radius: 10px;">
+      
     <form  [formGroup]="miFormulario">
       Nombre <input
         [class.is-invalid]="miFormulario.get('nombre').touched && miFormulario.get('nombre').invalid" type="text"
         class="form-control" placeholder="Introduce tu nombre" formControlName="nombre">
 
-      <!-- Distancia <input
-        [class.is-invalid]="miFormulario.get('distancia').touched && miFormulario.get('distancia').invalid" type="text"
-        class="form-control" placeholder="Distancia en KM" formControlName="distancia"> -->
       Descripción <input
       [class.is-invalid]="miFormulario.get('descripcion').touched && miFormulario.get('descripcion').invalid" type="text"
       class="form-control" placeholder="Breve descripcion de la ruta" formControlName="descripcion">
       
       Coordenadas
+      <div style="width: fit-content; height: fit-content; border: solid #ff8800 3px; margin-left: 43px;">
       <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
+      </div>
 
       Circular <input
         type="checkbox" class="form-control" formControlName="circular" value=true>
@@ -35,10 +37,17 @@
         <option value="alicante">Alicante</option>
       </select>
 
-
-      <button type="submit" (click)="proponerRuta()">Proponer</button>
+      <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
+        <button type="submit" (click)="proponerRuta()">Proponer</button>
+      </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
+        <button type="submit" (click)="proponerRuta()">Crear</button>
+      </div>
+      
       <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
       <div class="invalid-feedback">{{data}}</div>
     </form>
+    </div>
+    </div>
   </div>
 </div>

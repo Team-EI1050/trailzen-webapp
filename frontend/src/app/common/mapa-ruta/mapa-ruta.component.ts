@@ -85,5 +85,6 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
       document.getElementById("mapoff").setAttribute("id", "map");
     }
     console.log("Exploto ",this.auxDistancia);
+    console.log("Exploto ",this.rutaService.contadorKm);
   }
 }
