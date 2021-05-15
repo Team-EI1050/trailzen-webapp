@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Iuser } from 'src/app/modelos/Iuser';
 import { Ruta } from 'src/app/modelos/ruta';
 import { RutaService } from '../ruta.service';
@@ -14,8 +15,15 @@ export class RutasComponent implements OnInit {
   user: Iuser;
   searchTerm: string;
   term: string;
+
+  distancia: number=20;
+  valoracion: number;
+  circular: boolean=false;
+  miFormulario: FormGroup;
+  todas: boolean=true;
   
-  constructor(private rutaService: RutaService) { }
+  constructor(private rutaService: RutaService) {
+   }
 
   ngOnInit() {
 
@@ -28,5 +36,8 @@ export class RutasComponent implements OnInit {
       // console.log("Rutas:" + this.rutas);
     })
   }
+
+
+  
 
 }

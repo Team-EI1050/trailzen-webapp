@@ -24,6 +24,7 @@
     "@angular/router": "^11.2.8",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "@sweetalert2/ngx-sweetalert2": "^9.0.0",
+    "angular-selector": "^1.6.1",
     "angular-webstorage-service": "^1.0.2",
     "bootstrap": "^4.5.0",
     "leaflet": "^1.7.1",

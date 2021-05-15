@@ -9,6 +9,7 @@ import { Ruta } from 'src/app/modelos/ruta';
 export class RutaComponent implements OnInit {
 
   @Input('ruta') ruta: Ruta;
+  @Input('url') url : String;
 
   constructor() { }
 
