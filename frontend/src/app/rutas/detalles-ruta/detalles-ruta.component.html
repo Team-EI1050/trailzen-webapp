@@ -36,8 +36,11 @@
               {{ruta.dificultad}}
               <br>
               <span>Valoración : &nbsp;</span>
-              <ngb-rating [(rate)]="ruta.valoracion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+              <div *ngIf="ruta.valoraciones != null">
+                <ngb-rating [(rate)]="ruta.valoracion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
                ({{ruta.valoraciones.length}} valoraciones)
+              </div>
+              
             </div>
           </td>
         </tr>
