@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA' || user.tipo!=null && user.tipo=='GESTOR'">
   <div style="width: 110em; height: 20em; margin: 0 auto; margin-top: 50px;">
-    <div style="height: 1024px;" class="container contenedor content sombra">
+    <div style="height: 1084px;" class="container contenedor content sombra">
       <div class="content-1 sombra" style="margin: 0 auto; color:white; background-color: #232530 !important; width: 90%; padding: 30px; border-radius: 10px;">
       
     <form  [formGroup]="miFormulario">
@@ -17,10 +17,14 @@
       <div style="width: fit-content; height: fit-content; border: solid #ff8800 3px; margin-left: 43px;">
       <app-mapa-ruta [ruta]="ruta"></app-mapa-ruta>
       </div>
-
+      
+      <div style="text-align: center; width: 100%;">
+        <br>
       Circular <input
-        type="checkbox" class="form-control" formControlName="circular" value=true>
+        type="checkbox" class="checkbox-inline" formControlName="circular" value=true>
+      </div>
 
+      <br>
       Dificultad<select
       [class.is-invalid]="miFormulario.get('dificultad').touched && miFormulario.get('dificultad').invalid"
       class="form-control" placeholder="Seleccione dificultad" formControlName="dificultad">
@@ -36,15 +40,16 @@
         <option value="valencia">Valencia</option>
         <option value="alicante">Alicante</option>
       </select>
+      <br>
 
       <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
-        <button type="submit" (click)="proponerRuta()">Proponer</button>
+        <button style="border-radius: 10px;" type="submit" (click)="proponerRuta()">Proponer</button>
       </div>
       <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
-        <button type="submit" (click)="proponerRuta()">Crear</button>
+        <button style="border-radius: 10px;" type="submit" (click)="proponerRuta()">Crear</button>
       </div>
       
-      <button type="button" class="cancelbtn" routerLink="/">Cancelar</button>
+      <button style="border-radius: 10px;" type="button" class="cancelbtn" routerLink="/">Cancelar</button>
       <div class="invalid-feedback">{{data}}</div>
     </form>
     </div>

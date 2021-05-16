@@ -56,9 +56,9 @@ import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.comp
     MapaDetalleComponent,
     DetallesRutaComponent,
     MapaDetalleComponent,
-    RutaComponent
+    RutaComponent,
     ProponerRutaComponent,
-    MapaProponerComponent,
+    MapaProponerComponent
    ],
   imports: [
     BrowserModule,
