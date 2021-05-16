@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div id="poner-borroso">
+<div id="poner-borroso" *ngIf="senderista != undefined">
 
 <div>
 <ng-template [ngIf]="senderista" [ngIfElse]="noSenderista">

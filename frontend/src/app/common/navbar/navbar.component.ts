@@ -43,12 +43,11 @@ export class NavbarComponent implements OnInit {
             localStorage.setItem("USER", JSON.stringify(us));
             this.router.navigate(['/ruta']);
             
-            let currentUrl = this.router.url;
-            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-                this.router.navigate([currentUrl]);
-            });
-            
             Swal.fire('Ha cerrado sesión', '', 'success');
+
+            this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+                this.router.navigate(['/ruta']);
+            });
             // Redirige a la main page
 
         } catch (error) {
