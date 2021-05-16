@@ -39,8 +39,9 @@ export class DetallesRutaComponent implements OnInit {
   crearOpinion() {
     this.valoracion = {nickname: "", valor: NaN}
     this.comentario = {nickname: "", comentario: ""}
+    // letcoment=(this.miFormulario.controls['nickname'].value);
     console.log("Valor: " + this.currentRate)
-    let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
+    let coment = (<HTMLInputElement>document.getElementById("coment")).value;
     console.log("Comentario: " + coment)
 
     if (this.currentRate.toString() != 'NaN') {
@@ -62,6 +63,7 @@ export class DetallesRutaComponent implements OnInit {
       })
     });
 
+    (<HTMLInputElement>document.getElementById("coment")).value = "";
   }
 
 
