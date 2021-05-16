@@ -16,7 +16,7 @@
                 </div>
               </ng-template>
               <ng-template ngbSlide *ngFor="let image of ruta.fotos">
-                <div class="picsum-img-wrapper">
+                <div style="height: 393.2px; width: 700px;">
                   <img style="height: 100%; width: 100%; object-fit: contain;" [src]="image.url" alt="Random first slide">
                 </div>
                 <div class="carousel-caption">
@@ -29,13 +29,15 @@
             <div class="datos">{{ruta.descripcion}}</div>
             <br>
             <div class="datos">
-              <span>Longitud aproximada : &nbsp;</span>
+              <span>Longitud : &nbsp;</span>
               {{ruta.distancia}} Km
               <br>
               <span>Dificultad : &nbsp;</span>
+              {{ruta.dificultad}}
               <br>
               <span>Valoración : &nbsp;</span>
-              {{ruta.valoracion}}
+              <ngb-rating [(rate)]="ruta.valoracion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+               ({{ruta.valoraciones.length}} valoraciones)
             </div>
           </td>
         </tr>
@@ -47,7 +49,7 @@
               </div>
               <div class="textarea">
                 <h5>Comentario: </h5>
-                <textarea maxlength="150" rows="3" cols="54" id="comentario" placeholder="Deja tu opinión"></textarea>
+                <textarea maxlength="150" rows="3" cols="54" id="coment" placeholder="Deja tu opinión"></textarea>
               </div>
             </form>
             <div>
@@ -59,13 +61,28 @@
         <tr>
           <td class="comentarios">
             <p class="title">Comentarios</p>
-            <div class="scrollbar scrollbar-primary">
+            <table class="comments" maxHeight="250" style="width: 640px; overflow: visible;">
+              <tr *ngFor = "let comentario of ruta.comentarios">
+                <td style="width: 80%;">
+                  <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                </td>
+                <td>
+                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'" style="width: 20%; margin-left: 20px; margin-bottom: 16px;">
+                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
+                  </div>
+                </td>
+              </tr>
+            </table>
+            <!-- <div class="scrollbar scrollbar-primary">
               <div class="force-overflow">
                 <div *ngFor = "let comentario of ruta.comentarios">
                   <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'">
+                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
+                  </div>
                 </div>
               </div>         
-            </div>           
+            </div>            -->
           </td>
           <td class="botones">
             <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">
