@@ -31,6 +31,8 @@ import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.compon
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RutaComponent } from './rutas/ruta/ruta.component';
+import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
+import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
 
 
 
@@ -51,9 +53,12 @@ import { RutaComponent } from './rutas/ruta/ruta.component';
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
+    MapaDetalleComponent,
     DetallesRutaComponent,
     MapaDetalleComponent,
-    RutaComponent
+    RutaComponent,
+    ProponerRutaComponent,
+    MapaProponerComponent
    ],
   imports: [
     BrowserModule,
