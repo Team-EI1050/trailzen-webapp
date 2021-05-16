@@ -41,6 +41,11 @@ export class ModalmodificarRutaComponent {
     this.rutaService.getRuta(this.ruta._id.toString()).subscribe(data => {
       this.ruta = data;
     });
+    let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+          console.log(currentUrl);
+      });
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
