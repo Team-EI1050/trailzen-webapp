@@ -23,7 +23,7 @@ export class Ruta {
     this.coordenadas= coordenadas;
     this.circular=circular;
     this. aprobada= aprobada;
-    this.fotos=null;
+    this.fotos=[{ nombre:"principal", url:"https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg"}];
     this.viable = viable;
     this.descripcion = descripcion;
     this.dificultad = dificultad;

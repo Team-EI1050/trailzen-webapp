@@ -32,7 +32,8 @@ export class ProponerRutaComponent implements OnInit {
       creador: new FormControl(this.user._id),
       descripcion: new FormControl('', Validators.required),
       dificultad: new FormControl('', Validators.required),
-      provincia: new FormControl('', Validators.required)
+      provincia: new FormControl('', Validators.required),
+      
     });
     this.ruta.coordenadas=[{ lat: null , lon: null }];
     this.validos = true; 

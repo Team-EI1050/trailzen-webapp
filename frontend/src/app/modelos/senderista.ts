@@ -22,7 +22,7 @@ export class Senderista implements Iuser{
     this. descripcion= descripcion;
     this.nombre = nombre;
     this.apellido = apellido;
-    this.fotoPerfil = null;
+    this.fotoPerfil = "http://cdn.benchmark.pl/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg";
 }
 }
 
