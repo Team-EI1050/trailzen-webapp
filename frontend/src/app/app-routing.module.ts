@@ -6,7 +6,6 @@ import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.comp
 import { RutasComponent } from './rutas/listadoRutas/rutas.component';
 import { UserLoginComponent } from './common/login/user-login/user-login.component';
 import { RegistroComponent } from './common/registro/registro.component';
-import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { DetallesRutaComponent } from './rutas/detalles-ruta/detalles-ruta.component';
 
 
@@ -20,8 +19,7 @@ const routes: Routes = [
   {path: 'ruta', component: RutasComponent},
   {path: 'ruta/:id', component: DetallesRutaComponent},
   {path: 'login', component: UserLoginComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'cerrarSesion', component: CerrarSesionComponent}
+  {path: 'registro', component: RegistroComponent}
   
 ];
 

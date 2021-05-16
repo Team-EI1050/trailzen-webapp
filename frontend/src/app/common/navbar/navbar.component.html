@@ -24,9 +24,9 @@
           <a class="nav-link" routerLink="/registro">Regístrate en Trailzen</a>
         </li>
       </div>
-      <div *ngIf="user.tipo!='USUARIO'">
+      <div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/ruta" (click)="cerrarSesion()">Cerrar Sesión</a>
+          <a class="nav-link" (click)="botonCerrarSesion()">Cerrar Sesión</a>
         </li>
       </div>
     </ul>
