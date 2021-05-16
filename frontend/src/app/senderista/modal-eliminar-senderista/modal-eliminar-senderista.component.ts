@@ -1,13 +1,10 @@
-import { Route } from '@angular/compiler/src/core';
 import { Component, Input, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Senderista } from '../../modelos/senderista'
 import { SenderistaService } from '../senderista.service'
 import { Iuser } from 'src/app/modelos/Iuser';
 import { user } from 'src/app/modelos/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal-eliminar-senderista',
@@ -19,24 +16,10 @@ export class ModalEliminarSenderistaComponent implements OnInit {
   @Input() senderista: Senderista;
 
   constructor( 
-    private modalService: NgbModal, 
-    private senderistaService: SenderistaService,
-    private router: Router ) { }
+    private senderistaService: SenderistaService, private router: Router) { }
 
   ngOnInit(): void {
   }
-
-
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: Save`;
-    }
-  }
-
 
   getDatosYElimina(){  //toma los datos del modal y elimina el senderista.
     // this.senderistaService.deleteSenderista(this.senderista._id).subscribe();
@@ -56,7 +39,9 @@ export class ModalEliminarSenderistaComponent implements OnInit {
             Swal.fire('¡Se ha eliminado su perfil!', '', 'success');
             console.log('Eliminando perfil');
             this.cerrarSesion();
-            
+            setTimeout(() => {
+              this.router.navigate(['/ruta']);
+            }, 2000);
             // Hay que redirigir a la main page
           });
         

@@ -24,7 +24,6 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './common/login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './common/registro/registro.component';
-import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
@@ -50,7 +49,6 @@ import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.comp
     NavbarComponent,
     UserLoginComponent,
     RegistroComponent,
-    CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div id="poner-borroso">
+<div id="poner-borroso" *ngIf="gestor != undefined">
 <div>
     <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
         <div id="contenedor">
@@ -25,7 +25,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h3 style="text-align: center; margin-top: 5px;">{{gestor.nickname}}</h3>
+                                        <h3 style="text-align: center; margin-top: 5px;" >{{gestor.nickname}}</h3>
                                     </td>
                                 </tr>
                             </table>
