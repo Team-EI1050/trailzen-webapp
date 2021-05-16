@@ -16,8 +16,8 @@
                 </div>
               </ng-template>
               <ng-template ngbSlide *ngFor="let image of ruta.fotos">
-                <div class="picsum-img-wrapper">
-                  <img [src]="image.url" alt="Random first slide">
+                <div style="height: 393.2px; width: 700px;">
+                  <img style="height: 100%; width: 100%; object-fit: contain;" [src]="image.url" alt="Random first slide">
                 </div>
                 <div class="carousel-caption">
                   <h3>{{image.nombre}}</h3>
@@ -29,13 +29,15 @@
             <div class="datos">{{ruta.descripcion}}</div>
             <br>
             <div class="datos">
-              <span>Longitud aproximada : &nbsp;</span>
+              <span>Longitud : &nbsp;</span>
               {{ruta.distancia}} Km
               <br>
               <span>Dificultad : &nbsp;</span>
+              {{ruta.dificultad}}
               <br>
               <span>Valoración : &nbsp;</span>
-              {{ruta.valoracion}}
+              <ngb-rating [(rate)]="ruta.valoracion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+               ({{ruta.valoraciones.length}} valoraciones)
             </div>
           </td>
         </tr>

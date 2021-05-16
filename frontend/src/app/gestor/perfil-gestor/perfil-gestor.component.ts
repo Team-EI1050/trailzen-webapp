@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { GestorService } from '../gestor.service';
 import { ActivatedRoute } from '@angular/router';
 import { Gestor } from '../../modelos/gestor';
-import { Iuser } from 'src/app/modelos/Iuser';
 
 @Component({
   selector: 'app-perfil-gestor',

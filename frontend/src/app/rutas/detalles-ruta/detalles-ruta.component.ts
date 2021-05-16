@@ -2,7 +2,6 @@ import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Iuser } from '../../modelos/Iuser';
-import { Ruta } from '../../modelos/ruta';
 import { RutaService } from '../ruta.service';
 
 @Component({
@@ -63,6 +62,7 @@ export class DetallesRutaComponent implements OnInit {
       })
     });
 
+    this.currentRate = NaN;
     (<HTMLInputElement>document.getElementById("coment")).value = "";
   }
 

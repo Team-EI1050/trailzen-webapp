@@ -1,0 +1,119 @@
+div.rutas {
+    width: 80%;
+    margin: 0 auto;
+    margin-right: 3%;
+  }
+  div.ruta {
+    border: solid black 1px;
+    background-color: lightgrey;
+    margin-top: 20px;
+    margin: 20px;
+    float: left;
+  }
+  
+  div.ruta img {
+    width: 100%;
+    height: auto;
+  }
+  
+  div.title {
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  div.valor {
+    padding: 15px;
+    text-align: left;
+  }
+  
+  div.dist {
+    padding: 15px;
+    text-align: right;
+  }
+  
+  /****ALINEACION TEXTO**/
+  .container {
+    position: relative;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    user-select: none;
+    width: 360px;
+    height: 300px;
+  }
+  
+  .bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; 
+    background:rgba(0, 0, 0, 0.514);
+    height: 20%;
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+  }
+  
+  #container:hover #top, #container:hover #bottom { background:rgba(0, 0, 0, 0.795); } /*Oscurece los bordes al hacer hover sobre una ruta*/
+  
+  /* Bottom left text */
+  .bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    user-select: none;
+  }
+  
+  /* Bottom right text */
+  .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+    user-select: none;
+  }
+  
+  .icono-bottom{
+    margin-top: -3px;
+    margin-right: 4px;
+  }
+  
+  .top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    background:rgba(0, 0, 0, 0.514);
+    height: 26%;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+  }
+  
+  /* Top left text */
+  .top-left {
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    user-select: none;
+  }
+  
+  /* Top right text */
+  .top-right {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    user-select: none;
+  }
+  
+  /* Centered text */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+  }
+  /**************************/
+  

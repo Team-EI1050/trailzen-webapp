@@ -1,3 +1,4 @@
+
 //vanilla
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,6 +30,12 @@ import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
 import { ModalEliminarComentarioComponent } from './rutas/modal-eliminar-comentario/modal-eliminar-comentario.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RutaComponent } from './rutas/ruta/ruta.component';
+import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
+import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
+
+
 
 
 @NgModule({
@@ -47,9 +54,13 @@ import { ModalEliminarComentarioComponent } from './rutas/modal-eliminar-comenta
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
+    MapaDetalleComponent,
     DetallesRutaComponent,
     MapaDetalleComponent,
-    ModalEliminarComentarioComponent
+    ModalEliminarComentarioComponent,
+    RutaComponent,
+    ProponerRutaComponent,
+    MapaProponerComponent
    ],
   imports: [
     BrowserModule,
@@ -59,7 +70,7 @@ import { ModalEliminarComentarioComponent } from './rutas/modal-eliminar-comenta
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
-    // BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

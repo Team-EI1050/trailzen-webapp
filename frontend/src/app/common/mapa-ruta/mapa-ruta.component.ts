@@ -45,6 +45,8 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
+    console.log("hasta aqui")
+
     tiles.addTo(this.mapa);
 
     let contador = [];
@@ -72,12 +74,17 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if(this.ruta._id != null){
+      document.getElementById("map").setAttribute("id", "mapoff");
+    }
     //this.auxDistancia[0] = this.ruta.distancia;
     this.ruta.coordenadas = this.coordenadasRuta;
     this.rutaService.contadorKm = this.auxDistancia;
-    document.getElementById("map").setAttribute("id", "mapoff");
   }
   ngOnDestroy(): void{
+    if(this.ruta._id != null){
+      document.getElementById("mapoff").setAttribute("id", "map");
+    }
     console.log("Exploto ",this.auxDistancia);
     if(document.getElementById("mapoff") != null){
       document.getElementById("mapoff").setAttribute("id", "map");
