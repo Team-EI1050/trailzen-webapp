@@ -53,18 +53,10 @@ export class PerfilGestorComponent implements OnInit {
     console.log("USER: "+this.user['nickname']);
 
     this.rutaService.getRutas().subscribe(res => {
-      // console.log("###########");
-      // console.log("Res: "+JSON.stringify(res));
-
 
       this.rutas = res;
       this.rutasValidadas = res;
       this.rutasSinValidar = res;
-      // this.rutasValidadas = new Array<Ruta>();
-      // this.rutasSinValidar = new Array<Ruta>();
-      
-
-      // console.log("1 RUTA -> "+res[0]._id);
       
       // this.rutas.forEach(function (ruta) {
       //   console.log(" - - - - VALIDADAS - - - - ");
@@ -76,26 +68,7 @@ export class PerfilGestorComponent implements OnInit {
       //     console.log("VALIDADAS | APROBADA NO TRUE -> "+ruta.nombre);
       //     this.rutasSinValidar.push(ruta);
       //   }
-
-      //   // console.log("## VALIDADAS | 4 Ruta --> ");
-      //   // Object.keys(ruta).forEach((prop)=> console.log("## VALIDADAS | "+prop +": " + ruta[prop]));
-      //   // console.log("## VALIDADAS | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
       // });
-
-      // this.rutasSinValidar.forEach(function (ruta) {
-      //   console.log(" - - - - SIN VALIDAR - - - - ");
-      //   // console.log("SIN VALIDAR | 2 RUTA -> "+ruta._id);
-      //   // console.log("SIN VALIDAR | 3 RUTA -> "+ruta.aprobada);
-        
-      //   // console.log("## SIN VALIDAR | 4 Ruta --> ");
-      //   // Object.keys(ruta).forEach((prop)=> console.log("## SIN VALIDAR | "+prop +": " + ruta[prop]));
-      //   // console.log("## SIN VALIDAR | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
-      // });
-
-      // console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
-      // console.log("6 RutasValidadas --> "+this.rutasValidadas);
-
-      
     });  
 
     // this.rutaService.getRutas().subscribe(res => {
