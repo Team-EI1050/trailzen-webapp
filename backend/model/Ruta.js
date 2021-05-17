@@ -8,6 +8,7 @@ let Ruta = new Schema ({
     circular: Boolean,
     aprobada: Boolean,
     fotos: [ { nombre: String, url: String} ],
+    dificultad: String,
     viable: Boolean,
     creador: String,
     descripcion: String,

@@ -1,9 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Iuser } from 'src/app/modelos/Iuser';
-import { Ruta } from 'src/app/modelos/ruta';
-import Swal from 'sweetalert2';
+import { ActivatedRoute } from '@angular/router';
+import { Iuser } from '../../modelos/Iuser';
 import { RutaService } from '../ruta.service';
 
 @Component({
@@ -21,7 +19,7 @@ export class DetallesRutaComponent implements OnInit {
   getId: any;
   @Input() ruta;
 
-  constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private rutaService: RutaService) { }
 
   ngOnInit(): void {
 
@@ -40,14 +38,15 @@ export class DetallesRutaComponent implements OnInit {
   crearOpinion() {
     this.valoracion = {nickname: "", valor: NaN}
     this.comentario = {nickname: "", comentario: ""}
-    let valor = this.currentRate;
-    console.log("Valor: " + valor)
-    let coment = (<HTMLInputElement>document.getElementById("comentario")).value;
+    // letcoment=(this.miFormulario.controls['nickname'].value);
+    console.log("Valor: " + this.currentRate)
+    let coment = (<HTMLInputElement>document.getElementById("coment")).value;
     console.log("Comentario: " + coment)
 
-    if (valor != NaN || valor != undefined || valor != null) {
+    if (this.currentRate.toString() != 'NaN') {
+      console.log('Considerando valoraciones')
         this.valoracion.nickname = this.user.nickname;
-        this.valoracion.valor = valor;
+        this.valoracion.valor = this.currentRate;
         this.calcularValoracion(this.valoracion)
     }
 
@@ -63,7 +62,10 @@ export class DetallesRutaComponent implements OnInit {
       })
     });
 
+    this.currentRate = NaN;
+    (<HTMLInputElement>document.getElementById("coment")).value = "";
   }
+
 
   calcularValoracion(valoracion: {nickname: String, valor: Number}) {
     this.suma = 0;
@@ -92,40 +94,6 @@ export class DetallesRutaComponent implements OnInit {
     // Se calcula la media de las valoraciones
     this.ruta.valoracion = (this.suma / this.ruta.valoraciones.length).toFixed(1)
 
-  }
-
-  aprobarRuta() {
-    let aprobada = true;
-    let viable = true;
-
-    let nuevaRuta=new Ruta(
-      this.ruta._id,
-      this.ruta.nombre,
-      this.ruta.distancia,
-      this.ruta.coordenadas,
-      this.ruta.circular,
-      aprobada,
-      viable,
-      this.ruta.descripcion,
-      this.ruta.dificultad,
-      this.ruta.provincia,
-      this.ruta.creador
-    )
-    
-    this.rutaService.updateRuta(nuevaRuta).subscribe(res => {
-      Swal.fire({
-        icon: 'success',
-        title: 'Yaih!',
-        text: "Ruta aprobada satisfactoriamente!",
-        showConfirmButton: false,
-        toast: true,
-        timer: 3000,
-        timerProgressBar: true
-      });
-      setTimeout(() => {
-        this.router.navigate(['/gestor/'+this.user._id]);
-      }, 3000);
-    });
   }
 
 }

@@ -1,3 +1,4 @@
+
 //vanilla
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,12 +24,17 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { UserLoginComponent } from './common/login/user-login/user-login.component';
 import { FormsModule } from '@angular/forms';
 import { RegistroComponent } from './common/registro/registro.component';
-import { CerrarSesionComponent } from './common/cerrar-sesion/cerrar-sesion.component';
 import { PerfilGestorComponent } from './gestor/perfil-gestor/perfil-gestor.component';
 import { MapaRutaComponent } from './common/mapa-ruta/mapa-ruta.component';
 import { DetallesRutaComponent } from'./rutas/detalles-ruta/detalles-ruta.component';
 import { MapaDetalleComponent } from './common/mapa-detalle/mapa-detalle.component';
+import { ModalEliminarComentarioComponent } from './rutas/modal-eliminar-comentario/modal-eliminar-comentario.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { RutaComponent } from './rutas/ruta/ruta.component';
 import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
+import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
+
+
 
 
 @NgModule({
@@ -43,13 +49,16 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     NavbarComponent,
     UserLoginComponent,
     RegistroComponent,
-    CerrarSesionComponent,
     ModalEliminarSenderistaComponent,
     ModalmodificarRutaComponent,
     MapaRutaComponent,
+    MapaDetalleComponent,
     DetallesRutaComponent,
     MapaDetalleComponent,
+    ModalEliminarComentarioComponent,
+    RutaComponent,
     ProponerRutaComponent,
+    MapaProponerComponent
    ],
   imports: [
     BrowserModule,
@@ -59,7 +68,7 @@ import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.compo
     NgbModule,
     SweetAlert2Module.forRoot(),
     FormsModule,
-    // BrowserAnimationsModule,
+    Ng2SearchPipeModule
   ],
   providers: [], //servicios
   bootstrap: [AppComponent]

@@ -6,14 +6,16 @@ export class Ruta {
   circular: Boolean ;
   aprobada: Boolean ;
   fotos: [ { nombre: String , url: String } ];
-  viable: Boolean ;
-  creador: String;
+  viable: Boolean;
   descripcion: String;
   valoracion: Number;
   comentarios: [ { nickname: String, comentario: String } ];
   dificultad: String;
   provincia: String;
-  valoraciones: [ {valoracion: Number, nickname: String} ] 
+  creador: String;
+  valoracion: Number;
+  valoraciones: [ {valoracion: Number, nickname: String} ];
+  comentarios: [ { nickname: String, comentario: String } ];
 
   constructor(id: String, nombre: String, distancia:Number, coordenadas: { lat: Number , lon: Number } [],
     circular:Boolean, aprobada: Boolean, viable:Boolean, descripcion:String, dificultad: String, provincia:String, creador: String){
@@ -23,7 +25,7 @@ export class Ruta {
     this.coordenadas= coordenadas;
     this.circular=circular;
     this. aprobada= aprobada;
-    this.fotos=null;
+    this.fotos=[{ nombre:"principal", url:"https://image.shutterstock.com/image-photo/couple-young-happy-travelers-hiking-600w-1079578931.jpg"}];
     this.viable = viable;
     this.descripcion = descripcion;
     this.dificultad = dificultad;
@@ -31,4 +33,5 @@ export class Ruta {
     this.creador = creador;
     this.valoraciones=null;
   }
+
 }

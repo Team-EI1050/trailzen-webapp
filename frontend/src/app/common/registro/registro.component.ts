@@ -25,8 +25,7 @@ export class RegistroComponent implements OnInit {
       nickname:  new FormControl('', Validators.required),
       password:  new FormControl('', Validators.required),
       fechaCreacion: new FormControl(''),
-      descripcion: new FormControl('¡Soy un nuevo senderista!'),
-      fotoPerfil: new FormControl('')
+      descripcion: new FormControl('¡Soy un nuevo senderista!')
     });
     this.validos = true; 
     this.data = "Uno de tus campos es incorrecto";
@@ -49,7 +48,7 @@ export class RegistroComponent implements OnInit {
     let fechaCreacion = dd + '/' + mm + '/' + yyyy;
     // console.log(fechaCreacion)
     let descripcion=(this.miFormulario.controls['descripcion'].value);
-    let fotoPerfil=(this.miFormulario.controls['fotoPerfil'].value);
+    console
       // console.log(nombre);
       // console.log(apellido);
       // console.log(correo);

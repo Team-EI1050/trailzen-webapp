@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CerrarSesionComponent } from './cerrar-sesion.component';
+import { MapaProponerComponent } from './mapa-proponer.component';
 
-describe('CerrarSesionComponent', () => {
-  let component: CerrarSesionComponent;
-  let fixture: ComponentFixture<CerrarSesionComponent>;
+describe('MapaProponerComponent', () => {
+  let component: MapaProponerComponent;
+  let fixture: ComponentFixture<MapaProponerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CerrarSesionComponent ]
+      declarations: [ MapaProponerComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CerrarSesionComponent);
+    fixture = TestBed.createComponent(MapaProponerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

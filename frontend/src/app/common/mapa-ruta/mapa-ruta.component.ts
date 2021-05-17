@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as L from 'leaflet';
 import { Ruta } from 'src/app/modelos/ruta';
 import { RutaService } from 'src/app/rutas/ruta.service';
@@ -30,7 +31,7 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() ruta: Ruta;
   public auxDistancia: Number[] = new Array(1);
 
-  constructor(public rutaService: RutaService) { }
+  constructor(public rutaService: RutaService, private router: Router) { }
 
   ngAfterViewInit(): void {
 
@@ -44,6 +45,8 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
       minZoom: 3,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     });
+    console.log("hasta aqui")
+
     tiles.addTo(this.mapa);
 
     let contador = [];
@@ -71,13 +74,26 @@ export class MapaRutaComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if(this.ruta._id != null){
+      document.getElementById("map").setAttribute("id", "mapoff");
+    }
     //this.auxDistancia[0] = this.ruta.distancia;
     this.ruta.coordenadas = this.coordenadasRuta;
     this.rutaService.contadorKm = this.auxDistancia;
-    document.getElementById("map").setAttribute("id", "mapoff");
   }
   ngOnDestroy(): void{
+    if(this.ruta._id != null){
+      document.getElementById("mapoff").setAttribute("id", "map");
+    }
     console.log("Exploto ",this.auxDistancia);
-    document.getElementById("mapoff").setAttribute("id", "map");
+    if(document.getElementById("mapoff") != null){
+      document.getElementById("mapoff").setAttribute("id", "map");
+    }
+
+    let currentUrl = this.router.url;
+      this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
+          this.router.navigate([currentUrl]);
+          console.log(currentUrl);
+      });
   }
 }

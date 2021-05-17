@@ -24,14 +24,19 @@
           <a class="nav-link" routerLink="/registro">Regístrate en Trailzen</a>
         </li>
       </div>
-      <div *ngIf="user.tipo!='USUARIO'">
+      <div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/cerrarSesion">Cerrar Sesión</a>
+          <a class="nav-link" (click)="botonCerrarSesion()">Cerrar Sesión</a>
         </li>
       </div>
       <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
         <li class="nav-item">
           <a class="nav-link" routerLink="/proponerRuta">Proponer Ruta</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proponerRuta">Crear Ruta</a>
         </li>
       </div>
      </ul> 
