@@ -1,0 +1,44 @@
+<nav id="nav-poner-borroso" class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" routerLink="/ruta">
+    <img src="../../../assets/trailzen-horizontal.ico" width="150" height="35" alt="">
+  </a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <div *ngIf="user.tipo==null || user.tipo=='USUARIO'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Iniciar sesión</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/senderista/{{getUserId()}}">Mi Perfil</a>
+        </li>
+      </div>
+      <div  *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/gestor/{{getUserId()}}">Mi Perfil</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo==null || user.tipo=='USUARIO'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/registro">Regístrate en Trailzen</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo!='USUARIO' && user.tipo!=null">
+        <li class="nav-item">
+          <a class="nav-link" (click)="botonCerrarSesion()">Cerrar Sesión</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proponerRuta">Proponer Ruta</a>
+        </li>
+      </div>
+      <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/proponerRuta">Crear Ruta</a>
+        </li>
+      </div>
+     </ul> 
+  </div>
+</nav>

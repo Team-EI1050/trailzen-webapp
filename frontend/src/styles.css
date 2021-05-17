@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.myCustomModalClass .modal-dialog { /*estilo para hacer los modals más anchos*/
+    max-width: 800px;
+}
+.modal-header{
+    background: #5D6D7E !important; /*Color header modal modificar datos*/
+}
+.modal-footer{
+    background: #5D6D7E !important; /*Color footer modal modificar datos*/
+}
+.modal-body{
+    background-color: #232530 !important; /*Color fondo modal modificar datos*/
+}
+.boton-modal{
+    background-color: #ffb95e; /*Color boton guardar cambios modal modificar datos*/
+}
+.modal-title{
+    color:white; /*Color titulo modals*/
+}
+.close{
+    color: white; /* color cruz cerrar modal*/
+}
+.close:hover{
+    color: rgb(255, 145, 0); /*Color cruz raton encima */
+}

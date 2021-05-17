@@ -1,0 +1,116 @@
+table {
+  width: 70%;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #666;
+  border-radius: 15px;
+}
+
+.sombra{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+td {
+  width: 50%;
+}
+
+td.titulo {
+  text-align: center;
+  font-variant-caps: small-caps;
+  font-size: xxx-large;
+  font-kerning: none;
+  font-family: sans-serif;
+  background: #ffb95e;
+  border-radius: 15px 15px 0px 0px;
+}
+
+td.imagen {
+  text-align: center;
+  padding: 20px;
+}
+
+td.info {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: justify;
+  background: #232530;
+  color: white;
+
+}
+
+td.formulario {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+div.opinion {
+  border: 3px, solid #ffb95e;
+  border-radius: 15px;
+}
+textarea {
+  background: rgb(209, 209, 209);
+  border-radius: 10px;
+}
+
+td.comentarios {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+  color: white;
+}
+
+p.title {
+  padding-left: 20px;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: justify;
+  color: #ffb95e;
+}
+
+p.comentario {
+  font-style: italic;
+  border: 2px solid #232530;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 15px;
+  max-width: 500px;
+  background-color:rgb(151, 151, 151);
+}
+
+td.botones {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
+}
+
+span {
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.boton{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+button {
+  border-radius: 15px;
+  border: 2px solid #ffb95e;
+  width: 250px;
+  height: 50px;
+  background-color: #666;
+  color: #ffb95e;
+}
+

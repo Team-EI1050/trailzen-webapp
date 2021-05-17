@@ -1,0 +1,62 @@
+<table>
+  <tr>
+    <td class="tabla" style="width: 30%;">
+      <div *ngFor="let ruta of rutas">
+        <div *ngIf="ruta.aprobada==false">
+          <div (click)="rutaSeleccionada = ruta" class="miniatura">
+            {{ruta.nombre}}
+            <div class="botones">
+              <button type="button" (click)="aceptar()" class="aceptar">Aceptar</button>
+              <button type="button" (click)="rechazar()" class="rechazar">Rechazar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="datos" style="width: 70%;">
+      <div class="detalles" *ngIf="rutaSeleccionada == null || rutaSeleccionada == undefined">
+        <h2 style="font-weight: bold;">Seleccione una ruta para ver sus detalles</h2>
+      </div>
+      <div  class="detalles" *ngIf="rutaSeleccionada != null && rutaSeleccionada != undefined">
+        <div>
+          <h3>{{rutaSeleccionada.nombre}}</h3>
+
+          <ngb-carousel>
+            <ng-template ngbSlide>
+              <app-mapa-detalle [ruta]="rutaSeleccionada"></app-mapa-detalle>
+              <div class="carousel-caption">
+                <h3>Mapa</h3>
+              </div>
+            </ng-template>
+            <ng-template ngbSlide *ngFor="let image of rutaSeleccionada.fotos">
+              <div style="height: 393.2px; width: 700px;">
+                <img style="height: 100%; width: 100%; object-fit: contain;" [src]="image.url" alt="Random first slide">
+              </div>
+              <div class="carousel-caption">
+                <h3>{{image.nombre}}</h3>
+              </div>
+            </ng-template>
+          </ngb-carousel>
+
+          {{rutaSeleccionada.descripcion}}
+          <br>
+          <span>Longitud : &nbsp;</span>
+          {{rutaSeleccionada.distancia}} Km
+          <br>
+          <span>Dificultad : &nbsp;</span>
+          {{rutaSeleccionada.dificultad}}
+          <br>
+          <span>Aceptada : &nbsp;</span>
+          {{rutaSeleccionada.aprobada}}
+          <br>
+
+          <div class="botones" style="float: right; margin-bottom: 30px;">
+            <button type="button" (click)="aceptar()" class="aceptar">Aceptar</button>
+            <button type="button" (click)="rechazar()" class="rechazar">Rechazar</button>
+          </div>
+
+        </div>
+      </div>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<div id="poner-borroso">
+  <ng-template [ngIf] = "ruta != undefined">                      
+      <table class="sombra">
+        <tr> 
+          <td class="titulo" colspan="2">{{ruta.nombre}}</td>
+        </tr>
+        <tr>
+          <td class="imagen">
+            <ngb-carousel>
+              <ng-template ngbSlide>
+                <app-mapa-detalle [ruta]="ruta"></app-mapa-detalle>
+                <div class="carousel-caption">
+                  <h3>Mapa</h3>
+                </div>
+              </ng-template>
+              <ng-template ngbSlide *ngFor="let image of ruta.fotos">
+                <div style="height: 393.2px; width: 700px;">
+                  <img style="height: 100%; width: 100%; object-fit: contain;" [src]="image.url" alt="Random first slide">
+                </div>
+                <div class="carousel-caption">
+                  <h3>{{image.nombre}}</h3>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </td>
+          <td class="info" rowspan="2">
+            <div class="datos">{{ruta.descripcion}}</div>
+            <br>
+            <div class="datos">
+              <span>Longitud : &nbsp;</span>
+              {{ruta.distancia}} Km
+              <br>
+              <span>Dificultad : &nbsp;</span>
+              {{ruta.dificultad}}
+              <br>
+              <span>Valoración : &nbsp;</span>
+              <div *ngIf="ruta.valoraciones != null">
+                <ngb-rating [(rate)]="ruta.valoracion" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+               ({{ruta.valoraciones.length}} valoraciones)
+              </div>
+              
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="formulario" *ngIf = "user.tipo == 'SENDERISTA'">
+            <form>
+              <div>
+                <ngb-rating max=5 [(rate)]="currentRate" id="valoracion" style="color: #232530;"></ngb-rating>
+              </div>
+              <div class="textarea">
+                <h5>Comentario: </h5>
+                <textarea maxlength="150" rows="3" cols="54" id="coment" placeholder="Deja tu opinión"></textarea>
+              </div>
+            </form>
+            <div>
+              <button type="button" class="boton" style="color: #666; background-color: #ffb95e; width: 100px; height: 40px; 
+              float: right; margin-top: 5px; margin-right: 45px;" (click)="crearOpinion()">Publicar</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="comentarios">
+            <p class="title">Comentarios</p>
+            <table class="comments" maxHeight="250" style="width: 640px; overflow: visible;">
+              <tr *ngFor = "let comentario of ruta.comentarios">
+                <td style="width: 80%;">
+                  <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
+                </td>
+                <td>
+                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'" style="width: 20%; margin-left: 20px; margin-bottom: 16px;">
+                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="botones">
+            <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">
+              <app-modalmodificar-ruta [ruta]="ruta"></app-modalmodificar-ruta>
+            </div>
+            <div class="boton"><button type="button">Contratar monitor</button></div>
+            <div class="boton"><button type="button">Proponer expedición</button></div>
+          </td>
+        </tr>
+      </table>
+  </ng-template>
+</div>
