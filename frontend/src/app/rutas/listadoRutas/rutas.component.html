@@ -34,7 +34,7 @@
 
   <br>
   <div *ngFor="let ruta of rutas | filter:term">
-    <div *ngIf="todas==true || ruta.circular==circular && ruta.distancia<=distancia">
+    <div *ngIf="(todas==true || ruta.circular==circular) && ruta.distancia<=distancia && ruta.aprobada==true">
       <app-ruta [ruta]="ruta"></app-ruta>
     </div>
   </div>
