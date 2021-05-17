@@ -13,86 +13,86 @@
   margin-left: -50px;
 }
 
-div.descripcion{
-  margin-top:20px;
-  height:auto;
-  width:auto;
-  border:2px solid rgb(214, 214, 214); /*Color borde descripción*/
+div.descripcion {
+  margin-top: 20px;
+  height: auto;
+  width: auto;
+  border: 2px solid rgb(214, 214, 214); /*Color borde descripción*/
   padding: 0 12px;
   text-align: justify;
 }
 
-div.descripcion h1{
+div.descripcion h1 {
   width: 5em;
-  font-size:21px;
-  margin-top:-12px;
-  margin-left:7px;
-  background: #232530;  /* cambiar por color del fondo */
+  font-size: 21px;
+  margin-top: -12px;
+  margin-left: 7px;
+  background: #232530; /* cambiar por color del fondo */
   text-align: center;
 }
 
 /***********************/
 
 #contenedor {
-margin: 40px auto;
-width: auto;  /* Ancho del contenedor */
-box-sizing: border-box;
--moz-box-sizing: border-box;
+  margin: 40px auto;
+  width: auto; /* Ancho del contenedor */
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 #contenedor input {
-height: 32px;
-visibility: hidden;
+  height: 32px;
+  visibility: hidden;
 }
 
 #contenedor label {
-float: left;
-cursor: pointer;
-font-size: 15px;  /* Tamaño del texto de las pestañas */
-line-height: 40px;
-height: 40px;
-padding: 0 20px;
-display: block;
-color: #888;  /* Color del texto de las pestañas */
-text-align: center;
-border-radius: 5px 5px 0 0;
-background: #FFDA91;  /* Fondo de las pestañas */
-margin-right: 5px;
+  float: left;
+  cursor: pointer;
+  font-size: 15px; /* Tamaño del texto de las pestañas */
+  line-height: 40px;
+  height: 40px;
+  padding: 0 20px;
+  display: block;
+  color: #888; /* Color del texto de las pestañas */
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  background: #ffda91; /* Fondo de las pestañas */
+  margin-right: 5px;
 }
 
 #contenedor input:hover + label {
-background: #ddd;  /* Fondo de las pestañas al pasar el cursor por encima */
-color: #666;  /* Color del texto de las pestañas al pasar el cursor por encima */
+  background: #ddd; /* Fondo de las pestañas al pasar el cursor por encima */
+  color: #666; /* Color del texto de las pestañas al pasar el cursor por encima */
 }
 
 #contenedor input:checked + label {
-background: #5D6D7E;  /* Fondo de las pestañas al presionar */
-color: rgb(255, 255, 255); /* Color de texto de las pestañas al presionar */
-z-index: 6;
-line-height: 45px;
-height: 45px;
-position: relative;
-top: -5px;
--webkit-transition: .1s;
--moz-transition: .1s;
--o-transition: .1s;
--ms-transition: .1s;
+  background: #5d6d7e; /* Fondo de las pestañas al presionar */
+  color: rgb(255, 255, 255); /* Color de texto de las pestañas al presionar */
+  z-index: 6;
+  line-height: 45px;
+  height: 45px;
+  position: relative;
+  top: -5px;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
 }
 
 .content {
-background: #5D6D7E;  /* Fondo del contenido */
-position: relative;
-width: 100%;
-height: 490px;  /* Alto del contenido */
-padding: 30px;
-z-index: 5;
-border-radius: 0 5px 5px 5px;
+  background: #5d6d7e; /* Fondo del contenido */
+  position: relative;
+  width: 100%;
+  height: 490px; /* Alto del contenido */
+  padding: 30px;
+  z-index: 5;
+  border-radius: 0 5px 5px 5px;
 }
 
 .content div {
-z-index: -100;
-opacity: 0;
-transition: all linear 0.1s;
+  z-index: -100;
+  opacity: 0;
+  transition: all linear 0.1s;
 }
 
 #contenedor input.tab-selector-1:checked ~ .content .content-1,
@@ -102,14 +102,229 @@ transition: all linear 0.1s;
   z-index: 100;
   opacity: 1;
   -webkit-transition: all ease-out 0.2s 0.1s;
--moz-transition: all ease-out 0.2s 0.1s;
--o-transition: all ease-out 0.2s 0.1s;
--ms-transition: all ease-out 0.2s 0.1s;
+  -moz-transition: all ease-out 0.2s 0.1s;
+  -o-transition: all ease-out 0.2s 0.1s;
+  -ms-transition: all ease-out 0.2s 0.1s;
 }
-
 
 /*********/
 
-.sombra{
-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+.sombra {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/* RUTAS */
+
+div.rutas {
+  width: 90%;
+  margin: 0 auto;
+  margin-right: 3%;
+}
+div.ruta {
+  border: solid black 1px;
+  background-color: lightgrey;
+  margin-top: 20px;
+  margin: 20px;
+  float: left;
+}
+
+div.ruta img {
+  width: 100%;
+  height: auto;
+}
+
+div.title {
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+div.valor {
+  padding: 15px;
+  text-align: left;
+}
+
+div.dist {
+  padding: 15px;
+  text-align: right;
+}
+
+/****ALINEACION TEXTO**/
+.container {
+  position: relative;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  user-select: none;
+  width: 360px;
+  height: 200px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.514);
+  height: 20%;
+  -webkit-transition: background-color 1s ease-out;
+  -moz-transition: background-color 1s ease-out;
+  -o-transition: background-color 1s ease-out;
+  transition: background-color 1s ease-out;
+}
+
+#container:hover #top,
+#container:hover #bottom {
+  background: rgba(0, 0, 0, 0.795);
+} /*Oscurece los bordes al hacer hover sobre una ruta*/
+
+/* Bottom left text */
+.bottom-left {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  user-select: none;
+}
+
+/* Bottom right text */
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  user-select: none;
+}
+
+.icono-bottom {
+  margin-top: -3px;
+  margin-right: 4px;
+}
+
+.top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.514);
+  height: 26%;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  user-select: none;
+}
+
+/* Top right text */
+.top-right {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  user-select: none;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  user-select: none;
+}
+/**************************/
+
+/* TABS */
+
+:host {
+  display: block;
+  font-size: 18px;
+}
+.tabs {
+  width: 100%;
+}
+.tabs__nav {
+  border-bottom: 2px solid #ff3366;
+  display: flex;
+}
+.tabs__nav-item {
+  background-color: #f0f0f0;
+  border-radius: 5px 5px 0px 0px;
+  cursor: pointer;
+  margin-right: 4px;
+  padding: 10px 25px 10px 25px;
+}
+.tabs__nav-item:hover {
+  background-color: #e0e0e0;
+}
+.tabs__nav-item--on {
+  background-color: #ff3366;
+  color: #ffffff;
+}
+.tabs__nav-item--on:hover {
+  background-color: #ff3366;
+}
+.tabs__content {
+  border: 1px solid #cccccc;
+  border-top-width: 0px;
+  height: 350px;
+  overflow: auto;
+  padding: 25px 25px 25px 25px;
+}
+.tabs__tab > *:first-child {
+  margin-top: 0px;
+}
+.tabs__tab > *:last-child {
+  margin-bottom: 0px;
+}
+
+/* TABLE */
+.details {
+  position: relative;
+}
+
+.details span {
+  position: absolute;
+  top: 0;
+  transform: translateY(70%);
+  display: none;
+  color: #373946;
+  background: white;
+  z-index: 20;
+  /* min-width: 100%; */
+  padding: 1rem;
+  border: 1px solid black;
+}
+
+.details:hover span {
+  display: inline;
+}
+
+td.panelRutas {
+  padding: 1rem;
+  /* background: #ffb95e; */
+  /* border: 1px solid black; */
+}
+
+div.limitaLong {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+table.blacked tr:hover {
+  color: white;
+  background-color: #373946;
+}
+
+table.blacked a {
+  color: white;
+}
+table.blacked a:hover {
+  color: rgb(224, 217, 217);
 }

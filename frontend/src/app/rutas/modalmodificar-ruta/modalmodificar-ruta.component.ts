@@ -1,7 +1,8 @@
-import {Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Iuser } from 'src/app/modelos/Iuser';
 import Swal from 'sweetalert2'
 
 import { Ruta } from '../../modelos/ruta'
@@ -21,6 +22,10 @@ export class ModalmodificarRutaComponent {
 
   constructor(private modalService: NgbModal, public rutaService: RutaService, private router: Router) {
   }
+
+  // ngOnInit() {
+  //   this.user = JSON.parse(localStorage.getItem("USER"));
+  // }
 
   //modal
   async open(content) {
@@ -138,4 +143,5 @@ export class ModalmodificarRutaComponent {
       });
     }
   }
+
 }
