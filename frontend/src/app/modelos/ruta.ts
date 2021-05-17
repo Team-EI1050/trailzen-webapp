@@ -8,8 +8,6 @@ export class Ruta {
   fotos: [ { nombre: String , url: String } ];
   viable: Boolean;
   descripcion: String;
-  valoracion: Number;
-  comentarios: [ { nickname: String, comentario: String } ];
   dificultad: String;
   provincia: String;
   creador: String;
