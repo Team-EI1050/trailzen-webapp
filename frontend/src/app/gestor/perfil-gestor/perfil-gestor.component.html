@@ -134,7 +134,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- <div class="content-3" *ngFor="let ruta of rutas"> -->
                                                     <tr *ngFor="let ruta of rutasSinValidar">
                                                         <td class="panelRutas details">
                                                             <a routerLink="/ruta/{{ruta._id}}" target="_blank">
@@ -172,12 +171,12 @@
                                                         </div>
                                                         <ng-template #thenBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>VALIDAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="aprobarRuta(ruta)">VALIDAR</button>
                                                             </td>
                                                         </ng-template>
                                                         <ng-template #elseBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>DENEGAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="eliminarRuta(ruta)">ELIMINAR</button>
                                                             </td>
                                                         </ng-template>
                                                     </tr>
@@ -203,7 +202,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <!-- <div class="content-3" *ngFor="let ruta of rutas"> -->
                                                     <tr *ngFor="let ruta of rutasValidadas">
                                                         <td class="panelRutas details">
                                                             <a routerLink="/ruta/{{ruta._id}}" target="_blank">
@@ -241,12 +239,12 @@
                                                         </div>
                                                         <ng-template #thenBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>VALIDAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="aprobarRuta(ruta)">VALIDAR</button>
                                                             </td>
                                                         </ng-template>
                                                         <ng-template #elseBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>DENEGAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="eliminarRuta(ruta)">ELIMINAR</button>
                                                             </td>
                                                         </ng-template>
                                                     </tr>
@@ -317,12 +315,12 @@
                                                         </div>
                                                         <ng-template #thenBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>VALIDAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="aprobarRuta(ruta)">VALIDAR</button>
                                                             </td>
                                                         </ng-template>
                                                         <ng-template #elseBlock>
                                                             <td class="panelRutas" style="text-align: center;">
-                                                                <span>DENEGAR</span>
+                                                                <button class="btn btn-primary btn-sm" (click)="eliminarRuta(ruta)">ELIMINAR</button>
                                                             </td>
                                                         </ng-template>
                                                     </tr>

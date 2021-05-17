@@ -1,10 +1,11 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { GestorService } from '../gestor.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Gestor } from '../../modelos/gestor';
 import { Iuser } from 'src/app/modelos/Iuser';
 import { Ruta } from 'src/app/modelos/ruta';
 import { RutaService } from '../../rutas/ruta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-perfil-gestor',
@@ -30,7 +31,8 @@ export class PerfilGestorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute, 
     private gestorService: GestorService,
-    private rutaService: RutaService
+    private rutaService: RutaService,
+    private router: Router
     ) {
     this.selectedTab = 'misDatos';
     this.selectedTabInside = 'one';
@@ -51,54 +53,66 @@ export class PerfilGestorComponent implements OnInit {
     console.log("USER: "+this.user['nickname']);
 
     this.rutaService.getRutas().subscribe(res => {
-      console.log("###########");
+      // console.log("###########");
       // console.log("Res: "+JSON.stringify(res));
+
 
       this.rutas = res;
       this.rutasValidadas = res;
       this.rutasSinValidar = res;
+      // this.rutasValidadas = new Array<Ruta>();
+      // this.rutasSinValidar = new Array<Ruta>();
       
-      console.log("1 RUTA -> "+res[0]._id);
-      
-      this.rutasValidadas.forEach(function (ruta) {
-        console.log(" - - - - VALIDADAS - - - - ");
-        // console.log("VALIDADAS | 2 RUTA -> "+ruta._id);
-        // console.log("VALIDADAS | 3 RUTA aprobada -> "+ruta.aprobada);
-        
-        if ( ruta.aprobada === true) {
-          console.log("VALIDADAS | APROBADA TRUE");
-        } else if (ruta.aprobada !== true) {
-          console.log("VALIDADAS | APROBADA NO TRUE");
-          this.rutasValidadas = this.rutasValidadas.filter(obj => obj !== ruta);
-        }
 
-        // console.log("## VALIDADAS | 4 Ruta --> ");
-        // Object.keys(ruta).forEach((prop)=> console.log("## VALIDADAS | "+prop +": " + ruta[prop]));
-        // console.log("## VALIDADAS | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
-      });
+      // console.log("1 RUTA -> "+res[0]._id);
+      
+      // this.rutas.forEach(function (ruta) {
+      //   console.log(" - - - - VALIDADAS - - - - ");
+        
+      //   if ( ruta.aprobada === true) {
+      //     console.log("VALIDADAS | APROBADA TRUE -> "+ruta.nombre);
+      //     this.rutasValidadas.push(ruta);
+      //   } else if (ruta.aprobada !== true) {
+      //     console.log("VALIDADAS | APROBADA NO TRUE -> "+ruta.nombre);
+      //     this.rutasSinValidar.push(ruta);
+      //   }
+
+      //   // console.log("## VALIDADAS | 4 Ruta --> ");
+      //   // Object.keys(ruta).forEach((prop)=> console.log("## VALIDADAS | "+prop +": " + ruta[prop]));
+      //   // console.log("## VALIDADAS | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
+      // });
 
       // this.rutasSinValidar.forEach(function (ruta) {
       //   console.log(" - - - - SIN VALIDAR - - - - ");
       //   // console.log("SIN VALIDAR | 2 RUTA -> "+ruta._id);
       //   // console.log("SIN VALIDAR | 3 RUTA -> "+ruta.aprobada);
         
-      //   if ( ruta.aprobada === true) {
-      //     console.log("SIN VALIDAR | APROBADA TRUE");
-      //     this.rutasSinValidar = this.rutasSinValidar.filter(obj => obj !== ruta);
-      //   } else if (ruta.aprobada !== true) {
-      //     console.log("SIN VALIDAR | APROBADA NO TRUE");
-      //   }
-
       //   // console.log("## SIN VALIDAR | 4 Ruta --> ");
       //   // Object.keys(ruta).forEach((prop)=> console.log("## SIN VALIDAR | "+prop +": " + ruta[prop]));
       //   // console.log("## SIN VALIDAR | Ruta.aprobada: "+ruta.aprobada+" | Ruta.viable: "+ruta.viable);
       // });
 
-      console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
-      console.log("6 RutasValidadas --> "+this.rutasValidadas);
+      // console.log("5 RutasSinValidar --> "+this.rutasSinValidar);
+      // console.log("6 RutasValidadas --> "+this.rutasValidadas);
 
       
     });  
+
+    // this.rutaService.getRutas().subscribe(res => {
+    //   res.forEach(function (ruta) {
+    //     if ( ruta.aprobada === true) {
+    //       this.rutasValidadas.push(ruta);
+    //     }
+    //   });
+    // }); 
+
+    // this.rutaService.getRutas().subscribe(res => {
+    //   res.forEach(function (ruta) {
+    //     if (ruta.aprobada !== true) {
+    //       this.rutasSinValidar.push(ruta);
+    //     }
+    //   });
+    // }); 
   }
 
   habilitarBotonModificar(){
@@ -121,4 +135,66 @@ export class PerfilGestorComponent implements OnInit {
   private scrollTabContentToTop() : void {
 		this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
 	}
+
+  aprobarRuta(ruta: Ruta) {
+    let aprobada = true;
+    let viable = true;
+
+    let nuevaRuta=new Ruta(
+      ruta._id,
+      ruta.nombre,
+      ruta.distancia,
+      ruta.coordenadas,
+      ruta.circular,
+      aprobada,
+      viable,
+      ruta.descripcion,
+      ruta.dificultad,
+      ruta.provincia,
+      ruta.creador
+    )
+    
+    this.rutaService.updateRuta(nuevaRuta).subscribe(res => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Yaih!',
+        text: "Ruta aprobada satisfactoriamente!",
+        showConfirmButton: false,
+        toast: true,
+        timer: 3000,
+        timerProgressBar: true
+      });
+      setTimeout(() => {
+        // window.location.reload();
+        this.router.navigate(['/gestor/'+this.user['nickname']]);
+      }, 3000);
+    });
+  }
+
+  eliminarRuta(ruta: Ruta) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡Esta acción no podrá ser revertida!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: '¡Sí, quiero borrarla!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.rutaService.deleteRuta(ruta._id.toString()).subscribe(() => {
+          Swal.fire(
+            '¡Ruta eliminada!',
+            'La ruta '+ruta.nombre+' ha sido eliminada.',
+            'success'
+          ).then(() => {
+            // window.location.reload();
+            this.router.navigate(['/gestor/'+this.user['nickname']]);
+          });
+        });
+      }
+    })
+
+    
+  }
 }
