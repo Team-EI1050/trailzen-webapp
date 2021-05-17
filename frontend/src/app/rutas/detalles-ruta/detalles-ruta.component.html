@@ -76,16 +76,6 @@
                 </td>
               </tr>
             </table>
-            <!-- <div class="scrollbar scrollbar-primary">
-              <div class="force-overflow">
-                <div *ngFor = "let comentario of ruta.comentarios">
-                  <p class="comentario">"{{comentario.comentario}}" ~ {{comentario.nickname}}</p>
-                  <div class="boton" *ngIf = "user.tipo == 'GESTOR'">
-                    <app-modal-eliminar-comentario [comentario]="comentario" [rutaID]="ruta._id"></app-modal-eliminar-comentario>
-                  </div>
-                </div>
-              </div>         
-            </div>            -->
           </td>
           <td class="botones">
             <div class="boton" *ngIf = "user.tipo == 'GESTOR' || user._id == ruta.creador">

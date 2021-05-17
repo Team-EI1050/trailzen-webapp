@@ -1,0 +1,37 @@
+div.miniatura {
+  font-style: italic;
+  border: 2px solid #232530;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 15px;
+  max-width: 500px;
+  background-color:rgb(151, 151, 151);
+  display: grid;
+}
+
+div.botones {
+  margin-top: 10px;
+
+  padding: auto;
+}
+
+button.aceptar {
+  border-radius: 10px;
+  background-color: forestgreen;
+  height: 30px;
+  width: 90px;
+  padding: auto;
+  margin-right: 5px;
+}
+
+button.rechazar {
+  border-radius: 10px;
+  background-color: crimson;
+  height: 30px;
+  width: 90px;
+  padding: auto;
+  margin-left: 5px;
+}

@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <td>
+      <div *ngFor="let ruta of rutas">
+        <div *ngIf="ruta.aprobada==false">
+          <div (click)="rutaSeleccionada = ruta" class="miniatura">
+            {{ruta.nombre}}
+            <div class="botones">
+              <button type="button" class="aceptar">Aceptar</button>
+              <button type="button" class="rechazar">Rechazar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div *ngIf="rutaSeleccionada == null || rutaSeleccionada == undefined">
+        <p>Seleccione una ruta para ver sus detalles</p>
+      </div>
+      <div *ngIf="rutaSeleccionada != null && rutaSeleccionada != undefined">
+        {{rutaSeleccionada.nombre}}
+        {{rutaSeleccionada.descripcion}}
+        {{rutaSeleccionada.distancia}}
+      </div>
+    </td>
+  </tr>
+</table>

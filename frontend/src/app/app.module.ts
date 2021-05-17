@@ -33,6 +33,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { RutaComponent } from './rutas/ruta/ruta.component';
 import { ProponerRutaComponent } from './rutas/proponer-ruta/proponer-ruta.component';
 import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.component';
+import { GestionesComponent } from './gestor/gestiones/gestiones.component';
 
 
 
@@ -58,7 +59,8 @@ import { MapaProponerComponent } from './common/mapa-proponer/mapa-proponer.comp
     ModalEliminarComentarioComponent,
     RutaComponent,
     ProponerRutaComponent,
-    MapaProponerComponent
+    MapaProponerComponent,
+    GestionesComponent
    ],
   imports: [
     BrowserModule,
