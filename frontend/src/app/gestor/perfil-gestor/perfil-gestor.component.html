@@ -4,76 +4,81 @@
 <div>
     <div style="width: 88em; height: 20em; margin: 0 auto; margin-top: 50px;">
         <div id="contenedor">
-            <input (click)="habilitarBotonModificar()" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
+            <input (click)="cambiarBoolean()" id="tab-1" type="radio" name="radio-set" class="tab-selector-1" checked="checked" />
             <label for="tab-1" class="tab-label-1 sombra">Mis datos</label>
 
-            <input (click)="deshabilitarBotonModificar()" id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
+            <input (click)="cambiarBoolean()" id="tab-2" type="radio" name="radio-set" class="tab-selector-2" />
             <label for="tab-2" class="tab-label-2 sombra">Gestión de propuestas para ruta</label>
 
-            <div class="content sombra">
-                <div class="content-1">
-                    <div class="content-1" style="float: left; width: 20%;">
-                          <div class="content-1 sombra" style="background-color: #ffb95e !important; border-radius: 10px;">
-                            <table style="margin: 0 auto;">
-                                <tr>
-                                    <td style="text-align: center; padding-top: 20px;">
-                                        <div class="circular--landscape content-1">
-                                            <!-- https://i.pinimg.com/originals/60/99/f3/6099f305983371dadaceae99f5c905bf.png -->
-                                            <img src="http://cdn.benchmark.pl/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg">
-                                        </div>
-                                    </td>
-                                </tr>
+            <div class="content sombra" style="overflow: auto;">
+
+                <ng-template [ngIf]="mostrarPerfil">
+                    <div class="content-1">
+                        <div class="content-1" style="float: left; width: 20%;">
+                            <div class="content-1 sombra" style="background-color: #ffb95e !important; border-radius: 10px;">
+                                <table style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 20px;">
+                                            <div class="circular--landscape content-1">
+                                                <!-- https://i.pinimg.com/originals/60/99/f3/6099f305983371dadaceae99f5c905bf.png -->
+                                                <img src="http://cdn.benchmark.pl/uploads/article/72855/MODERNICON/4f91fb01300b74ba42dcf080665285f3f56bd4ff.jpg">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h3 style="text-align: center; margin-top: 5px;" >{{gestor.nickname}}</h3>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="content-1 sombra" style="margin-top: 20px; background-color: #ffb95e !important; border-radius: 10px;  height: 58px;">
+                                <table style="margin: 0 auto;">
+                                    <tr>
+                                        <td style="text-align: center; padding-top: 20px;">
+                                            <div class="content-1">
+                                                <h6>TrailZen Corporative</h6>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="content-1 sombra" style="color:white; background-color: #232530 !important; float: right; width: 70%; padding: 30px; border-radius: 10px;">
+                            <table style="width: -webkit-fill-available;">
                                 <tr>
                                     <td>
-                                        <h3 style="text-align: center; margin-top: 5px;" >{{gestor.nickname}}</h3>
+                                        <h2>{{gestor.nombre}} {{gestor.apellido}}</h2>
+                                    </td>
+                                    <td>
+                                        <h6 style="float: right;">Miembro desde el: <span style="font-weight: bold;">{{gestor.fechaCreacion}}</span></h6>
                                     </td>
                                 </tr>
-                            </table>
-                        </div>
-                        <div class="content-1 sombra" style="margin-top: 20px; background-color: #ffb95e !important; border-radius: 10px;  height: 58px;">
-                            <table style="margin: 0 auto;">
                                 <tr>
-                                    <td style="text-align: center; padding-top: 20px;">
-                                        <div class="content-1">
-                                            <h6>TrailZen Corporative</h6>
-                                        </div>
+                                    <td colspan="2">
+                                        <h4>Correo electrónico: <span style="font-size: 20px; font-weight: normal;">{{gestor.correo}}</span></h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="padding-top: 1em">
+                                        <div class="descripcion content-1"><h1>Sobre mí</h1>
+                                        <p>{{gestor.descripcion}}</p></div>
                                     </td>
                                 </tr>
                             </table>
+                            <div class="content-1" style="float: right; padding-top: 1em">
+                                <app-modalmodificar-gestor [gestor]="gestor"></app-modalmodificar-gestor>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="content-1 sombra" style="color:white; background-color: #232530 !important; float: right; width: 70%; padding: 30px; border-radius: 10px;">
-                        <table style="width: -webkit-fill-available;">
-                            <tr>
-                                <td>
-                                    <h2>{{gestor.nombre}} {{gestor.apellido}}</h2>
-                                </td>
-                                <td>
-                                    <h6 style="float: right;">Miembro desde el: <span style="font-weight: bold;">{{gestor.fechaCreacion}}</span></h6>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <h4>Correo electrónico: <span style="font-size: 20px; font-weight: normal;">{{gestor.correo}}</span></h4>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" style="padding-top: 1em">
-                                    <div class="descripcion content-1"><h1>Sobre mí</h1>
-                                    <p>{{gestor.descripcion}}</p></div>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="content-1" style="float: right; padding-top: 1em">
-                            <app-modalmodificar-gestor [gestor]="gestor"></app-modalmodificar-gestor>
-                        </div>
+                </ng-template>
+                <ng-template [ngIf]="!mostrarPerfil">
+                    <div class="content-2 sombra" style="overflow-y: auto;">
+                        <h1 style="color: white;">Gestiones</h1>
+                        <app-gestiones></app-gestiones>
                     </div>
-                </div>
-                <div class="content-2 sombra">
-                    <h2>Gestiones</h2>
-                    <app-gestiones></app-gestiones>
-                </div>
+                </ng-template>
             </div>
         </div>
     </div>

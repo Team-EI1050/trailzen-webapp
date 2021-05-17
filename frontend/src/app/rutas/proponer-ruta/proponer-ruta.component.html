@@ -43,13 +43,13 @@
       <br>
 
       <div *ngIf="user.tipo!=null && user.tipo=='SENDERISTA'">
-        <button style="border-radius: 10px;" type="submit" (click)="proponerRuta()">Proponer</button>
+        <button style="border-radius: 10px; width: 250px; float: right;" type="submit" (click)="proponerRuta()">Proponer</button>
       </div>
       <div *ngIf="user.tipo!=null && user.tipo=='GESTOR'">
-        <button style="border-radius: 10px;" type="submit" (click)="proponerRuta()">Crear</button>
+        <button style="border-radius: 10px; width: 250px; float: right;" type="submit" (click)="crearRuta()">Crear</button>
       </div>
       
-      <button style="border-radius: 10px;" type="button" class="cancelbtn" routerLink="/">Cancelar</button>
+      <button style="border-radius: 10px; width: 250px;" type="button" class="cancelbtn" routerLink="/">Cancelar</button>
       <div class="invalid-feedback">{{data}}</div>
     </form>
     </div>

@@ -13,6 +13,7 @@ export class PerfilGestorComponent implements OnInit {
   getId: any;
   gestor: Gestor;
   user: Object; // test
+  mostrarPerfil: Boolean = true;
 
 
   constructor(private activatedRoute: ActivatedRoute, private gestorService: GestorService,
@@ -30,10 +31,8 @@ export class PerfilGestorComponent implements OnInit {
     })
     
   }
-  habilitarBotonModificar(){
-    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = false;
-  }
-  deshabilitarBotonModificar(){
-    (<HTMLInputElement> document.getElementById("botonModificar")).disabled = true;
+
+  cambiarBoolean() {
+    this.mostrarPerfil = !this.mostrarPerfil;
   }
 }
